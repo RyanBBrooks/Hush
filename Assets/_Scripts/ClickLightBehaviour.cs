@@ -14,7 +14,7 @@ public class ClickLightBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //update circle to mouse click
+        //update circle to mouse click !!! eventually trigger this with sound at sound location
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             
@@ -22,14 +22,5 @@ public class ClickLightBehaviour : MonoBehaviour
             pos.z = 0;
             Instantiate(circle, pos, Quaternion.identity);
         }
-        //update color over time
-        else
-        {
-            //if (circle.color.r > 0.3)
-           // {
-            //    circle.color = new Color(circle.color.r - 0.001f, circle.color.g - 0.001f, circle.color.b - 0.001f, 1);
-           // }
-        }
-        //print(circle.color);
     }
 }
