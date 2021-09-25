@@ -32,7 +32,7 @@ public class FogCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys") //TODO possibly implement second parameter that ensures the sound circle is visible on screem before updating position of objcts //this.gameObject.GetComponent<Renderer>().isVisible ?
         {
-            FogPhysicsObject s = o.GetComponent<FogPhysicsObject>();
+            FogPhysicsObject s = o.transform.parent.gameObject.GetComponent<FogPhysicsObject>();
             s.UpdateVisual();
         }       
     }
@@ -42,7 +42,7 @@ public class FogCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
-            FogPhysicsObject s = o.GetComponent<FogPhysicsObject>();
+            FogPhysicsObject s = o.transform.parent.gameObject.GetComponent<FogPhysicsObject>();
             //s.PlayStationaryAnim();
         }
     }

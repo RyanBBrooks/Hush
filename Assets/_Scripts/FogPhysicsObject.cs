@@ -3,13 +3,15 @@ using UnityEngine;
 public class FogPhysicsObject : MonoBehaviour
 {
     //visual layer
-    public GameObject phys;
-    public GameObject vis;
-    SpriteRenderer visRend;
+    GameObject box; 
+    GameObject sprite;
+    SpriteRenderer sprite_r;
     // Start is called before the first frame update
     void Start()
     {
-        visRend = vis.GetComponent<SpriteRenderer>();
+        box = this.transform.GetChild(0).gameObject;
+        sprite = this.transform.GetChild(1).gameObject;
+        sprite_r = sprite.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class FogPhysicsObject : MonoBehaviour
 
     public void UpdateVisual()
     {
-            visRend.color = new Color(visRend.color.r, visRend.color.g, visRend.color.b, 255);
-            vis.transform.position = phys.transform.position;
+            sprite_r.color = new Color(sprite_r.color.r, sprite_r.color.g, sprite_r.color.b, 255);
+            sprite.transform.position = box.transform.position;
     }
 }
