@@ -45,7 +45,7 @@ public class FogCircle : MonoBehaviour
         if (o.tag == "Phys")
         {
             FogPhysicsObject s = o.transform.parent.gameObject.GetComponent<FogPhysicsObject>();
-            //s.PlayStationaryAnim();
+            s.PlayStasisAnim();
         }
     }
 
