@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circle: {fileID: 1462484992626497862, guid: 0dbd4196bd2de344d910a5664021acf2, type: 3}
+  osb: 1.5
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
