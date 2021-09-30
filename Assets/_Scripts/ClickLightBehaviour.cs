@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickLightBehaviour : MonoBehaviour
 {
     public GameObject circle;
-    public float osb = 1.5; //outer screen buffer
+    public float osb = 1.5f; //outer screen buffer
     // Start is called before the first frame update
     void Start()
     {
