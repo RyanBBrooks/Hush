@@ -1182,25 +1182,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1932007770 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1443490031498855407, guid: 505d338866b40d944a949fd7d482975e, type: 3}
-  m_PrefabInstance: {fileID: 1443490032356072117}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1932007771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932007770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b3a72cad4abff4384480ea00c2e6f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizVelocity: 10
-  vertVelocity: 10
 --- !u!1 &1980203465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,17 +1359,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1340072531153147400, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_Size.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340072531153147400, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_Size.y
+      value: 7.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340072531153147400, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 1340072531153147400, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 7.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443490031498855400, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b3f9e549735a554e82c82f7a95a8016, type: 3}
     - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.69
+      value: -5.22
       objectReference: {fileID: 0}
     - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39
+      value: -0.62
       objectReference: {fileID: 0}
     - target: {fileID: 1443490031498855403, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1433,6 +1446,14 @@ PrefabInstance:
     - target: {fileID: 1443490031498855407, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_Name
       value: Lily
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443490031498855407, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1933231473735513822, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: JumpImpulse
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505d338866b40d944a949fd7d482975e, type: 3}
