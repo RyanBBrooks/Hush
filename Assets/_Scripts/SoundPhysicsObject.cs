@@ -39,7 +39,13 @@ public class SoundPhysicsObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlaySound(0.3f, collision.contacts[0].point);
+        Vector2 result = Vector2.zero;
+        foreach(ContactPoint2D contact in collision.contacts)
+        {
+            result += contact.point;
+        }
+        PlaySound(0.4f, result/collision.contactCount);
+        //Debug.Log(collision.contactCount);
     }
 
     public void PlaySound(float vol, Vector2 pos /**AudioClip sound**/)

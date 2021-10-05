@@ -14,8 +14,7 @@ public class LilyScript : MonoBehaviour
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body;
     SpriteRenderer sprite;
-    public SpriteRenderer mask;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +26,7 @@ public class LilyScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         GameObject o = col.gameObject;
+
         if (o.layer == 7)
         {
             onGround = false;
@@ -61,30 +61,28 @@ public class LilyScript : MonoBehaviour
         Vector3 target = new Vector2(x * speed, body.velocity.y);
         body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
         //flip sprite
-        if(x < 0 && body.velocity.x < 0)
+        if (x < 0 && body.velocity.x < 0)
         {
             sprite.flipX = true;
-            mask.flipX = true;
         }
         if (x > 0 && body.velocity.x > 0)
         {
             sprite.flipX = false;
-            mask.flipX = false;
         }
-
 
         //Jumping
         if (
-            (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && 
+            (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) &&
             onGround)
         {
+
             onGround = false;
             jumping = true;
-            body.AddForce(new Vector2(0f, jumpForce  + Mathf.Abs(body.velocity.x) * 5));
+            body.AddForce(new Vector2(0f, jumpForce));
         }
         else if (
             !(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
-            !onGround && 
+            !onGround &&
             jumping)
         {
             body.AddForce(new Vector2(0f, -1f));

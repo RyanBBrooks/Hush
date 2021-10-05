@@ -38,7 +38,7 @@ public class SoundBehavior_Cam : MonoBehaviour
         {
             GameObject c = Instantiate(circle, pos, Quaternion.identity) as GameObject;
             c.GetComponent<SoundCircle>().volume = volume;
-            Debug.Log(c + " " + pos + " " + c.transform.position + " " + c.GetComponent<SoundCircle>().volume);
+            //Debug.Log(c + " " + pos + " " + c.transform.position + " " + c.GetComponent<SoundCircle>().volume);
         }
     }
 }
