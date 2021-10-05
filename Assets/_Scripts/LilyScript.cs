@@ -5,11 +5,11 @@ using UnityEngine;
 public class LilyScript : MonoBehaviour
 {
 
-    
+    public LayerMask ground;
     public float maxHVel = 1F;
     public float HAcc = 5f;
-    public float HStopAcc = 20f;
-    public float JumpImpulse = 10000f;
+    public float HDecc = 40f;
+    public float JumpImpulse = 100f;
     public float AirRes = 5;
     Vector3 velocity = new Vector3(0, 0, 0);
     float acc = 0;
@@ -21,7 +21,7 @@ public class LilyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        acc = HStopAcc;
+        acc = HDecc;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         dToGrnd = coll.bounds.extents.y;
@@ -29,7 +29,11 @@ public class LilyScript : MonoBehaviour
 
     bool IsOnGround()
     {
-        return Physics.Raycast(transform.position, -Vector3.up, dToGrnd + 0.1f);
+        Debug.DrawRay(transform.position, Vector2.down, Color.black);
+        RaycastHit2D hit = 
+            Physics2D.Raycast(transform.position, Vector2.down, dToGrnd + 0.01f, ground);
+        return hit.collider != null;
+       
     }
     
 
@@ -40,7 +44,8 @@ public class LilyScript : MonoBehaviour
         //if player not horizontally moving
         //horizontal movement code
         bool grounded = IsOnGround();
-        Debug.Log(grounded);
+        Debug.Log(grounded + "  " + dToGrnd + "  " + x);
+
         if (Mathf.Abs(x) > 0.1) { 
             velocity.x = x * maxHVel;
             acc = HAcc;
@@ -48,18 +53,30 @@ public class LilyScript : MonoBehaviour
         else
         {
             velocity.x = 0;
-            acc = HStopAcc;
+            acc = HDecc;
         }
+        //update x vel
+        velocity.x = Mathf.Lerp(rb.velocity.x, velocity.x, Time.deltaTime * acc);
+
+        //jump code
         if (Input.GetKeyDown(KeyCode.Space) && grounded)
         {
-            velocity.y = JumpImpulse;
+            velocity.y = JumpImpulse + velocity.x;
+        }
+        else if (!grounded) 
+        {
+            velocity.y = rb.velocity.y - AirRes;
+        }
+        else
+        {
+            velocity.y = rb.velocity.y;
         }
         if (Input.GetKey("space") && !grounded)
         {
         }
-        
 
-        rb.velocity = Vector3.Lerp(rb.velocity, velocity, Time.deltaTime * 10);
+        rb.velocity = velocity;
+        
     }
 }
 
