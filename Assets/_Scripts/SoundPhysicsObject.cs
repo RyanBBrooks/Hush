@@ -39,6 +39,7 @@ public class SoundPhysicsObject : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        PlaySound(0.3f, collision.contacts[0].point);
     }
 
     public void PlaySound(float vol, Vector2 pos /**AudioClip sound**/)

@@ -13,12 +13,15 @@ public class LilyScript : MonoBehaviour
     bool jumping = false;
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body;
+    SpriteRenderer sprite;
+    public SpriteRenderer mask;
    
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -50,13 +53,25 @@ public class LilyScript : MonoBehaviour
         //Horizontal Movement
         float x = Input.GetAxis("Horizontal");
         //Prevent Undermoving
-        if (Mathf.Abs(x) < 0.35)
+        if (Mathf.Abs(x) < 0.2)
         {
             x = 0;
         }
         //Update Velocity
         Vector3 target = new Vector2(x * speed, body.velocity.y);
         body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
+        //flip sprite
+        if(x < 0 && body.velocity.x < 0)
+        {
+            sprite.flipX = true;
+            mask.flipX = true;
+        }
+        if (x > 0 && body.velocity.x > 0)
+        {
+            sprite.flipX = false;
+            mask.flipX = false;
+        }
+
 
         //Jumping
         if (

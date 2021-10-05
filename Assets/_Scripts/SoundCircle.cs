@@ -22,7 +22,7 @@ public class SoundCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (blueR.color.a <= 0 || !ring_r.isVisible)
+        if (blueR.color.a <= 0)
         {
             Object.Destroy(this.gameObject);
         }

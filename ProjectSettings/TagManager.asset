@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - FogMain
   - FogSecondary
-  - 
+  - Characters
   - 
   - 
   - 
@@ -44,4 +44,7 @@ TagManager:
     locked: 0
   - name: Fog
     uniqueID: 1633484847
+    locked: 0
+  - name: Character
+    uniqueID: 654824125
     locked: 0
