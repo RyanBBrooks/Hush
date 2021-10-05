@@ -6,8 +6,12 @@ public class Bat : MonoBehaviour
 {
     public float speed = 300f;
     public float waitTime = 1f;
+    public float maxTargets = 5f;
+    public float screechDist = 0.3f;
+    public float screechVol = 0.65f;
     float waitTimer = 0;
-    Vector3 targetPos = new Vector3(0, 0, 0);
+    public GameObject target;
+    List<GameObject> targets = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -18,25 +22,38 @@ public class Bat : MonoBehaviour
     {
 
         Camera cam = Camera.main;
-        Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         //this.gameObject.transform.position;
-        mousePos.z = 0;
-        if (waitTimer <= 0)
+        if (targets.Count==0)
         { 
-            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, mousePos, Time.deltaTime * speed);
+            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, mousePos, Time.deltaTime * speed);
         }
         else
         {
-            waitTimer -= Time.deltaTime;
-            this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, mousePos, Time.deltaTime * speed/100);
+            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, targets[0].transform.position, Time.deltaTime * speed);
         }
         //update circle to mouse click !!!
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            waitTimer = waitTime;
-            targetPos = mousePos;
-            SoundBehavior_Cam s = cam.GetComponent<SoundBehavior_Cam>();
-            s.SpawnSoundCircle(this.gameObject.transform.position, 0.6f);
+            if (targets.Count >= maxTargets)
+            {
+                Object.Destroy(targets[0]);
+                targets.RemoveAt(0);
+            }
+            GameObject t = Instantiate(target, mousePos, Quaternion.identity) as GameObject;
+            targets.Add(t);          
         }
+
+        if (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0)
+        {
+            //play the sound here!!!
+            SoundBehavior_Cam s = cam.GetComponent<SoundBehavior_Cam>();
+            s.SpawnSoundCircle(targets[0].transform.position, screechVol);
+            Object.Destroy(targets[0]);
+            targets.RemoveAt(0);
+        }
+
+
+
     }
 }
