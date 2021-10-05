@@ -6,25 +6,19 @@ public class LilyScript : MonoBehaviour
 {
 
     public LayerMask ground;
-    public float maxHVel = 1F;
-    public float HAcc = 5f;
-    public float HDecc = 40f;
-    public float JumpImpulse = 100f;
-    Vector3 velocity = new Vector3(0, 0, 0);
-    float acc = 0;
-    float dToGrnd = 0;
+    public float speed = 1F;
+    public float smoothing = 20f;
+    public float jumpForce = 5f;
     bool onGround = false;
-    Rigidbody2D rb;
-    Collider2D coll;
+    bool jumping = false;
+    private Vector3 vel = Vector3.zero;
+    Rigidbody2D body;
    
 
     // Start is called before the first frame update
     void Start()
     {
-        acc = HDecc;
-        rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
-        dToGrnd = coll.bounds.extents.y;
+        body = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerExit2D(Collider2D col)
@@ -35,7 +29,7 @@ public class LilyScript : MonoBehaviour
             onGround = false;
         }
     }
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col)
     {
         GameObject o = col.gameObject;
         if (o.layer == 7)
@@ -47,52 +41,42 @@ public class LilyScript : MonoBehaviour
 
     void Update()
     {
-        
+        //Stop Jumping
+        if (onGround)
+        {
+            jumping = false;
+        }
+
+        //Horizontal Movement
         float x = Input.GetAxis("Horizontal");
-        //if player not horizontally moving
-        //horizontal movement code
-
-        //Debug.Log(onGround + "  " + dToGrnd + "  " + x);
-
-        if (Mathf.Abs(x) > 0.1) { 
-            velocity.x = x * maxHVel;
-            acc = HAcc;
-        }
-        else
+        //Prevent Undermoving
+        if (Mathf.Abs(x) < 0.35)
         {
-            velocity.x = 0;
-            acc = HDecc;
+            x = 0;
         }
-        //update x vel
-        velocity.x = Mathf.Lerp(rb.velocity.x, velocity.x, Time.deltaTime * acc);
+        //Update Velocity
+        Vector3 target = new Vector2(x * speed, body.velocity.y);
+        body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
 
-        //jump code
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        //Jumping
+        if (
+            (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) && 
+            onGround)
         {
-            velocity.y = JumpImpulse + Mathf.Abs(velocity.x)/4;
+            onGround = false;
+            jumping = true;
+            body.AddForce(new Vector2(0f, jumpForce  + Mathf.Abs(body.velocity.x) * 5));
         }
-        else if (!onGround)
+        else if (
+            !(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
+            !onGround && 
+            jumping)
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                velocity.y = rb.velocity.y;
-            }
-            else
-            {
-                velocity.y = rb.velocity.y;
-            }
-            
+            body.AddForce(new Vector2(0f, -1f));
         }
-        else
-        {
-            velocity.y = rb.velocity.y;
-        }
+        body.AddForce(new Vector2(0f, -1f));
 
-
-
-        rb.velocity = velocity;
-
-        Debug.Log(rb.velocity.x + "   " + rb.velocity.y);
+        Debug.Log(body.velocity.x + "   " + body.velocity.y + "   " + onGround + "  " + jumping);
     }
 }
 
