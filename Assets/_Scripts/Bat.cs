@@ -28,7 +28,6 @@ public class Bat : MonoBehaviour
         else
         {
             waitTimer -= Time.deltaTime;
-            Debug.Log(waitTimer);
             this.gameObject.transform.position = Vector3.Lerp(this.gameObject.transform.position, mousePos, Time.deltaTime * speed/100);
         }
         //update circle to mouse click !!!

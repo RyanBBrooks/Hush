@@ -3,8 +3,8 @@ using UnityEngine;
 public class SoundPhysicsObject : MonoBehaviour
 {
     //visual layer
-    GameObject box; 
-    GameObject sprite;
+    public GameObject sprite;
+    GameObject box;
     SpriteRenderer sprite_r;
     bool visible = false;
     public float stasis_a = 0.8f;
@@ -12,8 +12,7 @@ public class SoundPhysicsObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        box = this.transform.GetChild(0).gameObject;
-        sprite = this.transform.GetChild(1).gameObject;
+        box = this.gameObject;
         sprite_r = sprite.GetComponent<SpriteRenderer>();
     }
 
@@ -33,8 +32,19 @@ public class SoundPhysicsObject : MonoBehaviour
             sprite.transform.position = box.transform.position;
     }
 
-    public void PlayStasisAnim()
+    public void BeginStasisAnim()
     {
         visible = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+    }
+
+    public void PlaySound(float vol, Vector2 pos /**AudioClip sound**/)
+    {
+        //Play sound here
+        SoundBehavior_Cam s = Camera.main.GetComponent<SoundBehavior_Cam>();
+        s.SpawnSoundCircle(pos, vol);
     }
 }

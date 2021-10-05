@@ -35,7 +35,7 @@ public class SoundCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys") //TODO possibly implement second parameter that ensures the sound circle is visible on screem before updating position of objcts //this.gameObject.GetComponent<Renderer>().isVisible ?
         {
-            SoundPhysicsObject s = o.transform.parent.gameObject.GetComponent<SoundPhysicsObject>();
+            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
             s.UpdateVisual();
         }       
     }
@@ -45,8 +45,8 @@ public class SoundCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
-            SoundPhysicsObject s = o.transform.parent.gameObject.GetComponent<SoundPhysicsObject>();
-            s.PlayStasisAnim();
+            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
+            s.BeginStasisAnim();
         }
     }
 

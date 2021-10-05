@@ -42,7 +42,7 @@ public class LilyScript : MonoBehaviour
     void Update()
     {
         //Stop Jumping
-        if (onGround)
+        if (onGround && jumping)
         {
             jumping = false;
         }
@@ -76,7 +76,7 @@ public class LilyScript : MonoBehaviour
         }
         body.AddForce(new Vector2(0f, -1f));
 
-        Debug.Log(body.velocity.x + "   " + body.velocity.y + "   " + onGround + "  " + jumping);
+        //Debug.Log(body.velocity.x + "   " + body.velocity.y + "   " + onGround + "  " + jumping);
     }
 }
 

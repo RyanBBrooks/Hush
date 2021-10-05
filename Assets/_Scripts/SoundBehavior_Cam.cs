@@ -18,7 +18,7 @@ public class SoundBehavior_Cam : MonoBehaviour
        
     }
 
-    public void SpawnSoundCircle(Vector3 pos, float volume)
+    public void SpawnSoundCircle(Vector2 pos, float volume)
     {
         //find camera boundries
         Camera cam = Camera.main;
@@ -31,14 +31,14 @@ public class SoundBehavior_Cam : MonoBehaviour
         float yMax = camPos.y + camHhalf;
 
         //if within certain range of boundries, spawn anti-fog circle
-        if (xMin -osb <= pos.x &&
-            xMax +osb >= pos.x &&
-            yMin -osb <= pos.y &&
-            yMax +osb >= pos.y)
+        if (xMin - osb <= pos.x &&
+            xMax + osb >= pos.x &&
+            yMin - osb <= pos.y &&
+            yMax + osb >= pos.y)
         {
-
             GameObject c = Instantiate(circle, pos, Quaternion.identity);
             c.GetComponent<SoundCircle>().volume = volume;
+            //Debug.Log(c + " " + pos + " " + c.transform.position + " " + c.GetComponent<SoundCircle>().volume);
         }
     }
 }
