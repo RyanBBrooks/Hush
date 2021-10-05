@@ -14,6 +14,7 @@ public class SoundPhysicsObject : MonoBehaviour
     {
         box = this.gameObject;
         sprite_r = sprite.GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -25,11 +26,13 @@ public class SoundPhysicsObject : MonoBehaviour
         }
     }
 
+    //updates visual position etc of sprite
     public void UpdateVisual()
     {
             visible = true;
             sprite_r.color = new Color(sprite_r.color.r, sprite_r.color.g, sprite_r.color.b, 1);
             sprite.transform.position = box.transform.position;
+            sprite.transform.rotation = box.transform.rotation;
     }
 
     public void BeginStasisAnim()

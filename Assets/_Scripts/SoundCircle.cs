@@ -33,7 +33,7 @@ public class SoundCircle : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         GameObject o = col.gameObject;
-        if (o.tag == "Phys") //TODO possibly implement second parameter that ensures the sound circle is visible on screem before updating position of objcts //this.gameObject.GetComponent<Renderer>().isVisible ?
+        if (o.tag == "Phys")
         {
             SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
             s.UpdateVisual();

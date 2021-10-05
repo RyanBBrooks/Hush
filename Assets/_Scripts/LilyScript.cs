@@ -23,6 +23,7 @@ public class LilyScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
     }
 
+    //Determine if lily is on the ground
     private void OnTriggerExit2D(Collider2D col)
     {
         GameObject o = col.gameObject;
@@ -41,6 +42,25 @@ public class LilyScript : MonoBehaviour
         }
     }
 
+    //As long as lily is touching an object it will not fade, position will update
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        GameObject o = col.gameObject;
+        if (o.tag == "Phys")
+        {
+            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
+            s.BeginStasisAnim();
+        }
+    }
+    private void OnCollisionStay2D(Collision2D col)
+    {
+        GameObject o = col.gameObject;
+        if (o.tag == "Phys")
+        {
+            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
+            s.UpdateVisual();
+        }
+    }
 
     void Update()
     {
@@ -80,6 +100,7 @@ public class LilyScript : MonoBehaviour
             jumping = true;
             body.AddForce(new Vector2(0f, jumpForce));
         }
+        //Holding space increases float
         else if (
             !(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
             !onGround &&

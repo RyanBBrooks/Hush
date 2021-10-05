@@ -51,7 +51,7 @@ Shader "Hidden/FogShader"
                 // red = 1 blue = 0 -> alpha = 0.5
                 // red = 0 blue = 0 -> alpha = 1
                 
-                col.a = (-col.r * 1.5f - col.b * 0.5f + 2.0f);
+                col.a = (-col.r * 1.25f - col.b * 0.75f + 2.0f);
                 return fixed4(0,0,0,col.a);
             }
             ENDCG
