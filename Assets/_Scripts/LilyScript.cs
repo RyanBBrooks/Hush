@@ -14,6 +14,7 @@ public class LilyScript : MonoBehaviour
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body;
     SpriteRenderer sprite;
+    public Animator anim;
 
 
     // Start is called before the first frame update
@@ -21,6 +22,8 @@ public class LilyScript : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
+        anim = GetComponent<Animator>();
     }
 
     //Determine if lily is on the ground
@@ -81,6 +84,8 @@ public class LilyScript : MonoBehaviour
         Vector3 target = new Vector2(x * speed, body.velocity.y);
         body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
         //flip sprite
+        anim.SetFloat("Speed", Mathf.Abs(x));
+
         if (x < 0 && body.velocity.x < 0)
         {
             sprite.flipX = true;
@@ -88,6 +93,8 @@ public class LilyScript : MonoBehaviour
         if (x > 0 && body.velocity.x > 0)
         {
             sprite.flipX = false;
+            
+
         }
 
         //Jumping
@@ -95,7 +102,6 @@ public class LilyScript : MonoBehaviour
             (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) &&
             onGround)
         {
-
             onGround = false;
             jumping = true;
             body.AddForce(new Vector2(0f, jumpForce));
