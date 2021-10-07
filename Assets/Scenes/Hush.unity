@@ -733,7 +733,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 2.2875}
+    oldSize: {x: 1.255, y: 2.2925}
     newSize: {x: 1.12, y: 1.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1217,15 +1217,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6155973936010298423, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155973936010298423, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155973936010298423, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6155973936010298423, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.x
