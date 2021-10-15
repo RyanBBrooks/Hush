@@ -1200,6 +1200,10 @@ PrefabInstance:
       propertyPath: stasisDecayRate
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 4512821337553941133, guid: 19bc0c6df59c7d3479059c724f0a4c69, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19bc0c6df59c7d3479059c724f0a4c69, type: 3}
 --- !u!1001 &5555399710676683759
@@ -1298,6 +1302,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: fc16939a0df81bc43966e176ef27619e, type: 2}
+    - target: {fileID: 6155973936010298419, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: max_speed
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6155973936010298423, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_RootOrder
       value: 8

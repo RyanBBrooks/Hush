@@ -6,11 +6,12 @@ public class LilyScript : MonoBehaviour
 {
 
     public LayerMask ground;
-    public float speed = 1F;
+    public float max_speed = 1F;
     public float smoothing = 20f;
     public float jumpForce = 5f;
     bool onGround = false;
     bool jumping = false;
+    bool isMoveInput = false; // relates to the pusing / pulling aniations, whether or not the player is trying to move
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body;
     SpriteRenderer sprite;
@@ -53,6 +54,10 @@ public class LilyScript : MonoBehaviour
         {
             SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
             s.BeginStasisAnim();
+
+            //stop possible pushing animation
+            anim.SetBool("isPushing", false);
+          //  Debug.Log("STOP");
         }
     }
     private void OnCollisionStay2D(Collision2D col)
@@ -62,6 +67,26 @@ public class LilyScript : MonoBehaviour
         {
             SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
             s.UpdateVisual();
+
+            //if roughly horizontal to object, play pushing animation, otherwise stop the animation
+            Vector2 avgNormal = Vector2.zero;
+            foreach (ContactPoint2D contact in col.contacts)
+            {
+                avgNormal += contact.normal;
+            }
+            avgNormal /= col.contactCount; //normalize
+            bool inHorizContact = Mathf.Abs(avgNormal.y) < 0.2;
+            Debug.Log(inHorizContact);
+            if (isMoveInput && inHorizContact && onGround)
+            {
+                anim.SetBool("isPushing", true);
+                //Debug.Log("PUSH");
+            }
+            else
+            { 
+                anim.SetBool("isPushing", false);
+               // Debug.Log("STOP");
+            }
         }
     }
 
@@ -79,9 +104,14 @@ public class LilyScript : MonoBehaviour
         if (Mathf.Abs(x) < 0.2)
         {
             x = 0;
+            isMoveInput = false;
+        }
+        else
+        {
+            isMoveInput = true;
         }
         //Update Velocity
-        Vector3 target = new Vector2(x * speed, body.velocity.y);
+        Vector3 target = new Vector2(x * max_speed, body.velocity.y);
         body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
         //flip sprite
         anim.SetFloat("Speed", Mathf.Abs(x));
