@@ -9,14 +9,17 @@ public class LilyScript : MonoBehaviour
     public float max_speed = 1F;
     public float smoothing = 20f;
     public float jumpForce = 5f;
+    public float grabDist = 1f;
+    public LayerMask pushMask;
+    bool isGrabbing = false;
+    bool flipx = false;
     bool onGround = false;
     bool isMoveInput = false; // relates to the pusing / pulling aniations, whether or not the player is trying to move
     bool isPushingNoGrab = false;
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body;
     SpriteRenderer sprite;
-    GameObject grabTarget;
-    FixedJoint2D joint;
+    GameObject grabbed;
     public Animator anim;
 
 
@@ -27,12 +30,6 @@ public class LilyScript : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         anim = GetComponent<Animator>();
-    }
-
-    public void SetTarget(GameObject t)
-    {
-        Debug.Log(t);
-        grabTarget = t;
     }
 
     //Determine if lily is on the ground
@@ -52,11 +49,6 @@ public class LilyScript : MonoBehaviour
         {
             onGround = true;
         }
-    }
-
-    private bool isGrabbing()
-    {
-        return joint != null;
     }
 
     //As long as lily is touching an object it will not fade, position will update
@@ -92,7 +84,7 @@ public class LilyScript : MonoBehaviour
             avgNormal /= col.contactCount; //normalize
             bool inHorizContact = Mathf.Abs(avgNormal.y) < 0.2;
             //Debug.Log(inHorizContact);
-            if (!isGrabbing())
+            if (!isGrabbing)
             {
                 if (inHorizContact && onGround && isMoveInput)
                 {
@@ -112,6 +104,7 @@ public class LilyScript : MonoBehaviour
     void Update()
     {
 
+
         //Horizontal Movement
         float x = Input.GetAxis("Horizontal");
         //Prevent Undermoving
@@ -127,9 +120,9 @@ public class LilyScript : MonoBehaviour
 
         //cut speed in half if we are pulling something
         float m_speed = max_speed;
-        if (isGrabbing() || isPushingNoGrab)
+        if (isGrabbing || isPushingNoGrab)
         {
-            m_speed /= 2;
+            //m_speed /= 2;
         }
 
         //Update Velocity
@@ -137,23 +130,20 @@ public class LilyScript : MonoBehaviour
         body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
         //flip sprite
         anim.SetFloat("Speed", Mathf.Abs(x));
-        if (!isGrabbing())
+        if (!isGrabbing)
         {
             if (x < 0 && body.velocity.x < 0)
             {
-                sprite.flipX = true;
-                GrabBehavior s = transform.GetChild(1).GetComponent<GrabBehavior>();
-                s.flipX(true);
+                sprite.flipX = flipx = true;
             }
             if (x > 0 && body.velocity.x > 0)
             {
-                sprite.flipX = false;
-                GrabBehavior s = transform.GetChild(1).GetComponent<GrabBehavior>();
-                s.flipX(true);
+                sprite.flipX = flipx = false;
             }
+
         }
         //Jumping
-        if (
+        if (!isGrabbing &&
             (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) &&
             onGround)
         {
@@ -170,20 +160,54 @@ public class LilyScript : MonoBehaviour
         body.AddForce(new Vector2(0f, -1f));
 
         //start Grabbing
-        if (Input.GetKey(KeyCode.LeftShift) && grabTarget!=null && !isGrabbing())
+        if (Input.GetKey(KeyCode.LeftShift) && !isGrabbing && onGround)
         {
-            joint = this.gameObject.AddComponent<FixedJoint2D>();
-            joint.connectedBody = grabTarget.GetComponent<Rigidbody2D>();
+            Physics2D.queriesStartInColliders = false;
+            RaycastHit2D hit = Physics2D.Raycast(
+                                                this.transform.position, (flipx ? Vector2.left : Vector2.right) * transform.localScale.x,
+                                                grabDist, pushMask);
+            
+            if(hit.collider != null)
+            {
+                
+                grabbed = hit.collider.gameObject;
+                DistanceJoint2D j;
+                if ((j = grabbed.GetComponent<DistanceJoint2D>()) != null)
+                {
+                    j.enabled = true;
+                    j.connectedBody = body;
+                    Vector2 dist = j.anchor = Quaternion.Inverse(grabbed.transform.rotation) * ((Vector3)hit.point -  grabbed.transform.position);
+                    j.distance = (hit.point - body.position).magnitude +0.1f;//(body.transform.position - grabbed.transform.position).magnitude;
+                    //Debug.Log((Vector2)grabbed.transform.position - hit.point + "  " + hit.point + grabbed.transform.position);
+                    Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false);
+                    isGrabbing = true;
+                }
+            }
+            Physics2D.queriesStartInColliders = true;
             isPushingNoGrab = false;
         }
-        //stop grabbing
-        if (isGrabbing() && (!onGround || !Input.GetKey(KeyCode.LeftShift) || grabTarget == null))
+
+        //update box visual if being pushed, stop grabbing if invialid
+        if (isGrabbing)
         {
-            Destroy(joint);
+            SoundPhysicsObject s = grabbed.gameObject.GetComponent<SoundPhysicsObject>();
+            if (!onGround || !Input.GetKey(KeyCode.LeftShift)){
+                
+                DistanceJoint2D j;
+                if ((j = grabbed.GetComponent<DistanceJoint2D>()) != null)
+                {
+                    j.enabled = false;
+                    isGrabbing = false;
+                }
+
+            }
+
+            s.UpdateVisual();
+            s.BeginStasisAnim();
         }
 
-        //Debug.Log(isGrabbing() + "    " + !onGround + "   " + grabTarget);
-        
+        //Debug.Log(isGrabbing + "    " + onGround + "   " );
+
     }
 }
 

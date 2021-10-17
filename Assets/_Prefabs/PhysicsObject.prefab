@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4512821337553941131}
   - component: {fileID: 4512821337553941128}
   - component: {fileID: 4512821337553941130}
+  - component: {fileID: 5717015814300067237}
   m_Layer: 7
   m_Name: Box
   m_TagString: Phys
@@ -77,15 +78,15 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 4
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 100
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 653d1d887c004524a80edd905f054586, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &4512821337553941131
 SpriteRenderer:
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 4512821338597917857}
+  grabbable: 0
   stasis_a: 0.6
   stasisDecayRate: 0.15
 --- !u!61 &4512821337553941130
@@ -180,6 +182,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!232 &5717015814300067237
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4512821337553941126}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_MaxDistanceOnly: 1
 --- !u!1 &4512821338597917857
 GameObject:
   m_ObjectHideFlags: 0
