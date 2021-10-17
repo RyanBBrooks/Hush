@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decayRate: 1
   volume: 1
-  blue: {fileID: 1462484993803250059}
+  blueCircle: {fileID: 1462484993803250059}
 --- !u!58 &5630744962252508720
 CircleCollider2D:
   m_ObjectHideFlags: 0

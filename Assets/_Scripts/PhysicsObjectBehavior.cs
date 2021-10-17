@@ -29,6 +29,9 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //initialize values of the joint (just in case)
         joint.enabled = false;
         joint.distance = 0;
+
+        //set the sprite to transparent to start
+        spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 0);
     }
 
     //returns if the object is set to grabbable

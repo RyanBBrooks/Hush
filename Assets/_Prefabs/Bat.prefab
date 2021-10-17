@@ -100,4 +100,4 @@ MonoBehaviour:
   screechDist: 0.3
   screechVol: 0.65
   maxTargets: 6
-  targetPrefab: {fileID: 0}
+  targetPrefab: {fileID: 4337172340908194956, guid: b049f7623d2db2342bc5f19364b509b1, type: 3}
