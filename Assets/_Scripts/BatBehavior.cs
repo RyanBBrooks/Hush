@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bat : MonoBehaviour
+//Ryan Brooks u1115093
+public class BatBehavior : MonoBehaviour
 {
-    public float speed = 300f;
-    public float waitTime = 1f;
-    public float maxTargets = 5f;
+    //movement vars
+    public float speed = 5f;
+    
+    //screech vars
     public float screechDist = 0.3f;
     public float screechVol = 0.65f;
-    float waitTimer = 0;
-    public GameObject target;
+
+    //targeting vars
+    public int maxTargets = 6;
+    public GameObject targetPrefab;
     List<GameObject> targets = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
@@ -40,15 +44,15 @@ public class Bat : MonoBehaviour
                 Object.Destroy(targets[0]);
                 targets.RemoveAt(0);
             }
-            GameObject t = Instantiate(target, mousePos, Quaternion.identity) as GameObject;
+            GameObject t = Instantiate(targetPrefab, mousePos, Quaternion.identity) as GameObject;
             targets.Add(t);          
         }
 
         if (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0)
         {
             //play the sound here!!!
-            SoundBehavior_Cam s = cam.GetComponent<SoundBehavior_Cam>();
-            s.SpawnSoundCircle(targets[0].transform.position, screechVol);
+            CameraBehavior s = cam.GetComponent<CameraBehavior>();
+            s.SpawnEchoCircle(targets[0].transform.position, screechVol);
             Object.Destroy(targets[0]);
             targets.RemoveAt(0);
         }

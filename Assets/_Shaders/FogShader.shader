@@ -1,3 +1,5 @@
+
+//Ryan Brooks u1115093
 Shader "Hidden/FogShader"
 {
     Properties
@@ -47,9 +49,6 @@ Shader "Hidden/FogShader"
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv) + tex2D(_SecondTex, i.uv);
-                // red = 1 blue = 1 -> alpha = 0
-                // red = 1 blue = 0 -> alpha = 0.5
-                // red = 0 blue = 0 -> alpha = 1
                 
                 col.a = (-col.r * 1.25f - col.b * 0.75f + 2.0f);
                 return fixed4(0,0,0,col.a);

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundCircle : MonoBehaviour
+//Ryan Brooks u1115093
+public class EchoCircleBehavior : MonoBehaviour
 {
     //delete time
     public float decayRate = 0.1f;
@@ -35,7 +36,7 @@ public class SoundCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
-            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
+            PhysicsObjectBehavior s = o.gameObject.GetComponent<PhysicsObjectBehavior>();
             s.UpdateVisual();
         }       
     }
@@ -45,8 +46,8 @@ public class SoundCircle : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
-            SoundPhysicsObject s = o.gameObject.GetComponent<SoundPhysicsObject>();
-            s.BeginStasisAnim();
+            PhysicsObjectBehavior s = o.gameObject.GetComponent<PhysicsObjectBehavior>();
+            s.SetVisible(false);
         }
     }
 
