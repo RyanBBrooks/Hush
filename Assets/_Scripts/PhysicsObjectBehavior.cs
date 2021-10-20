@@ -82,7 +82,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
         //calculate the volume based on the "intensity" of the impact
         Rigidbody2D other = collision.gameObject.GetComponent<Rigidbody2D>();
-        float vol = Vector2.Dot(avgNormal, collision.relativeVelocity) * other.mass / 20;
+        float vol = Vector2.Dot(avgNormal, collision.relativeVelocity) / 10;
 
         //only play a sound if the volume is above a certain threshold ----- POSSIBLY CHANGE THIS TO JUST EFFECT VISUALS LATER
         if (vol > 0.3f)

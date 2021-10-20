@@ -20,7 +20,7 @@ public class LilyBehavior : MonoBehaviour
     bool isOnGround = false; // is the player on the ground currently
 
     //grab/push/pull vars
-    public float grabStartDist = 1f; // the distance from which the player can grab objects
+    public float grabStartDist = 0.75f; // the distance from which the player can grab objects
     public LayerMask pushRayMask; // a layermask that prevents the player's ray from hitting themselves
     public float grabSpeedMult = 0.75f; // multiplied by speed when grabbing
     public float jointDistMod = 0.2f; // modifier for pull (joint) distance
@@ -33,7 +33,11 @@ public class LilyBehavior : MonoBehaviour
     //animation vars
     SpriteRenderer sprite; // the player's sprite
     Animator spriteAnim; // the player's animator
+    public bool isStepping = false; //from the animator, if the player is stepping
+    bool hasStepped = false;
 
+    //sound vars
+    public float stepVol = 0.25f; // the volume of a step
 
     // Start is called before the first frame update
     void Start()
@@ -136,8 +140,8 @@ public class LilyBehavior : MonoBehaviour
             isTryMove = true;
         }
 
-        //if we are pulling something, cut speed
-        float m_speed = max_speed;
+            //if we are pulling something, cut speed
+            float m_speed = max_speed;
         if (isAttachedGrab || isWalkPushing)
         {
             m_speed *= grabSpeedMult;
@@ -165,6 +169,29 @@ public class LilyBehavior : MonoBehaviour
             }
 
         }
+
+        //Footstep EchoCircles & sounds
+        if (isOnGround && isStepping && !hasStepped)
+        {
+            //Spawn an echo circle
+            CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+            //set circle position at foot and slightly in front of character to account for movement speeed
+            Vector2 stepLocation = new Vector2(this.gameObject.transform.position.x + body.velocity.x/20,
+                                                this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
+            s.SpawnEchoCircle(stepLocation, stepVol);
+
+            //TODO : Play a footstep sound here!
+
+            //reset vars
+            isStepping = false; // in case this is the last tick of the frame
+            hasStepped = true;
+        }
+        // a check since the step is updated every tick while animating
+        else if (!isStepping)
+        {
+            hasStepped = false;
+        }
+
 
         //prevent jumping if we are grabbing, if we press the jump button down, and are on ground
         if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) 

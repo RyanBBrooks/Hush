@@ -224,12 +224,14 @@ MonoBehaviour:
   smoothing: 0.01
   jumpForce: 500
   antiFloatForce: -2.5
-  grabStartDist: 1
+  grabStartDist: 0.75
   pushRayMask:
     serializedVersion: 2
     m_Bits: 128
   grabSpeedMult: 0.75
   jointDistMod: 0.1
+  isStepping: 0
+  stepVol: 0.25
 --- !u!61 &4461823241168515672
 BoxCollider2D:
   m_ObjectHideFlags: 0

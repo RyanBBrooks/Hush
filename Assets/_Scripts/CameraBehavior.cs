@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Ryan Brooks u1115093
 public class CameraBehavior : MonoBehaviour
@@ -18,7 +19,10 @@ public class CameraBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("Hush");
+        }
     }
 
     //spawn an echo circle with a given volume and position
