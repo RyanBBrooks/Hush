@@ -15,12 +15,13 @@ public class BatBehavior : MonoBehaviour
     //targeting vars
     public int maxTargets = 6;
     public GameObject targetPrefab;
+    public SpriteRenderer sprite;
     List<GameObject> targets = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
     {
-
+        sprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,14 +32,21 @@ public class BatBehavior : MonoBehaviour
         Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //the bat shoud go to the mouse or the oldest target if one exists
+        Vector2 newPos, currentPos = this.gameObject.transform.position;
         if (targets.Count==0)
-        { 
-            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, mousePos, Time.deltaTime * speed);
+        {
+            newPos = Vector2.Lerp(currentPos, mousePos, Time.deltaTime * speed);
         }
         else
         {
-            this.gameObject.transform.position = Vector2.Lerp(this.gameObject.transform.position, targets[0].transform.position, Time.deltaTime * speed);
+            newPos = Vector2.Lerp(currentPos, targets[0].transform.position, Time.deltaTime * speed);
         }
+        
+        //flip sprite based on movement dir
+        sprite.flipX = (currentPos - newPos).x > 0;
+
+        //update position
+        this.gameObject.transform.position = newPos;
 
         //If we click, set a target
         if (Input.GetKeyDown(KeyCode.Mouse0))

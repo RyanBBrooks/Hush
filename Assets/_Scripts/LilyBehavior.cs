@@ -228,13 +228,16 @@ public class LilyBehavior : MonoBehaviour
                     j.enabled = isAttachedGrab = true; //enable the joint, we are not attached
                     j.connectedBody = body; //it is connected to lily's body
 
+                    //if object's rotation should be locked, do it
+                    grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = s.GetGrabLocksRotation();
+
                     //set the anchor to the position where our ray hit the object relative to the origin of that object
                     j.anchor = Quaternion.Inverse(grabbedObject.transform.rotation) * ((Vector3)hit.point -  grabbedObject.transform.position);
 
                     //set the distance to the difference between lily's position and the hit point + some modifier
                     j.distance = (hit.point - body.position).magnitude + jointDistMod;
 
-                    //Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance
+                    Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance
 
                     isWalkPushing = false; //not push walking as we are grabbing
                 }
@@ -257,6 +260,9 @@ public class LilyBehavior : MonoBehaviour
                     j.enabled = isAttachedGrab = false;
                     s.SetVisible(false); //begin fade
                 }
+
+                //unfreeze object rotation
+                grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
 
             }
             //otherwise update the visuals of the grabbed object

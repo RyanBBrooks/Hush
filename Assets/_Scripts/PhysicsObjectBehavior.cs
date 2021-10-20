@@ -12,6 +12,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
     //grab vars
     public bool isGrabbable = false;
+    public bool grabLocksRotation = false; //wheter or not grabbing the object locks its rotation (good for things that roll)
     DistanceJoint2D joint;
     
     //stasis animation vars
@@ -40,6 +41,12 @@ public class PhysicsObjectBehavior : MonoBehaviour
         return isGrabbable;
     }
 
+    //returns if grabbing the object should lock it's rotation
+    public bool GetGrabLocksRotation()
+    {
+        return grabLocksRotation;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -66,28 +73,34 @@ public class PhysicsObjectBehavior : MonoBehaviour
     }
 
     //if we collide with something
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
+        //TODO: update this - for now, don't make sounds if the player hits an object, should probbably be handled by player
+        if(col.gameObject.tag == "Player")
+        {
+            return;
+        }
+
         //TODO: perfect impact based volume calculation
         Vector2 pos = Vector2.zero; //position for the sound to be played
         Vector2 avgNormal = Vector2.zero; //average Normal vector for the contacts
 
         //calculate avgNormal and pos
-        foreach(ContactPoint2D contact in collision.contacts)
+        foreach(ContactPoint2D contact in col.contacts)
         {
             pos += contact.point;
             avgNormal += contact.normal;
         }
-        avgNormal /= collision.contactCount; //divide by num of contacts
+        avgNormal /= col.contactCount; //divide by num of contacts
 
         //calculate the volume based on the "intensity" of the impact
-        Rigidbody2D other = collision.gameObject.GetComponent<Rigidbody2D>();
-        float vol = Vector2.Dot(avgNormal, collision.relativeVelocity) / 10;
+        Rigidbody2D other = col.gameObject.GetComponent<Rigidbody2D>();
+        float vol = Vector2.Dot(avgNormal, col.relativeVelocity) / 10;
 
         //only play a sound if the volume is above a certain threshold ----- POSSIBLY CHANGE THIS TO JUST EFFECT VISUALS LATER
-        if (vol > 0.3f)
+        if (vol > 0.2f)
         {
-            PlaySound(vol, pos / collision.contactCount);
+            PlaySound(vol, pos / col.contactCount);
         }
     }
 
