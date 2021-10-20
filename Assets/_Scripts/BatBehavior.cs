@@ -9,7 +9,7 @@ public class BatBehavior : MonoBehaviour
     public float speed = 5f;
     
     //screech vars
-    public float screechDist = 0.3f;
+    public float screechDist = 0.5f; //minimum distance to screech from target
     public float screechVol = 0.65f;
 
     //targeting vars
