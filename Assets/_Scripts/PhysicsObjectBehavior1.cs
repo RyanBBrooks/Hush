@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicsObjectBehavior : MonoBehaviour
+public class PhysicsObjectBehavior1 : MonoBehaviour
 {
     //visual vars
     public GameObject sprite; // represtents the visual layer
@@ -12,14 +10,11 @@ public class PhysicsObjectBehavior : MonoBehaviour
     //physical vars
     GameObject box; // represents the physical layer
 
-    //rope vars
-    public GameObject rope = null;
-
     //grab vars
     public bool isGrabbable = false;
     public bool grabLocksRotation = false; //wheter or not grabbing the object locks its rotation (good for things that roll)
     DistanceJoint2D joint;
-
+    
     //stasis animation vars
     public float alphaMin = 0.6f; // the minimum alpha reached while the object is "lost"
     public float alphaDecayRate = 0.15f; //the decay rate of the alpha
@@ -38,13 +33,6 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
         //set the sprite to transparent to start
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 0);
-
-        //update ropes
-        if (rope)
-        {
-            Rope s = rope.GetComponent<Rope>();
-            s.ChangeVisualColorAlpha(0);
-        }
     }
 
     //returns if the object is set to grabbable
@@ -63,31 +51,19 @@ public class PhysicsObjectBehavior : MonoBehaviour
     void Update()
     {
         //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
-        if (!visible && spriteRend.color.a > alphaMin)
+        if(!visible && spriteRend.color.a > alphaMin)
         {
-            float newA = spriteRend.color.a - (alphaDecayRate * Time.deltaTime);
-            spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, newA);
-            if (rope)
-            {
-                Rope s = rope.GetComponent<Rope>();
-                s.ChangeVisualColorAlpha(newA);
-            }
+            spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, spriteRend.color.a - (alphaDecayRate * Time.deltaTime));
         }
     }
 
     //updates visual position etc of sprite
     public void UpdateVisual()
     {
-        visible = true;
-        spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 1);
-        sprite.transform.position = box.transform.position;
-        sprite.transform.rotation = box.transform.rotation;
-        if (rope)
-        {
-            Rope s = rope.GetComponent<Rope>();
-            s.UpdateVisual();
-            s.ChangeVisualColorAlpha(1);
-        }
+            visible = true;
+            spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 1);
+            sprite.transform.position = box.transform.position;
+            sprite.transform.rotation = box.transform.rotation;
     }
 
     //update whether the object is visible (externally)
@@ -100,7 +76,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         //TODO: update this - for now, don't make sounds if the player hits an object, should probbably be handled by player
-        if (col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "Player")
         {
             return;
         }
@@ -110,7 +86,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         Vector2 avgNormal = Vector2.zero; //average Normal vector for the contacts
 
         //calculate avgNormal and pos
-        foreach (ContactPoint2D contact in col.contacts)
+        foreach(ContactPoint2D contact in col.contacts)
         {
             pos += contact.point;
             avgNormal += contact.normal;

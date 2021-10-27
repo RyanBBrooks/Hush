@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4461823241064261797}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.16, z: -40}
+  m_LocalPosition: {x: 0, y: 0, z: -40}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 4461823241168515676}
@@ -54,13 +54,13 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1
-    height: 1
+    width: 1920
+    height: 1080
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6.534104
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 4461823241168515674}
   m_Layer: 10
   m_Name: Lily
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4461823241168515669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -30.150251, y: 26.957996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4461823241064261802}
@@ -176,9 +176,9 @@ SpriteRenderer:
   m_SortingLayerID: 654824125
   m_SortingLayer: 2
   m_SortingOrder: 100
-  m_Sprite: {fileID: 21300000, guid: 72cae9e28acff1e4ba566cefb0c119ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_Sprite: {fileID: 6620425649664312599, guid: 6161e24bda6d74144bad76216e83762d, type: 3}
+  m_Color: {r: 255, g: 255, b: 255, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.12, y: 1.84}
@@ -227,7 +227,7 @@ MonoBehaviour:
   grabStartDist: 0.75
   pushRayMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 8192
   grabSpeedMult: 0.75
   jointDistMod: 0.1
   isStepping: 0
@@ -249,7 +249,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 2.2875}
+    oldSize: {x: 1.3421053, y: 2.163158}
     newSize: {x: 1.12, y: 1.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -294,7 +294,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.25, y: 2.2875}
+    oldSize: {x: 1.3421053, y: 2.163158}
     newSize: {x: 1.12, y: 1.84}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

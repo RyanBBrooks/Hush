@@ -16,6 +16,7 @@ public class LilyBehavior : MonoBehaviour
     private Vector3 vel = Vector3.zero;
     Rigidbody2D body; // the player's body
     int groundLayer = 7; //layer mask referring to the ground layer (layer #7 should be)
+    int physLayer = 13; //layer mask referring to the physics layer (layer #13 should be)
     bool flipX = false; // is the player's x flipped, used for ray direction
     bool isOnGround = false; // is the player on the ground currently
 
@@ -61,7 +62,7 @@ public class LilyBehavior : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         GameObject o = col.gameObject;
-        if (o.layer == groundLayer)
+        if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = true;
         }

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 596767759463098124}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: PhysicsObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 596767760177576693}
   - component: {fileID: 596767760177576694}
   - component: {fileID: 596767760177576650}
-  m_Layer: 7
+  m_Layer: 13
   m_Name: Box
   m_TagString: Phys
   m_Icon: {fileID: 0}
@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 596767761074082626}
+  rope: {fileID: 0}
   isGrabbable: 1
+  grabLocksRotation: 0
   alphaMin: 0.6
   alphaDecayRate: 0.15
 --- !u!61 &596767760177576694
