@@ -54,7 +54,7 @@ public class LilyBehavior : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         GameObject o = col.gameObject;
-        if (o.layer == groundLayer)
+        if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = false;
         }
@@ -211,8 +211,7 @@ public class LilyBehavior : MonoBehaviour
         //Begin Grabbing Code
         //if we are holding the grab key, and we are not currently grabbing, and we are on the ground...
         if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround)
-        {
-
+        {            
             //cast a ray to check if there is a grabbable object
             Physics2D.queriesStartInColliders = false;
             RaycastHit2D hit = Physics2D.Raycast(this.transform.position, (flipX ? Vector2.left : Vector2.right) * transform.localScale.x, grabStartDist, pushRayMask);

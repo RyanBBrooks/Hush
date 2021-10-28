@@ -13,7 +13,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
     GameObject box; // represents the physical layer
 
     //rope vars
-    public GameObject rope = null;
+    public List<GameObject> ropes = new List<GameObject>();
 
     //grab vars
     public bool isGrabbable = false;
@@ -40,8 +40,8 @@ public class PhysicsObjectBehavior : MonoBehaviour
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 0);
 
         //update ropes
-        if (rope)
-        {
+        foreach (GameObject rope in ropes) 
+        { 
             Rope s = rope.GetComponent<Rope>();
             s.ChangeVisualColorAlpha(0);
         }
@@ -67,7 +67,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         {
             float newA = spriteRend.color.a - (alphaDecayRate * Time.deltaTime);
             spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, newA);
-            if (rope)
+            foreach (GameObject rope in ropes)
             {
                 Rope s = rope.GetComponent<Rope>();
                 s.ChangeVisualColorAlpha(newA);
@@ -82,7 +82,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 1);
         sprite.transform.position = box.transform.position;
         sprite.transform.rotation = box.transform.rotation;
-        if (rope)
+        foreach (GameObject rope in ropes)
         {
             Rope s = rope.GetComponent<Rope>();
             s.UpdateVisual();
