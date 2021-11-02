@@ -37,6 +37,9 @@ public class LilyBehavior : MonoBehaviour
     public bool isStepping = false; //from the animator, if the player is stepping
     bool hasStepped = false;
 
+    //door vars
+    bool isTransitioning = false; //are we doing a scene transition
+
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
 
@@ -65,6 +68,22 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = true;
+        }
+        //if we are in front of a door trigger
+        if (o.tag == "Door")
+        {
+            //get the door script
+            DoorBehavior s = o.GetComponent<DoorBehavior>();
+            //if we press up and are on the ground
+            Debug.Log(Input.GetKey(KeyCode.W));
+            if (Input.GetKey(KeyCode.W) && isOnGround && !s.locked)
+            {                
+                //set the player to not be able to move/interact
+                body.simulated = false;
+                isTransitioning = true;
+                //load a new scene from door script
+                s.BeginSceneTransition();
+            }
         }
     }
 
@@ -125,150 +144,162 @@ public class LilyBehavior : MonoBehaviour
 
     void Update()
     {
-
-
-        //Horizontal Movement
-        float x = Input.GetAxis("Horizontal");
-
-        //Prevent Undermoving by Lower Bounding Axis Values
-        if (Mathf.Abs(x) < 0.2)
+        if (!isTransitioning)
         {
-            x = 0;
-            isTryMove = false;
-        }
-        else
-        {
-            isTryMove = true;
-        }
+
+            //Horizontal Movement
+            float x = Input.GetAxis("Horizontal");
+
+            //Prevent Undermoving by Lower Bounding Axis Values
+            if (Mathf.Abs(x) < 0.2)
+            {
+                x = 0;
+                isTryMove = false;
+            }
+            else
+            {
+                isTryMove = true;
+            }
 
             //if we are pulling something, cut speed
             float m_speed = max_speed;
-        if (isAttachedGrab || isWalkPushing)
-        {
-            m_speed *= grabSpeedMult;
-        }
-
-        //Update Velocity
-        Vector3 target = new Vector2(x * m_speed, body.velocity.y);
-        body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
-
-        //update speed to induce movement animation
-        spriteAnim.SetFloat("Speed", Mathf.Abs(x));
-
-        //TODO: switch animations if we are pushing and pulling (WHILE GRABBED)
-
-        //flip sprite according to movement direction
-        if (!isAttachedGrab)
-        {
-            if (x < 0 && body.velocity.x < 0)
+            if (isAttachedGrab || isWalkPushing)
             {
-                sprite.flipX = flipX = true;
-            }
-            if (x > 0 && body.velocity.x > 0)
-            {
-                sprite.flipX = flipX = false;
+                m_speed *= grabSpeedMult;
             }
 
-        }
+            //Update Velocity
+            Vector3 target = new Vector2(x * m_speed, body.velocity.y);
+            body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
 
-        //Footstep EchoCircles & sounds
-        if (isOnGround && isStepping && !hasStepped)
-        {
-            //Spawn an echo circle
-            CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-            //set circle position at foot and slightly in front of character to account for movement speeed
-            Vector2 stepLocation = new Vector2(this.gameObject.transform.position.x + body.velocity.x/20,
-                                                this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
-            s.SpawnEchoCircle(stepLocation, stepVol);
+            //update speed to induce movement animation
+            spriteAnim.SetFloat("Speed", Mathf.Abs(x));
 
-            //TODO : Play a footstep sound here!
+            //TODO: switch animations if we are pushing and pulling (WHILE GRABBED)
 
-            //reset vars
-            isStepping = false; // in case this is the last tick of the frame
-            hasStepped = true;
-        }
-        // a check since the step is updated every tick while animating
-        else if (!isStepping)
-        {
-            hasStepped = false;
-        }
+            //flip sprite according to movement direction
+            if (!isAttachedGrab)
+            {
+                if (x < 0 && body.velocity.x < 0)
+                {
+                    sprite.flipX = flipX = true;
+                }
+                if (x > 0 && body.velocity.x > 0)
+                {
+                    sprite.flipX = flipX = false;
+                }
+
+            }
+
+            //Footstep EchoCircles & sounds
+            if (isOnGround && isStepping && !hasStepped)
+            {
+                //Spawn an echo circle
+                CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+                //set circle position at foot and slightly in front of character to account for movement speeed
+                Vector2 stepLocation = new Vector2(this.gameObject.transform.position.x + body.velocity.x / 20,
+                                                    this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
+                s.SpawnEchoCircle(stepLocation, stepVol);
+
+                //TODO : Play a footstep sound here!
+
+                //reset vars
+                isStepping = false; // in case this is the last tick of the frame
+                hasStepped = true;
+            }
+            // a check since the step is updated every tick while animating
+            else if (!isStepping)
+            {
+                hasStepped = false;
+            }
 
 
-        //prevent jumping if we are grabbing, if we press the jump button down, and are on ground
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0)) 
-            && !isAttachedGrab && isOnGround)
-        {
-            isOnGround = false; //gaurentee we are off the ground once we start jumping
-            body.AddForce(new Vector2(0f, jumpForce)); // jump
-        }
-        //Holding space increases float (we do this by adding a negative force while jumping and not holding space)
-        else if (!(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
-            !isOnGround)
-        {
-            body.AddForce(new Vector2(0f, antiFloatForce)); //downward force applied
-        }
+            //prevent jumping if we are grabbing, if we press the jump button down, and are on ground
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+                && !isAttachedGrab && isOnGround)
+            {
+                isOnGround = false; //gaurentee we are off the ground once we start jumping
+                body.AddForce(new Vector2(0f, jumpForce)); // jump
+            }
+            //Holding space increases float (we do this by adding a negative force while jumping and not holding space)
+            else if (!(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
+                !isOnGround)
+            {
+                body.AddForce(new Vector2(0f, antiFloatForce)); //downward force applied
+            }
 
-        //Begin Grabbing Code
-        //if we are holding the grab key, and we are not currently grabbing, and we are on the ground...
-        if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround)
-        {            
-            //cast a ray to check if there is a grabbable object
-            Physics2D.queriesStartInColliders = false;
-            RaycastHit2D hit = Physics2D.Raycast(this.transform.position, (flipX ? Vector2.left : Vector2.right) * transform.localScale.x, grabStartDist, pushRayMask);
+            //Begin Grabbing Code
+            //if we are holding the grab key, and we are not currently grabbing, and we are on the ground...
+            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround)
+            {
+                //cast a ray to check if there is a grabbable object
+                Physics2D.queriesStartInColliders = false;
+                RaycastHit2D hit = Physics2D.Raycast(this.transform.position, (flipX ? Vector2.left : Vector2.right) * transform.localScale.x, grabStartDist, pushRayMask);
 
-            //if we hit an object that is tagged phys
-            if (hit.collider != null && ((grabbedObject = hit.collider.gameObject).tag == "Phys"))
-            {               
-                DistanceJoint2D j;
+                //if we hit an object that is tagged phys
+                if (hit.collider != null && ((grabbedObject = hit.collider.gameObject).tag == "Phys"))
+                {
+                    DistanceJoint2D j;
+                    PhysicsObjectBehavior s = grabbedObject.gameObject.GetComponent<PhysicsObjectBehavior>();
+
+                    //if the object is grabbable and has a DistanceJoint
+                    if (s.GetIsGrabbable() && (j = grabbedObject.GetComponent<DistanceJoint2D>()) != null)
+                    {
+                        j.enabled = isAttachedGrab = true; //enable the joint, we are not attached
+                        j.connectedBody = body; //it is connected to lily's body
+
+                        //if object's rotation should be locked, do it
+                        grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = s.GetGrabLocksRotation();
+
+                        //set the anchor to the position where our ray hit the object relative to the origin of that object
+                        j.anchor = Quaternion.Inverse(grabbedObject.transform.rotation) * ((Vector3)hit.point - grabbedObject.transform.position);
+
+                        //set the distance to the difference between lily's position and the hit point + some modifier
+                        j.distance = (hit.point - body.position).magnitude + jointDistMod;
+
+                        Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance
+
+                        isWalkPushing = false; //not push walking as we are grabbing
+                    }
+                }
+                Physics2D.queriesStartInColliders = true; //reset physics calculations to be thurough            
+            }
+
+            //StopGrabbing/WhileGrabbing Code
+            if (isAttachedGrab)
+            {
                 PhysicsObjectBehavior s = grabbedObject.gameObject.GetComponent<PhysicsObjectBehavior>();
 
-                //if the object is grabbable and has a DistanceJoint
-                if (s.GetIsGrabbable() && (j = grabbedObject.GetComponent<DistanceJoint2D>()) != null)
+                //if we should stop grabbing
+                if (!isOnGround || !Input.GetKey(KeyCode.LeftShift))
                 {
-                    j.enabled = isAttachedGrab = true; //enable the joint, we are not attached
-                    j.connectedBody = body; //it is connected to lily's body
+                    //find the joint, disable it.
+                    DistanceJoint2D j;
+                    if ((j = grabbedObject.GetComponent<DistanceJoint2D>()) != null)
+                    {
+                        j.enabled = isAttachedGrab = false;
+                        s.SetVisible(false); //begin fade
+                    }
 
-                    //if object's rotation should be locked, do it
-                    grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = s.GetGrabLocksRotation();
+                    //unfreeze object rotation
+                    grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
 
-                    //set the anchor to the position where our ray hit the object relative to the origin of that object
-                    j.anchor = Quaternion.Inverse(grabbedObject.transform.rotation) * ((Vector3)hit.point -  grabbedObject.transform.position);
-
-                    //set the distance to the difference between lily's position and the hit point + some modifier
-                    j.distance = (hit.point - body.position).magnitude + jointDistMod;
-
-                    Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance
-
-                    isWalkPushing = false; //not push walking as we are grabbing
+                }
+                //otherwise update the visuals of the grabbed object
+                else
+                {
+                    s.UpdateVisual();
                 }
             }
-            Physics2D.queriesStartInColliders = true; //reset physics calculations to be thurough            
         }
-
-        //StopGrabbing/WhileGrabbing Code
-        if (isAttachedGrab)
+        //fade out character alpha to animate door transition
+        else
         {
-            PhysicsObjectBehavior s = grabbedObject.gameObject.GetComponent<PhysicsObjectBehavior>();
-
-            //if we should stop grabbing
-            if (!isOnGround || !Input.GetKey(KeyCode.LeftShift))
+            //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
+            if (sprite.color.a > 0)
             {
-                //find the joint, disable it.
-                DistanceJoint2D j;
-                if ((j = grabbedObject.GetComponent<DistanceJoint2D>()) != null)
-                {
-                    j.enabled = isAttachedGrab = false;
-                    s.SetVisible(false); //begin fade
-                }
-
-                //unfreeze object rotation
-                grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
-
-            }
-            //otherwise update the visuals of the grabbed object
-            else
-            {
-                s.UpdateVisual();
+                float newA = sprite.color.a - (0.05f * Time.deltaTime);
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, newA);
             }
         }
     }

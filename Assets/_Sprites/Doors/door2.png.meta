@@ -1,31 +1,25 @@
 fileFormatVersion: 2
-guid: 293db4884bb3df142bee1bffb5020dd0
+guid: 3def03ceb60225e4c8c27b0b8434a1da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6255908685046270912
-    second: Illustration2_0
+      213: -8234536430552275792
+    second: door2_0
   - first:
-      213: 241632020214384726
-    second: Illustration2_1
+      213: 3582750147135297602
+    second: door2_1
   - first:
-      213: -7014584361724950409
-    second: Illustration2_2
+      213: 6245290638674404693
+    second: door2_2
   - first:
-      213: -360033727274140431
-    second: Illustration2_3
+      213: -819091896653364503
+    second: door2_3
   - first:
-      213: -3228501441385909194
-    second: Illustration2_4
+      213: -5444689810520969199
+    second: door2_4
   - first:
-      213: 873870044216552280
-    second: Illustration2_5
-  - first:
-      213: 3354583492833749227
-    second: Illustration2_6
-  - first:
-      213: 52045488146017915
-    second: Illustration2_7
+      213: -4458753184138401552
+    second: door2_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +64,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,169 +109,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Illustration2_0
+      name: door2_0
       rect:
         serializedVersion: 2
-        x: 97
-        y: 958
-        width: 502
-        height: 917
+        x: 95
+        y: 61
+        width: 393
+        height: 617
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cbc677cdc371d650800000000000000
-      internalID: 6255908685046270912
+      spriteID: 0b42beeaebc09bd80800000000000000
+      internalID: -8234536430552275792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Illustration2_1
+      name: door2_1
       rect:
         serializedVersion: 2
-        x: 647
-        y: 958
-        width: 536
-        height: 865
+        x: 602
+        y: 59
+        width: 393
+        height: 618
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6580d3bca037a5300800000000000000
-      internalID: 241632020214384726
+      spriteID: 2485afec64c78b130800000000000000
+      internalID: 3582750147135297602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Illustration2_2
+      name: door2_2
       rect:
         serializedVersion: 2
-        x: 1197
-        y: 957
-        width: 502
-        height: 918
+        x: 1112
+        y: 61
+        width: 394
+        height: 617
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 778cf5810b037ae90800000000000000
-      internalID: -7014584361724950409
+      spriteID: 555a2453fbabba650800000000000000
+      internalID: 6245290638674404693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Illustration2_3
+      name: door2_3
       rect:
         serializedVersion: 2
-        x: 1749
-        y: 19
-        width: 480
-        height: 944
+        x: 1617
+        y: 61
+        width: 393
+        height: 618
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fc3aaa8b37e00bf0800000000000000
-      internalID: -360033727274140431
+      spriteID: 9e2439d724002a4f0800000000000000
+      internalID: -819091896653364503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Illustration2_4
+      name: door2_4
       rect:
         serializedVersion: 2
-        x: 1749
-        y: 957
-        width: 482
-        height: 954
+        x: 2179
+        y: 59
+        width: 394
+        height: 618
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6343b5d5b0f0233d0800000000000000
-      internalID: -3228501441385909194
+      spriteID: 11075bbe6739074b0800000000000000
+      internalID: -5444689810520969199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Illustration2_5
+      name: door2_5
       rect:
         serializedVersion: 2
-        x: 2303
-        y: 957
-        width: 502
-        height: 912
+        x: 2723
+        y: 61
+        width: 394
+        height: 617
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85be16ddc2c902c00800000000000000
-      internalID: 873870044216552280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Illustration2_6
-      rect:
-        serializedVersion: 2
-        x: 2853
-        y: 959
-        width: 534
-        height: 866
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be8aeb3d9efdd8e20800000000000000
-      internalID: 3354583492833749227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Illustration2_7
-      rect:
-        serializedVersion: 2
-        x: 3400
-        y: 957
-        width: 501
-        height: 912
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7eea118817e8b000800000000000000
-      internalID: 52045488146017915
+      spriteID: 0f8e94e3a935f12c0800000000000000
+      internalID: -4458753184138401552
       vertices: []
       indices: 
       edges: []
