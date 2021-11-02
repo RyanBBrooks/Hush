@@ -81,6 +81,8 @@ public class LilyBehavior : MonoBehaviour
                 //set the player to not be able to move/interact
                 body.simulated = false;
                 isTransitioning = true;
+                //animate walking
+                spriteAnim.SetFloat("Speed", 1);
                 //load a new scene from door script
                 s.BeginSceneTransition();
             }
@@ -295,10 +297,10 @@ public class LilyBehavior : MonoBehaviour
         //fade out character alpha to animate door transition
         else
         {
-            //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
+            //if an object is visible, decrease it's alpha until it reaches 0
             if (sprite.color.a > 0)
             {
-                float newA = sprite.color.a - (0.05f * Time.deltaTime);
+                float newA = sprite.color.a - (1.5f * Time.deltaTime);
                 sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, newA);
             }
         }

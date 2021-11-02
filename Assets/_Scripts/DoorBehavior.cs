@@ -9,29 +9,36 @@ public class DoorBehavior : MonoBehaviour
     //vars
     public bool locked = false; // if the door is locked
     public string sceneName = "PhysicsTest"; //scene to load on door open
+    Animator anim = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = this.GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        anim.SetBool("IsLocked", locked);
     }
 
-    internal void UnlockDoor()
+    //lock aor unlock door
+    internal void SetDoorLocked(bool l)
     {
-        locked = false;
+        locked = l;
     }
 
+    //begin animation for door transition
     internal void BeginSceneTransition()
     {
-        //TODO: play - animate the door closing !!!!!!!!!!!!!!!make sure this animation has a few seconds on the open door to allow character to fade!!!!!!!!!!!!!!!!
-
-        //load attached scene <--- TODO: move this to be triggered by animation finished
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        //play - animate the door closing -> this automatically triggers changeScene()
+        anim.SetBool("ExitLevel", true);       
     }
+
+    //change scene called by door animator
+    internal void ChangeScene()
+    {
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+    }  
 }
