@@ -12,8 +12,8 @@ public class LilyBehavior : MonoBehaviour
     public float smoothing = 0.01f; //movement smoothing
     public float jumpForce = 500f; //the jump impulse of the player
     public float antiFloatForce = -2.5f; // force acting against the player when not holding space (helps control jump height)
-
     private Vector3 vel = Vector3.zero;
+
     Rigidbody2D body; // the player's body
     int groundLayer = 7; //layer mask referring to the ground layer (layer #7 should be)
     int physLayer = 13; //layer mask referring to the physics layer (layer #13 should be)
@@ -39,6 +39,7 @@ public class LilyBehavior : MonoBehaviour
 
     //door vars
     bool isTransitioning = false; //are we doing a scene transition
+    int keys = 0; //current number of keys held by lily
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
@@ -64,6 +65,7 @@ public class LilyBehavior : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D col)
     {
+        //if it is the ground
         GameObject o = col.gameObject;
         if (o.layer == groundLayer || o.layer == physLayer)
         {
@@ -75,17 +77,37 @@ public class LilyBehavior : MonoBehaviour
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
             //if we press up and are on the ground
-            Debug.Log(Input.GetKey(KeyCode.W));
-            if (Input.GetKey(KeyCode.W) && isOnGround && !s.locked)
-            {                
-                //set the player to not be able to move/interact
-                body.simulated = false;
-                isTransitioning = true;
-                //animate walking
-                spriteAnim.SetFloat("Speed", 1);
-                //load a new scene from door script
-                s.BeginSceneTransition();
+            if (Input.GetKey(KeyCode.W) && isOnGround)
+            {
+                //if the door is locked check if we have a key, unlock if we do
+                if (s.locked && keys>0)
+                {
+                    keys--;
+                    s.locked = false;
+                }
+                //otherwise if the door is unlocked, go through the door
+                else if (!s.locked)
+                {
+                    //set the player to not be able to move/interact
+                    body.simulated = false;
+                    isTransitioning = true;
+                    //animate walking
+                    spriteAnim.SetFloat("Speed", 1);
+                    //load a new scene from door script
+                    s.BeginSceneTransition();
+                }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        GameObject o = col.gameObject;
+        //if we come into contact with a key
+        if (o.tag == "Key")
+        {
+            Destroy(o);
+            keys++;
         }
     }
 

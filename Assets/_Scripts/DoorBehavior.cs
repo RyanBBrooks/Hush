@@ -23,12 +23,6 @@ public class DoorBehavior : MonoBehaviour
         anim.SetBool("IsLocked", locked);
     }
 
-    //lock aor unlock door
-    internal void SetDoorLocked(bool l)
-    {
-        locked = l;
-    }
-
     //begin animation for door transition
     internal void BeginSceneTransition()
     {

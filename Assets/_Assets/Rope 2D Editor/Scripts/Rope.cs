@@ -84,10 +84,12 @@ public class Rope : MonoBehaviour {
     //update alpha value of visual rope
     public void ChangeVisualColorAlpha(float a)
     {
-        for (int i = 0; i < visualRope.transform.childCount; i++)
-        {
-            SpriteRenderer rend = visualRope.transform.GetChild(i).GetComponent<SpriteRenderer>();
-            rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, a);
+        if(visualRope){
+            for (int i = 0; i < visualRope.transform.childCount; i++)
+            {
+                SpriteRenderer rend = visualRope.transform.GetChild(i).GetComponent<SpriteRenderer>();
+                rend.color = new Color(rend.color.r, rend.color.g, rend.color.b, a);
+            }
         }
     }
 }

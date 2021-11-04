@@ -64,7 +64,7 @@ public class BatBehavior : MonoBehaviour
         }
 
         //If we approximately reach the target, then deal with screeching
-        if (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0)
+        if (targets.Count>0 && (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0))
         {
             //TODO: play the actual bat audio file here
 
