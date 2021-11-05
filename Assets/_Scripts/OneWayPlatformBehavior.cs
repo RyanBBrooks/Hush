@@ -16,6 +16,7 @@ public class OneWayPlatformBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        box.enabled = (Camera.main.transform.parent.transform.position.y-1 >= this.transform.position.y);
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        box.enabled = (s.player.position.y-1 >= this.transform.position.y);
     }
 }

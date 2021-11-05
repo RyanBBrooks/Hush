@@ -10,10 +10,23 @@ public class CameraBehavior : MonoBehaviour
     public GameObject echoCirclePrefab; //instance of the echo circle
     public float outerScreenBuffer = 1.5f; //how far sounds "count" outside of the screen
 
+    //movement vars
+    public Transform player; // usually the player
+    public float smoothing = 0.12f;
+    
+
     // Start is called before the first frame update
     void Start()
     {
 
+    }
+
+    private void FixedUpdate()
+    {
+        //Do Camera Movement
+        Vector2 targetPos = player.position;
+        Vector2 newPos = Vector3.Lerp(transform.position, targetPos, smoothing);
+        transform.position = new Vector3(newPos.x, newPos.y,-40);
     }
 
     // Update is called once per frame
