@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using SpriteToParticlesAsset;
 
 namespace SpriteToParticlesAsset
 {

@@ -106,7 +106,8 @@ public class LilyBehavior : MonoBehaviour
         //if we come into contact with a key
         if (o.tag == "Key")
         {
-            Destroy(o);
+            KeyBehavior s = o.GetComponent<KeyBehavior>();
+            s.Collect();
             keys++;
         }
     }
