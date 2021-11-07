@@ -3263,41 +3263,17 @@ Transform:
   m_Father: {fileID: 330387128}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &268614502 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6107719259463386102, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-  m_PrefabInstance: {fileID: 6107719257825455830}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &268614503 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6107719259463386103, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
   m_PrefabInstance: {fileID: 6107719257825455830}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268614502}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6d54a9b43cacd14e85932562413b958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &268614506
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268614502}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 519c3a9d9e6c8c945aee5afbac6aa7d4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &269237865
 GameObject:
   m_ObjectHideFlags: 0
@@ -31864,22 +31840,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6107719259463386100, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: m_Size.x
-      value: 3.1333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107719259463386100, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: m_Size.y
-      value: 2.2333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107719259463386100, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6759688343136247405, guid: ca8e03c2d4d34da43ac38bfaa9caee2c, type: 3}
-    - target: {fileID: 6107719259463386100, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6107719259463386101, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -31927,14 +31887,6 @@ PrefabInstance:
     - target: {fileID: 6107719259463386102, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
       propertyPath: m_Name
       value: Bat
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107719259463386103, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: speed
-      value: 2.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6107719259463386103, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
-      propertyPath: screechVol
-      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}

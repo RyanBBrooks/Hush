@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6107719259463386101}
   - component: {fileID: 6107719259463386100}
   - component: {fileID: 6107719259463386103}
-  - component: {fileID: 3227625191250536302}
+  - component: {fileID: 268614506}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 654824125
   m_SortingLayer: 2
   m_SortingOrder: 102
-  m_Sprite: {fileID: -7268416361534986163, guid: ca8e03c2d4d34da43ac38bfaa9caee2c, type: 3}
+  m_Sprite: {fileID: 6759688343136247405, guid: ca8e03c2d4d34da43ac38bfaa9caee2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,13 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d54a9b43cacd14e85932562413b958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 2.5
   screechDist: 0.3
-  screechVol: 0.8
+  defaultVolume: 0.65
   maxTargets: 6
   targetPrefab: {fileID: 4337172340908194956, guid: b049f7623d2db2342bc5f19364b509b1, type: 3}
   sprite: {fileID: 6107719259463386100}
---- !u!95 &3227625191250536302
+--- !u!95 &268614506
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
