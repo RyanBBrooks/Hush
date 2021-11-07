@@ -19,6 +19,7 @@ public class LilyBehavior : MonoBehaviour
     int physLayer = 13; //layer mask referring to the physics layer (layer #13 should be)
     bool flipX = false; // is the player's x flipped, used for ray direction
     bool isOnGround = false; // is the player on the ground currently
+    bool isJumping = false;
 
     //grab/push/pull vars
     public float grabStartDist = 0.75f; // the distance from which the player can grab objects
@@ -61,6 +62,10 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = false;
+            if (isJumping)
+            {
+                isJumping = body.velocity.y <= 0.05; //update jumping to be false if are hitting the ground
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D col)
@@ -239,11 +244,15 @@ public class LilyBehavior : MonoBehaviour
             }
 
 
-            //prevent jumping if we are grabbing, if we press the jump button down, and are on ground
+            //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                && !isAttachedGrab && isOnGround)
+                && !isAttachedGrab && isOnGround && !isJumping)
             {
-                isOnGround = false; //gaurentee we are off the ground once we start jumping
+                isOnGround = false; //gaurentee we are off the ground once we start jumping.
+                isJumping = true;
+
+                body.velocity = new Vector2(body.velocity.x, 0);//NEW set velocity to zero before jump in y dir to avoid high jumps
+
                 body.AddForce(new Vector2(0f, jumpForce)); // jump
             }
             //Holding space increases float (we do this by adding a negative force while jumping and not holding space)

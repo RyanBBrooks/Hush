@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
+  waitTime: 1
   screechDist: 0.3
   defaultVolume: 0.65
   maxTargets: 6
