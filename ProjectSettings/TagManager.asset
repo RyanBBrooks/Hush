@@ -7,6 +7,7 @@ TagManager:
   - Phys
   - Door
   - Key
+  - Trigger
   layers:
   - Default
   - TransparentFX
