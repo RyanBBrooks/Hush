@@ -12,7 +12,7 @@ public class KeyBehavior : MonoBehaviour
     GameObject target = null;
     bool collected = false;
     DoorBehavior door = null;
-    KeyWallBehavior wall = null;
+    LockWallBehavior wall = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +72,7 @@ public class KeyBehavior : MonoBehaviour
             target = o;
         }
         //save wall target wall
-        else if (wall = o.GetComponent<KeyWallBehavior>())
+        else if (wall = o.GetComponent<LockWallBehavior>())
         {
             target = o;
         }

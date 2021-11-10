@@ -117,8 +117,8 @@ public class LilyBehavior : MonoBehaviour
         if (o.tag == "KeyWall")
         {
             //get the key wall (checks too see if it is broken)
-            GameObject wall = o.GetComponent<KeyWallDetectorBehavior>().getWall();
-            KeyWallBehavior s = wall.GetComponent<KeyWallBehavior>();
+            GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
+            LockWallBehavior s = wall.GetComponent<LockWallBehavior>();
             //if we get a valid key wall              
             //if we have a key, use the key (wall isnt being unlocked "targeted")
             if (keys.Count > 0 && !s.getTargeted())

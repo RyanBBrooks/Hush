@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyWallDetectorBehavior : MonoBehaviour
+public class LockWallDetectorBehavior : MonoBehaviour
 {
     GameObject wall = null;
 

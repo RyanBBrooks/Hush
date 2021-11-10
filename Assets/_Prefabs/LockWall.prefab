@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 2008191274359598331}
   - component: {fileID: 7246864833136511759}
   m_Layer: 7
-  m_Name: KeyWall
+  m_Name: LockWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

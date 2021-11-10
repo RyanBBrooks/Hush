@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyWallBehavior : MonoBehaviour
+public class LockWallBehavior : MonoBehaviour
 {
     //particle vars
     ParticleSystem part;
