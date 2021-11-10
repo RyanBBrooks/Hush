@@ -14,6 +14,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
     //rope vars
     public List<GameObject> ropes = new List<GameObject>();
+    public bool initialized = false;
 
     //grab vars
     public bool isGrabbable = false;
@@ -23,6 +24,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
     //stasis animation vars
     public float alphaMin = 0.6f; // the minimum alpha reached while the object is "lost"
     public float alphaDecayRate = 0.15f; //the decay rate of the alpha
+    
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +41,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //set the sprite to transparent to start
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 0);
 
-        //update ropes
-        foreach (GameObject rope in ropes) 
-        { 
-            Rope s = rope.GetComponent<Rope>();
-            s.ChangeVisualColorAlpha(0);
-        }
+
     }
 
     //returns if the object is set to grabbable
@@ -62,6 +59,17 @@ public class PhysicsObjectBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //initialize ropes
+        if (!initialized)
+        {
+            initialized = true;
+            //update ropes
+            foreach (GameObject rope in ropes)
+            {
+                Rope s = rope.GetComponent<Rope>();
+                s.ChangeVisualColorAlpha(0);
+            }
+        }
         //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
         if (!visible && spriteRend.color.a > alphaMin)
         {

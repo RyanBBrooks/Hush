@@ -10,11 +10,21 @@ public class DoorBehavior : MonoBehaviour
     public bool locked = false; // if the door is locked
     public string sceneName = "PhysicsTest"; //scene to load on door open
     Animator anim = null;
+    bool targeted = false; //is the door targeted by a key
 
     // Start is called before the first frame update
     void Start()
     {
         anim = this.GetComponent<Animator>();
+    }
+
+    public void setTargeted(bool t)
+    {
+        targeted = t;
+    }
+    public bool getTargeted()
+    {
+        return targeted;
     }
 
     // Update is called once per frame

@@ -110,7 +110,7 @@ public class BatBehavior : MonoBehaviour
 
             //update position
             this.gameObject.transform.position = newPos;
-            Debug.Log(newPos + " " + startPos + " " + endPos);
+            //Debug.Log(newPos + " " + startPos + " " + endPos);
 
             //If we approximately reach the target, then deal with screeching
             if (targets.Count > 0 && isWithinDist(targets[0], screechDist, this.gameObject.transform.position) && targets.Count > 0)

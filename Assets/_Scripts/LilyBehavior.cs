@@ -40,7 +40,7 @@ public class LilyBehavior : MonoBehaviour
 
     //door vars
     bool isTransitioning = false; //are we doing a scene transition
-    int keys = 0; //current number of keys held by lily
+    List<GameObject> keys = null; //current number of keys held by lily
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
@@ -53,6 +53,7 @@ public class LilyBehavior : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
+        keys = new List<GameObject>();
     }
 
     //Determine if lily is on the ground by checking the collision box
@@ -84,11 +85,13 @@ public class LilyBehavior : MonoBehaviour
             //if we press up and are on the ground
             if (Input.GetKey(KeyCode.W) && isOnGround)
             {
-                //if the door is locked check if we have a key, unlock if we do
-                if (s.locked && keys>0)
+                //if the door is locked check if we have a key, use the key
+                if (s.locked && keys.Count>0 && !s.getTargeted())
                 {
-                    keys--;
-                    s.locked = false;
+                    KeyBehavior k = keys[keys.Count-1].GetComponent<KeyBehavior>();
+                    s.setTargeted(true);
+                    k.use(o);
+                    keys.RemoveAt(keys.Count-1);                  
                 }
                 //otherwise if the door is unlocked, go through the door
                 else if (!s.locked)
@@ -96,6 +99,13 @@ public class LilyBehavior : MonoBehaviour
                     //set the player to not be able to move/interact
                     body.simulated = false;
                     isTransitioning = true;
+                    //delete all keys
+                    foreach (GameObject key in keys)
+                    {
+                        KeyBehavior k = key.GetComponent<KeyBehavior>();
+                        k.delete();
+                    }
+                    keys.Clear();
                     //animate walking
                     spriteAnim.SetFloat("Speed", 1);
                     //load a new scene from door script
@@ -109,11 +119,18 @@ public class LilyBehavior : MonoBehaviour
     {
         GameObject o = col.gameObject;
         //if we come into contact with a key
-        if (o.tag == "Key")
+        if (o.tag == "Key" && !keys.Contains(o))
         {
             KeyBehavior s = o.GetComponent<KeyBehavior>();
-            s.Collect();
-            keys++;
+            //calculate target
+            int n = keys.Count;
+            GameObject t = this.gameObject;
+            if (n > 0)
+            {
+                t = keys[n - 1];
+            }
+            s.collect(t);
+            keys.Add(o);
         }
     }
 
