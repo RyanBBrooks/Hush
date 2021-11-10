@@ -84,6 +84,10 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = true;
+            if (isJumping)
+            {
+                isJumping = body.velocity.y > 0.05; //update jumping to be false if are hitting the ground
+            }
         }
         //if we are in front of a door trigger
         if (o.tag == "Door" && !isChargingClap)
