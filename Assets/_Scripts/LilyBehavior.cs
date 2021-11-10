@@ -42,6 +42,14 @@ public class LilyBehavior : MonoBehaviour
     bool isTransitioning = false; //are we doing a scene transition
     List<GameObject> keys = null; //current number of keys held by lily
 
+    //clap vars
+    public float minClap = 0.3f;
+    public float maxClap = 2f;
+    float clapTimer = 0f;
+    public float clapVolMult = 1.2f;
+    bool isChargingClap = false;
+
+
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
 
@@ -78,7 +86,7 @@ public class LilyBehavior : MonoBehaviour
             isOnGround = true;
         }
         //if we are in front of a door trigger
-        if (o.tag == "Door")
+        if (o.tag == "Door" && !isChargingClap)
         {
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
@@ -114,7 +122,7 @@ public class LilyBehavior : MonoBehaviour
             }
         }
         //if we are in front of a key wall trigger
-        if (o.tag == "KeyWall")
+        if (o.tag == "KeyWall" && !isChargingClap)
         {
             //get the key wall (checks too see if it is broken)
             GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
@@ -213,16 +221,16 @@ public class LilyBehavior : MonoBehaviour
             //Horizontal Movement
             float x = Input.GetAxis("Horizontal");
 
-            //Prevent Undermoving by Lower Bounding Axis Values
-            if (Mathf.Abs(x) < 0.2)
-            {
-                x = 0;
-                isTryMove = false;
-            }
-            else
-            {
-                isTryMove = true;
-            }
+                //Prevent Undermoving by Lower Bounding Axis Values
+                if (Mathf.Abs(x) < 0.2)
+                {
+                    x = 0;
+                    isTryMove = false;
+                }
+                else
+                {
+                    isTryMove = true;
+                }
 
             //if we are pulling something, cut speed
             float m_speed = max_speed;
@@ -230,13 +238,20 @@ public class LilyBehavior : MonoBehaviour
             {
                 m_speed *= grabSpeedMult;
             }
+            //lock movement if clapping
+            if (isChargingClap)
+            {
+                m_speed = 0;
+            }
+
 
             //Update Velocity
-            Vector3 target = new Vector2(x * m_speed, body.velocity.y);
+            float finalSpeed = x * m_speed;
+            Vector3 target = new Vector2(finalSpeed, body.velocity.y);
             body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
 
             //update speed to induce movement animation
-            spriteAnim.SetFloat("Speed", Mathf.Abs(x));
+            spriteAnim.SetFloat("Speed", Mathf.Abs(finalSpeed));
 
             //TODO: switch animations if we are pushing and pulling (WHILE GRABBED)
 
@@ -276,10 +291,10 @@ public class LilyBehavior : MonoBehaviour
                 hasStepped = false;
             }
 
-
+            //prevent jumping if we are clapping / charging
             //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                && !isAttachedGrab && isOnGround && !isJumping)
+                && !isAttachedGrab && isOnGround && !isJumping && !isChargingClap)
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
                 isJumping = true;
@@ -296,8 +311,8 @@ public class LilyBehavior : MonoBehaviour
             }
 
             //Begin Grabbing Code
-            //if we are holding the grab key, and we are not currently grabbing, and we are on the ground...
-            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround)
+            //if we are holding the grab key, and we are not currently grabbing, and we are on the ground, not clapping...
+            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isChargingClap)
             {
                 //cast a ray to check if there is a grabbable object
                 Physics2D.queriesStartInColliders = false;
@@ -357,6 +372,41 @@ public class LilyBehavior : MonoBehaviour
                 {
                     s.UpdateVisual();
                 }
+            }
+
+            //Charge if on ground, not grabbing, not charging clap, pressing E
+            if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E))
+            {
+                //we are charging
+                isChargingClap = true;
+                //increment timer only if we are under max
+                if (clapTimer >= maxClap)
+                {
+                    clapTimer = maxClap;
+                }
+                else
+                {
+                    clapTimer += Time.deltaTime;
+                }
+            }
+            //otherwise if we have charged a clap and released E, do it.
+            else if (isChargingClap && !Input.GetKey(KeyCode.E))
+            {
+                //no longer charging
+                isChargingClap = false;
+                
+                //discard small claps
+                if (clapTimer >= minClap)
+                {
+                    float handDistance = 0.6f;
+                    //calculate hand location
+                    Vector2 clapPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * handDistance, this.transform.position.y);
+
+                    //clap with the timer charge * vol multiplier
+                    Camera.main.GetComponent<CameraBehavior>().SpawnEchoCircle(clapPos, clapTimer * clapVolMult);
+                }
+                //reset timer
+                clapTimer = 0f;
             }
         }
         //fade out character alpha to animate door transition
