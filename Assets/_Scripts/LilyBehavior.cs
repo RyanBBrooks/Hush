@@ -48,6 +48,7 @@ public class LilyBehavior : MonoBehaviour
     float clapTimer = 0f;
     public float clapVolMult = 1.2f;
     bool isChargingClap = false;
+    ParticleSystem clapParticles = null;
 
 
     //sound vars
@@ -62,6 +63,7 @@ public class LilyBehavior : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
+        clapParticles = GetComponent<ParticleSystem>();
     }
 
     //Determine if lily is on the ground by checking the collision box
@@ -381,12 +383,19 @@ public class LilyBehavior : MonoBehaviour
             //Charge if on ground, not grabbing, not charging clap, pressing E
             if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E))
             {
+                if (!isChargingClap)
+                {
+                    //play particles
+                    clapParticles.Play();
+                }
                 //we are charging
                 isChargingClap = true;
                 //increment timer only if we are under max
                 if (clapTimer >= maxClap)
                 {
                     clapTimer = maxClap;
+                    //stop particles
+                    clapParticles.Stop();
                 }
                 else
                 {
@@ -396,6 +405,9 @@ public class LilyBehavior : MonoBehaviour
             //otherwise if we have charged a clap and released E, do it.
             else if (isChargingClap && !Input.GetKey(KeyCode.E))
             {
+                //stop particles
+                clapParticles.Stop();
+
                 //no longer charging
                 isChargingClap = false;
                 
