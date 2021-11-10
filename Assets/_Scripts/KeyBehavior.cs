@@ -12,7 +12,7 @@ public class KeyBehavior : MonoBehaviour
     GameObject target = null;
     bool collected = false;
     DoorBehavior door = null;
-
+    KeyWallBehavior wall = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,7 @@ public class KeyBehavior : MonoBehaviour
             Vector2 keyPos = this.gameObject.transform.position;
             Vector2 targetPos = target.transform.position;
             //if collected follow lily
-            if ((((Vector3.Distance(keyPos, targetPos)) >= dst) || door))
+            if ((((Vector3.Distance(keyPos, targetPos)) >= dst) || door || wall))
             {
                 this.gameObject.transform.position = Vector2.Lerp(keyPos, targetPos, Time.deltaTime * speed);
             }
@@ -42,6 +42,12 @@ public class KeyBehavior : MonoBehaviour
                 delete();
                 door.locked = false;
                 door = null;
+            }
+            if (wall && (Vector3.Distance(keyPos, targetPos)) < 0.1)
+            {
+                delete();
+                wall.Break();
+                wall = null;
             }
         }
     }
@@ -62,6 +68,11 @@ public class KeyBehavior : MonoBehaviour
     {
         //save door and target door
         if (door = o.GetComponent<DoorBehavior>())
+        {
+            target = o;
+        }
+        //save wall target wall
+        else if (wall = o.GetComponent<KeyWallBehavior>())
         {
             target = o;
         }

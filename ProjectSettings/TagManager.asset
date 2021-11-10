@@ -8,6 +8,7 @@ TagManager:
   - Door
   - Key
   - Trigger
+  - KeyWall
   layers:
   - Default
   - TransparentFX

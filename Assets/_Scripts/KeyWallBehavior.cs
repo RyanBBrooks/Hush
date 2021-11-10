@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakFloorBehavior : MonoBehaviour
+public class KeyWallBehavior : MonoBehaviour
 {
     //particle vars
     ParticleSystem part;
     public List<ParticleCollisionEvent> collEvents;
+    bool targeted = false;
 
     //breaking vars
     public float breakVol = 1.5f;
@@ -14,7 +15,6 @@ public class BreakFloorBehavior : MonoBehaviour
     //ground vars
     BoxCollider2D box;
     SpriteRenderer rend;
-    private bool broken = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,28 +25,28 @@ public class BreakFloorBehavior : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
     }
 
+    public void setTargeted(bool t)
+    {
+        targeted = t;
+    }
+    public bool getTargeted()
+    {
+        return targeted;
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public bool GetBroken()
-    {
-        return broken;
-    }
-
-    public void SetBroken(bool b)
-    {
-        broken = b;
-    }
-
-    //break the floor
+    //break the wall
     public void Break()
     {
         box.enabled = false;
         rend.enabled = false;
-
+        //destroy detector
+        Destroy(this.gameObject.transform.GetChild(0).gameObject);
         //TODO : play breaking sound
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
         s.SpawnEchoCircle(this.transform.position, breakVol);
