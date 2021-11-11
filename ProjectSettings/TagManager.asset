@@ -9,6 +9,7 @@ TagManager:
   - Key
   - Trigger
   - KeyWall
+  - MonsterTrigger
   layers:
   - Default
   - TransparentFX
