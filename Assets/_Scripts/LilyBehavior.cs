@@ -59,6 +59,8 @@ public class LilyBehavior : MonoBehaviour
     public AudioClip footstepClip;
     public AudioClip revealClip; //used to be clap is now "flute??"
 
+    public GameObject monster;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -185,6 +187,10 @@ public class LilyBehavior : MonoBehaviour
             //stop possible (non grab) pushing animation, because we are no longer colliding
             spriteAnim.SetBool("isPushing", false);
             isWalkPushing = false;
+        }
+        if(o.tag == "MonsterTrigger")
+        {
+            monster.SetActive(true);
         }
     }
 
