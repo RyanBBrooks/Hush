@@ -54,6 +54,8 @@ public class LilyBehavior : MonoBehaviour
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
 
+    public GameObject monster;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -176,6 +178,10 @@ public class LilyBehavior : MonoBehaviour
             //stop possible (non grab) pushing animation, because we are no longer colliding
             spriteAnim.SetBool("isPushing", false);
             isWalkPushing = false;
+        }
+        if(o.tag == "MonsterTrigger")
+        {
+            monster.SetActive(true);
         }
     }
 
