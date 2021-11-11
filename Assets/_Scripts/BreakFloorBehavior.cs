@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ public class BreakFloorBehavior : MonoBehaviour
     //particle vars
     ParticleSystem part;
     public List<ParticleCollisionEvent> collEvents;
-
+    
     //breaking vars
     public float breakVol = 1.5f;
+    public bool detectPlayer = true;
+    public bool detectPhys = true;
 
     //ground vars
     BoxCollider2D box;
@@ -63,19 +66,22 @@ public class BreakFloorBehavior : MonoBehaviour
 
     void OnParticleCollision(GameObject o)
     {
-        //get all collisions
-        int n = part.GetCollisionEvents(o, collEvents);
-        int i = 0;
-
-        //iterate through, spawn echo circle
-        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        for (i=0;i<n;i++)
+        if (collEvents != null)
         {
-            Vector3 pos = collEvents[i].intersection;
-            float vol = collEvents[i].velocity.magnitude / 70;
-            if (vol > 0.1)
+            //get all collisions
+            int n = part.GetCollisionEvents(o, collEvents);
+            int i = 0;
+
+            //iterate through, spawn echo circle
+            CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+            for (i = 0; i < n; i++)
             {
-                s.SpawnEchoCircle(pos, vol);
+                Vector3 pos = collEvents[i].intersection;
+                float vol = collEvents[i].velocity.magnitude / 70;
+                if (vol > 0.1)
+                {
+                    s.SpawnEchoCircle(pos, vol);
+                }
             }
         }
     }

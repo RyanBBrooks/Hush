@@ -24,7 +24,7 @@ public class BreakFloorDetectorBehavior : MonoBehaviour
     {
         //if object is a physics object or player, break the floor
         string t = coll.gameObject.tag;
-        if ((t == "Player" || t == "Phys") && !s.GetBroken())
+        if (((t == "Player" && s.detectPlayer) || (t == "Phys" && s.detectPhys)) && !s.GetBroken())
         {
             s.SetBroken(true);
             s.Break();
