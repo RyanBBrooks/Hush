@@ -21,10 +21,16 @@ public class BatBehavior : MonoBehaviour
     List<Vector2> targets = new List<Vector2>();
     List<float> volumes = new List<float>();
 
+    //sound vars=    
+    AudioSource src;//SOUND: Create one AudioSource variable for audio source
+    public AudioClip screechClip;// screeching clip
+
     // Start is called before the first frame update
     void Start()
     {
+        //get variable refrences
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        src = GetComponent<AudioSource>(); // for sound
     }
 
     //add target with a given volume
@@ -74,9 +80,6 @@ public class BatBehavior : MonoBehaviour
         //if we arent waiting 
         else 
         {
-
-            Camera cam = Camera.main;
-            CameraBehavior s = cam.GetComponent<CameraBehavior>();
             Vector2 newPos, currentPos = this.gameObject.transform.position;
             Vector2[] posns = calculateStartEnd();
             Vector2 startPos = posns[0];
@@ -122,9 +125,7 @@ public class BatBehavior : MonoBehaviour
                     volume = volumes[0];
                 }
                 //TODO: play the actual bat audio file here
-
-                //Create a EchoCircle at the sound location
-                s.SpawnEchoCircle(targets[0], volume);
+                PlaySound(volume, targets[0], screechClip);
 
                 //start wait timer
                 waitTimer = waitTime;
@@ -134,5 +135,14 @@ public class BatBehavior : MonoBehaviour
                 volumes.RemoveAt(0);
             }
         }
+    }
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
+
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
     }
 }

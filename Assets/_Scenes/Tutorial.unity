@@ -5961,10 +5961,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lily
       objectReference: {fileID: 0}
-    - target: {fileID: 4461823241168515673, guid: 505d338866b40d944a949fd7d482975e, type: 3}
-      propertyPath: stepVol
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4461823241168515676, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8420,10 +8416,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 919259048}
   ropes: []
+  initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
   alphaMin: 0.6
   alphaDecayRate: 0.15
+  thudClip: {fileID: 0}
 --- !u!50 &1255737952
 Rigidbody2D:
   serializedVersion: 4
@@ -9512,7 +9510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767760177576693, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: ropes.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767760177576693, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: ropes.Array.data[0]

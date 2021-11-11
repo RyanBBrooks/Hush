@@ -16,13 +16,21 @@ public class LockWallBehavior : MonoBehaviour
     BoxCollider2D box;
     SpriteRenderer rend;
 
+    //soundvars
+    AudioSource src; //source
+    public AudioClip stoneObjectBreakClip; //break clip
+
     // Start is called before the first frame update
     void Start()
     {
+        //get references
         part = GetComponent<ParticleSystem>();
         collEvents = new List<ParticleCollisionEvent>();
         box = GetComponent<BoxCollider2D>();
         rend = GetComponent<SpriteRenderer>();
+
+        //SOUND: get audio sorce
+        src = GetComponent<AudioSource>();
     }
 
     public void setTargeted(bool t)
@@ -68,15 +76,24 @@ public class LockWallBehavior : MonoBehaviour
         int i = 0;
 
         //iterate through, spawn echo circle
-        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
         for (i=0;i<n;i++)
         {
             Vector3 pos = collEvents[i].intersection;
             float vol = collEvents[i].velocity.magnitude / 70;
             if (vol > 0.1)
             {
-                s.SpawnEchoCircle(pos, vol);
+                PlaySound( vol, pos, stoneObjectBreakClip);
             }
         }
+    }
+
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
+
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
     }
 }

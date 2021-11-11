@@ -5,7 +5,7 @@ using SpriteToParticlesAsset;
 
 public class KeyBehavior : MonoBehaviour
 {
-    //animator
+    //animator vars
     SpriteRenderer rend = null;
     CircleCollider2D coll = null;
     ParticleSystem part = null;
@@ -13,6 +13,11 @@ public class KeyBehavior : MonoBehaviour
     bool collected = false;
     DoorBehavior door = null;
     LockWallBehavior wall = null;
+
+    //soundvars
+    AudioSource src; //source
+    public AudioClip collectClip; //key collected clip
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +45,7 @@ public class KeyBehavior : MonoBehaviour
             if (door && (Vector3.Distance(keyPos, targetPos)) < 0.1)
             {
                 delete();
-                door.locked = false;
+                door.Unlock();
                 door = null;
             }
             if (wall && (Vector3.Distance(keyPos, targetPos)) < 0.1)
@@ -54,7 +59,10 @@ public class KeyBehavior : MonoBehaviour
 
     public void collect(GameObject t)
     {
-        //TODO: play key sound (no visualization)
+        //TODO: play key sound (NO VISUALIZATION!)
+        float collectVol = 1f; //SOUND: you can mess with this to change volume
+        //UNCOMMENT TO PLAY SOUND
+        //src.PlayOneShot(collectClip, collectVol); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
 
         rend.sortingLayerName = "Character";
         coll.enabled = false;
@@ -83,4 +91,5 @@ public class KeyBehavior : MonoBehaviour
         part.Play();
         rend.enabled = false;
     }
+
 }

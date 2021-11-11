@@ -18,10 +18,16 @@ public class BatBehavior_Old : MonoBehaviour
     public SpriteRenderer sprite;
     List<GameObject> targets = new List<GameObject>();
 
+    //sound vars=    
+    AudioSource src;//SOUND: Create one AudioSource variable for audio source
+    public AudioClip screechClip;// screeching clip
+
     // Start is called before the first frame update
     void Start()
     {
-        sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        //get reference
+        sprite = GetComponent<SpriteRenderer>();
+        src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,14 +73,20 @@ public class BatBehavior_Old : MonoBehaviour
         if (targets.Count>0 && (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0))
         {
             //TODO: play the actual bat audio file here
-
-            //Create a EchoCircle at the sound location
-            CameraBehavior s = cam.GetComponent<CameraBehavior>();
-            s.SpawnEchoCircle(targets[0].transform.position, screechVol);
+            PlaySound(screechVol, targets[0].transform.position, screechClip);
 
             //Delete the reached target
             Object.Destroy(targets[0]);
             targets.RemoveAt(0);
         }
+    }
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
+
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
     }
 }

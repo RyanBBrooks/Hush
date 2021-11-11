@@ -24,7 +24,13 @@ public class PhysicsObjectBehavior : MonoBehaviour
     //stasis animation vars
     public float alphaMin = 0.6f; // the minimum alpha reached while the object is "lost"
     public float alphaDecayRate = 0.15f; //the decay rate of the alpha
-    
+
+    //audio vars
+    //SOUND: Create AudioClip variable for each different sound category in a prefab    
+    public AudioClip thudClip;
+    //SOUND: Create one AudioSource variable for audio source
+    AudioSource src;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +39,9 @@ public class PhysicsObjectBehavior : MonoBehaviour
         box = this.gameObject;
         spriteRend = sprite.GetComponent<SpriteRenderer>();
         joint = this.gameObject.GetComponent<DistanceJoint2D>();
+
+        //SOUND: get reference for each audio sorce in a prefab
+        src = GetComponent<AudioSource>();
 
         //initialize values of the joint (just in case)
         joint.enabled = false;
@@ -132,13 +141,14 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //only play a sound if the volume is above a certain threshold ----- POSSIBLY CHANGE THIS TO JUST EFFECT VISUALS LATER
         if (vol > 0.2f)
         {
-            PlaySound(vol, pos / col.contactCount);
+            PlaySound(vol, pos / col.contactCount, thudClip);
         }
     }
 
-    public void PlaySound(float vol, Vector2 pos /**AudioClip sound**/)
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
-        //TODO: Play actoual audio clip, sound here
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();

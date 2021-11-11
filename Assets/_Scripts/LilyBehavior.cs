@@ -42,17 +42,22 @@ public class LilyBehavior : MonoBehaviour
     bool isTransitioning = false; //are we doing a scene transition
     List<GameObject> keys = null; //current number of keys held by lily
 
-    //clap vars
-    public float minClap = 0.3f;
-    public float maxClap = 2f;
-    float clapTimer = 0f;
-    public float clapVolMult = 1.2f;
-    bool isChargingClap = false;
-    ParticleSystem clapParticles = null;
+    //Audio Reveal vars
+    public float minReveal = 0.3f;
+    public float maxReveal = 2f;
+    float revealTimer = 0f;
+    public float revealVolMult = 1.2f;
+    bool isChargingReveal = false;
+    ParticleSystem revealParticles = null;
 
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
+    //SOUND: Create one AudioSource variable for audio source
+    AudioSource src;
+    //SOUND: Create sound for footstep
+    public AudioClip footstepClip;
+    public AudioClip revealClip; //used to be clap is now "flute??"
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +68,10 @@ public class LilyBehavior : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
-        clapParticles = GetComponent<ParticleSystem>();
+        revealParticles = GetComponent<ParticleSystem>();
+
+        //SOUND: get audio sorce
+        src = GetComponent<AudioSource>();
     }
 
     //Determine if lily is on the ground by checking the collision box
@@ -92,7 +100,7 @@ public class LilyBehavior : MonoBehaviour
             }
         }
         //if we are in front of a door trigger
-        if (o.tag == "Door" && !isChargingClap)
+        if (o.tag == "Door" && !isChargingReveal)
         {
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
@@ -128,7 +136,7 @@ public class LilyBehavior : MonoBehaviour
             }
         }
         //if we are in front of a key wall trigger
-        if (o.tag == "KeyWall" && !isChargingClap)
+        if (o.tag == "KeyWall" && !isChargingReveal)
         {
             //get the key wall (checks too see if it is broken)
             GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
@@ -143,6 +151,7 @@ public class LilyBehavior : MonoBehaviour
                 keys.RemoveAt(keys.Count - 1);
             }
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -219,6 +228,16 @@ public class LilyBehavior : MonoBehaviour
         }
     }
 
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
+
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
+    }
+
     void Update()
     {
         if (!isTransitioning)
@@ -245,7 +264,7 @@ public class LilyBehavior : MonoBehaviour
                 m_speed *= grabSpeedMult;
             }
             //lock movement if clapping
-            if (isChargingClap)
+            if (isChargingReveal)
             {
                 m_speed = 0;
             }
@@ -278,14 +297,12 @@ public class LilyBehavior : MonoBehaviour
             //Footstep EchoCircles & sounds
             if (isOnGround && isStepping && !hasStepped)
             {
-                //Spawn an echo circle
-                CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
                 //set circle position at foot and slightly in front of character to account for movement speeed
                 Vector2 stepLocation = new Vector2(this.gameObject.transform.position.x + body.velocity.x / 20,
                                                     this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
-                s.SpawnEchoCircle(stepLocation, stepVol);
 
                 //TODO : Play a footstep sound here!
+                PlaySound(stepVol, stepLocation, footstepClip);
 
                 //reset vars
                 isStepping = false; // in case this is the last tick of the frame
@@ -300,7 +317,7 @@ public class LilyBehavior : MonoBehaviour
             //prevent jumping if we are clapping / charging
             //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                && !isAttachedGrab && isOnGround && !isJumping && !isChargingClap)
+                && !isAttachedGrab && isOnGround && !isJumping && !isChargingReveal)
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
                 isJumping = true;
@@ -318,7 +335,7 @@ public class LilyBehavior : MonoBehaviour
 
             //Begin Grabbing Code
             //if we are holding the grab key, and we are not currently grabbing, and we are on the ground, not clapping...
-            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isChargingClap)
+            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isChargingReveal)
             {
                 //cast a ray to check if there is a grabbable object
                 Physics2D.queriesStartInColliders = false;
@@ -383,46 +400,46 @@ public class LilyBehavior : MonoBehaviour
             //Charge if on ground, not grabbing, not charging clap, pressing E
             if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E))
             {
-                if (!isChargingClap)
+                if (!isChargingReveal)
                 {
                     //play particles
-                    clapParticles.Play();
+                    revealParticles.Play();
                 }
                 //we are charging
-                isChargingClap = true;
+                isChargingReveal = true;
                 //increment timer only if we are under max
-                if (clapTimer >= maxClap)
+                if (revealTimer >= maxReveal)
                 {
-                    clapTimer = maxClap;
+                    revealTimer = maxReveal;
                     //stop particles
-                    clapParticles.Stop();
+                    revealParticles.Stop();
                 }
                 else
                 {
-                    clapTimer += Time.deltaTime;
+                    revealTimer += Time.deltaTime;
                 }
             }
-            //otherwise if we have charged a clap and released E, do it.
-            else if (isChargingClap && !Input.GetKey(KeyCode.E))
+            //otherwise if we have charged a sound and released E, do it.
+            else if (isChargingReveal && !Input.GetKey(KeyCode.E))
             {
                 //stop particles
-                clapParticles.Stop();
+                revealParticles.Stop();
 
                 //no longer charging
-                isChargingClap = false;
+                isChargingReveal = false;
                 
-                //discard small claps
-                if (clapTimer >= minClap)
+                //discard small sounds
+                if (revealTimer >= minReveal)
                 {
-                    float handDistance = 0.6f;
-                    //calculate hand location
-                    Vector2 clapPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * handDistance, this.transform.position.y);
+                    float revealDist = 0.6f; //how far away from the player
+                    //calculate sound location
+                    Vector2 revealPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * revealDist, this.transform.position.y);
 
                     //clap with the timer charge * vol multiplier
-                    Camera.main.GetComponent<CameraBehavior>().SpawnEchoCircle(clapPos, clapTimer * clapVolMult);
+                    PlaySound(revealTimer * revealVolMult, revealPos, revealClip);
                 }
                 //reset timer
-                clapTimer = 0f;
+                revealTimer = 0f;
             }
         }
         //fade out character alpha to animate door transition
