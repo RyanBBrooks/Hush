@@ -436,7 +436,7 @@ public class LilyBehavior : MonoBehaviour
                 
                 //discard small sounds
                 if (revealTimer >= minReveal)
-                {
+                { 
                     float revealDist = 0.6f; //how far away from the player
                     //calculate sound location
                     Vector2 revealPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * revealDist, this.transform.position.y);
