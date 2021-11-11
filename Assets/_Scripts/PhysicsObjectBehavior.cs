@@ -108,10 +108,10 @@ public class PhysicsObjectBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         //TODO: update this - for now, don't make sounds if the player hits an object, should probbably be handled by player
-        if (col.gameObject.tag == "Player")
-        {
-            return;
-        }
+        //if (col.gameObject.tag == "Player")
+        //{
+            //return;
+        //}
 
         //TODO: perfect impact based volume calculation
         Vector2 pos = Vector2.zero; //position for the sound to be played
