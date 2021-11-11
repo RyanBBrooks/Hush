@@ -50,7 +50,7 @@ Shader "Hidden/FogShader"
             {
                 fixed4 col = tex2D(_MainTex, i.uv) + tex2D(_SecondTex, i.uv);
                 
-                col.a = (-col.r * 1.25f - col.b * 0.75f + 2.0f);
+                col.a = (-col.r * 1.3f - col.b * 0.7f + 2.0f);
                 return fixed4(0,0,0,col.a);
             }
             ENDCG

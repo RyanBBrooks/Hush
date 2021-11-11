@@ -4851,8 +4851,9 @@ MonoBehaviour:
   initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
-  alphaMin: 0.6
-  alphaDecayRate: 0.15
+  alphaMin: 0.4
+  alphaDecayRate: 0.7
+  thudClip: {fileID: 0}
 --- !u!50 &360163842
 Rigidbody2D:
   serializedVersion: 4
@@ -8888,8 +8889,9 @@ MonoBehaviour:
   initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
-  alphaMin: 0.6
-  alphaDecayRate: 0.15
+  alphaMin: 0.4
+  alphaDecayRate: 0.7
+  thudClip: {fileID: 0}
 --- !u!4 &594085859
 Transform:
   m_ObjectHideFlags: 0
@@ -9173,8 +9175,9 @@ MonoBehaviour:
   initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
-  alphaMin: 0.6
-  alphaDecayRate: 0.15
+  alphaMin: 0.4
+  alphaDecayRate: 0.7
+  thudClip: {fileID: 0}
 --- !u!50 &631729179
 Rigidbody2D:
   serializedVersion: 4
@@ -29872,8 +29875,9 @@ MonoBehaviour:
   initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
-  alphaMin: 0.6
-  alphaDecayRate: 0.15
+  alphaMin: 0.4
+  alphaDecayRate: 0.7
+  thudClip: {fileID: 0}
 --- !u!4 &2044888742
 Transform:
   m_ObjectHideFlags: 0

@@ -105,8 +105,9 @@ MonoBehaviour:
   initialized: 0
   isGrabbable: 1
   grabLocksRotation: 0
-  alphaMin: 0.6
-  alphaDecayRate: 0.15
+  alphaMin: 0.4
+  alphaDecayRate: 0.7
+  thudClip: {fileID: 0}
 --- !u!61 &596767760177576694
 BoxCollider2D:
   m_ObjectHideFlags: 0
