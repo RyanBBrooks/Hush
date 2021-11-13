@@ -38,8 +38,7 @@ public class CameraBehavior : MonoBehaviour
         }
     }
 
-    //spawn an echo circle with a given volume and position
-    public void SpawnEchoCircle(Vector2 pos, float volume)
+    public Vector4 getExtents()
     {
         //find camera boundries
         Camera cam = Camera.main;
@@ -50,12 +49,19 @@ public class CameraBehavior : MonoBehaviour
         float xMax = camPos.x + camWhalf;
         float yMin = camPos.y - camHhalf;
         float yMax = camPos.y + camHhalf;
+        return new Vector4(xMin, xMax, yMin, yMax);
+    }
+
+    //spawn an echo circle with a given volume and position
+    public void SpawnEchoCircle(Vector2 pos, float volume)
+    {
+        Vector4 extents = getExtents();
 
         //if position within certain range of boundries, spawn EchoCircle
-        if (xMin - outerScreenBuffer <= pos.x &&
-            xMax + outerScreenBuffer >= pos.x &&
-            yMin - outerScreenBuffer <= pos.y &&
-            yMax + outerScreenBuffer >= pos.y)
+        if (extents.x - outerScreenBuffer <= pos.x &&
+            extents.y + outerScreenBuffer >= pos.x &&
+            extents.z - outerScreenBuffer <= pos.y &&
+            extents.w + outerScreenBuffer >= pos.y)
         {
             GameObject c = Instantiate(echoCirclePrefab, pos, Quaternion.identity) as GameObject;
             c.GetComponent<EchoCircleBehavior>().volume = volume;

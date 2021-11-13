@@ -6,75 +6,143 @@ using UnityEngine;
 public class BatBehavior : MonoBehaviour
 {
     //movement vars
-    public float speed = 5f;
+    public float speed = 2.5f;
+    public float waitTime = 2;
+    float waitTimer = 0;
     
     //screech vars
     public float screechDist = 0.5f; //minimum distance to screech from target
-    public float screechVol = 0.65f;
+    public float defaultVolume = 0.65f;
 
     //targeting vars
     public int maxTargets = 6;
     public GameObject targetPrefab;
     public SpriteRenderer sprite;
-    List<GameObject> targets = new List<GameObject>();
+    List<Vector2> targets = new List<Vector2>();
+    List<float> volumes = new List<float>();
+
+    //sound vars=    
+    AudioSource src;//SOUND: Create one AudioSource variable for audio source
+    public AudioClip screechClip;// screeching clip
 
     // Start is called before the first frame update
     void Start()
     {
+        //get variable refrences
         sprite = this.gameObject.GetComponent<SpriteRenderer>();
+        src = GetComponent<AudioSource>(); // for sound
+    }
+
+    //add target with a given volume
+    public void addTarget(Vector2 t, float v)
+    {
+        targets.Add(t);
+        volumes.Add(v);
+        Vector2[] posns = calculateStartEnd();
+        Vector2 startPos = posns[0];
+        Vector2 endPos = posns[1];
+        if (isWithinDist(endPos, 0.5f, this.transform.position))
+        {
+            //reset position to top left
+            this.transform.position = startPos;
+        }
+    }
+
+    //returns if s is Within dst of e
+    bool isWithinDist(Vector2 s, float dst, Vector2 e)
+    {
+        return (Vector3.Distance(s, e)) <= dst;
+    }
+
+    Vector2[] calculateStartEnd()
+    {
+        //get extents
+        Camera cam = Camera.main;
+        CameraBehavior s = cam.GetComponent<CameraBehavior>();
+
+
+
+        Vector4 extents = s.getExtents();
+        //calculate start and end pos
+        Vector2 startPos = new Vector2(extents.x - 5, extents.w + 5);
+        Vector2 endPos = new Vector2(extents.y + 5, extents.w + 5);
+        return new Vector2[] { startPos, endPos };
     }
 
     // Update is called once per frame
     void Update()
     {
-        //convert the mouse position to world space
-        Camera cam = Camera.main;
-        Vector2 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        //the bat shoud go to the mouse or the oldest target if one exists
-        Vector2 newPos, currentPos = this.gameObject.transform.position;
-        if (targets.Count==0)
+        //count down timer
+        if (waitTimer > 0)
         {
-            newPos = Vector2.Lerp(currentPos, mousePos, Time.deltaTime * speed);
+            waitTimer -= Time.deltaTime;
         }
-        else
+        //if we arent waiting 
+        else 
         {
-            newPos = Vector2.Lerp(currentPos, targets[0].transform.position, Time.deltaTime * speed);
-        }
-        
-        //flip sprite based on movement dir
-        sprite.flipX = (currentPos - newPos).x > 0;
+            Vector2 newPos, currentPos = this.gameObject.transform.position;
+            Vector2[] posns = calculateStartEnd();
+            Vector2 startPos = posns[0];
+            Vector2 endPos = posns[1];
 
-        //update position
-        this.gameObject.transform.position = newPos;
-
-        //If we click, set a target
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            //destroy the oldest target if we are over the max
-            if (targets.Count >= maxTargets)
+            //if targets is empty and we have reached end position
+            if (targets.Count <= 0 && isWithinDist(endPos, 0.5f, currentPos))
             {
-                Object.Destroy(targets[0]);
-                targets.RemoveAt(0);
+                //reset position to the end
+                newPos = endPos;
+            }
+            //if targets is empty or not near the end position 
+            else
+            {
+                //Do Movement
+
+                //if we have targets go to those
+                if (targets.Count > 0)
+                {
+                    newPos = Vector2.Lerp(currentPos, targets[0], Time.deltaTime * speed);
+                }
+                //otherwise go to end position
+                else
+                {
+                    newPos = Vector2.Lerp(currentPos, endPos, Time.deltaTime * speed);
+                }
             }
 
-            //create a target and add it to the list
-            GameObject t = Instantiate(targetPrefab, mousePos, Quaternion.identity) as GameObject;
-            targets.Add(t);          
+            //flip sprite based on movement dir
+            sprite.flipX = (currentPos - newPos).x > 0;
+
+            //update position
+            this.gameObject.transform.position = newPos;
+            //Debug.Log(newPos + " " + startPos + " " + endPos);
+
+            //If we approximately reach the target, then deal with screeching
+            if (targets.Count > 0 && isWithinDist(targets[0], screechDist, this.gameObject.transform.position) && targets.Count > 0)
+            {
+                float volume = defaultVolume;
+                //determine volume
+                if (volumes[0] >= 0)
+                {
+                    volume = volumes[0];
+                }
+                //TODO: play the actual bat audio file here
+                PlaySound(volume, targets[0], screechClip);
+
+                //start wait timer
+                waitTimer = waitTime;
+
+                //Delete the reached target
+                targets.RemoveAt(0);
+                volumes.RemoveAt(0);
+            }
         }
+    }
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
 
-        //If we approximately reach the target, then deal with screeching
-        if (targets.Count>0 && (Vector3.Distance(targets[0].transform.position, this.gameObject.transform.position) <= screechDist && targets.Count > 0))
-        {
-            //TODO: play the actual bat audio file here
-
-            //Create a EchoCircle at the sound location
-            CameraBehavior s = cam.GetComponent<CameraBehavior>();
-            s.SpawnEchoCircle(targets[0].transform.position, screechVol);
-
-            //Delete the reached target
-            Object.Destroy(targets[0]);
-            targets.RemoveAt(0);
-        }
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
     }
 }

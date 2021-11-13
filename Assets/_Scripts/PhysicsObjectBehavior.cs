@@ -14,6 +14,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
     //rope vars
     public List<GameObject> ropes = new List<GameObject>();
+    public bool initialized = false;
 
     //grab vars
     public bool isGrabbable = false;
@@ -24,6 +25,13 @@ public class PhysicsObjectBehavior : MonoBehaviour
     public float alphaMin = 0.6f; // the minimum alpha reached while the object is "lost"
     public float alphaDecayRate = 0.15f; //the decay rate of the alpha
 
+    //audio vars
+    //SOUND: Create AudioClip variable for each different sound category in a prefab    
+    public AudioClip thudClip;
+    //SOUND: Create one AudioSource variable for audio source
+    AudioSource src;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +40,9 @@ public class PhysicsObjectBehavior : MonoBehaviour
         spriteRend = sprite.GetComponent<SpriteRenderer>();
         joint = this.gameObject.GetComponent<DistanceJoint2D>();
 
+        //SOUND: get reference for each audio sorce in a prefab
+        src = GetComponent<AudioSource>();
+
         //initialize values of the joint (just in case)
         joint.enabled = false;
         joint.distance = 0;
@@ -39,12 +50,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //set the sprite to transparent to start
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 0);
 
-        //update ropes
-        foreach (GameObject rope in ropes) 
-        { 
-            Rope s = rope.GetComponent<Rope>();
-            s.ChangeVisualColorAlpha(0);
-        }
+
     }
 
     //returns if the object is set to grabbable
@@ -62,6 +68,17 @@ public class PhysicsObjectBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //initialize ropes
+        if (!initialized)
+        {
+            initialized = true;
+            //update ropes
+            foreach (GameObject rope in ropes)
+            {
+                Rope s = rope.GetComponent<Rope>();
+                s.ChangeVisualColorAlpha(0);
+            }
+        }
         //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
         if (!visible && spriteRend.color.a > alphaMin)
         {
@@ -100,10 +117,10 @@ public class PhysicsObjectBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col)
     {
         //TODO: update this - for now, don't make sounds if the player hits an object, should probbably be handled by player
-        if (col.gameObject.tag == "Player")
-        {
-            return;
-        }
+        //if (col.gameObject.tag == "Player")
+        //{
+            //return;
+        //}
 
         //TODO: perfect impact based volume calculation
         Vector2 pos = Vector2.zero; //position for the sound to be played
@@ -124,13 +141,14 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //only play a sound if the volume is above a certain threshold ----- POSSIBLY CHANGE THIS TO JUST EFFECT VISUALS LATER
         if (vol > 0.2f)
         {
-            PlaySound(vol, pos / col.contactCount);
+            PlaySound(vol, pos / col.contactCount, thudClip);
         }
     }
 
-    public void PlaySound(float vol, Vector2 pos /**AudioClip sound**/)
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
-        //TODO: Play actoual audio clip, sound here
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();

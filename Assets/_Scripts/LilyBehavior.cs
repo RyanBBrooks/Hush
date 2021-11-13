@@ -19,6 +19,7 @@ public class LilyBehavior : MonoBehaviour
     int physLayer = 13; //layer mask referring to the physics layer (layer #13 should be)
     bool flipX = false; // is the player's x flipped, used for ray direction
     bool isOnGround = false; // is the player on the ground currently
+    bool isJumping = false;
 
     //grab/push/pull vars
     public float grabStartDist = 0.75f; // the distance from which the player can grab objects
@@ -39,10 +40,26 @@ public class LilyBehavior : MonoBehaviour
 
     //door vars
     bool isTransitioning = false; //are we doing a scene transition
-    int keys = 0; //current number of keys held by lily
+    List<GameObject> keys = null; //current number of keys held by lily
+
+    //Audio Reveal vars
+    public float minReveal = 0.3f;
+    public float maxReveal = 2f;
+    float revealTimer = 0f;
+    public float revealVolMult = 1.2f;
+    bool isChargingReveal = false;
+    ParticleSystem revealParticles = null;
+
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
+    //SOUND: Create one AudioSource variable for audio source
+    AudioSource src;
+    //SOUND: Create sound for footstep
+    public AudioClip footstepClip;
+    public AudioClip revealClip; //used to be clap is now "flute??"
+
+    public GameObject monster;
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +69,11 @@ public class LilyBehavior : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
+        keys = new List<GameObject>();
+        revealParticles = GetComponent<ParticleSystem>();
+
+        //SOUND: get audio sorce
+        src = GetComponent<AudioSource>();
     }
 
     //Determine if lily is on the ground by checking the collision box
@@ -61,6 +83,10 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = false;
+            if (isJumping)
+            {
+                isJumping = body.velocity.y <= 0.05; //update jumping to be false if are hitting the ground
+            }
         }
     }
     private void OnTriggerStay2D(Collider2D col)
@@ -70,20 +96,26 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = true;
+            if (isJumping)
+            {
+                isJumping = body.velocity.y > 0.05; //update jumping to be false if are hitting the ground
+            }
         }
         //if we are in front of a door trigger
-        if (o.tag == "Door")
+        if (o.tag == "Door" && !isChargingReveal)
         {
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
             //if we press up and are on the ground
             if (Input.GetKey(KeyCode.W) && isOnGround)
             {
-                //if the door is locked check if we have a key, unlock if we do
-                if (s.locked && keys>0)
+                //if the door is locked check if we have a key, use the key
+                if (s.locked && keys.Count>0 && !s.getTargeted())
                 {
-                    keys--;
-                    s.locked = false;
+                    KeyBehavior k = keys[keys.Count-1].GetComponent<KeyBehavior>();
+                    s.setTargeted(true);
+                    k.use(o);
+                    keys.RemoveAt(keys.Count-1);                  
                 }
                 //otherwise if the door is unlocked, go through the door
                 else if (!s.locked)
@@ -91,6 +123,13 @@ public class LilyBehavior : MonoBehaviour
                     //set the player to not be able to move/interact
                     body.simulated = false;
                     isTransitioning = true;
+                    //delete all keys
+                    foreach (GameObject key in keys)
+                    {
+                        KeyBehavior k = key.GetComponent<KeyBehavior>();
+                        k.delete();
+                    }
+                    keys.Clear();
                     //animate walking
                     spriteAnim.SetFloat("Speed", 1);
                     //load a new scene from door script
@@ -98,17 +137,41 @@ public class LilyBehavior : MonoBehaviour
                 }
             }
         }
+        //if we are in front of a key wall trigger
+        if (o.tag == "KeyWall" && !isChargingReveal)
+        {
+            //get the key wall (checks too see if it is broken)
+            GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
+            LockWallBehavior s = wall.GetComponent<LockWallBehavior>();
+            //if we get a valid key wall              
+            //if we have a key, use the key (wall isnt being unlocked "targeted")
+            if (keys.Count > 0 && !s.getTargeted())
+            {
+                KeyBehavior k = keys[keys.Count - 1].GetComponent<KeyBehavior>();
+                s.setTargeted(true);
+                k.use(wall);
+                keys.RemoveAt(keys.Count - 1);
+            }
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         GameObject o = col.gameObject;
         //if we come into contact with a key
-        if (o.tag == "Key")
+        if (o.tag == "Key" && !keys.Contains(o))
         {
             KeyBehavior s = o.GetComponent<KeyBehavior>();
-            s.Collect();
-            keys++;
+            //calculate target
+            int n = keys.Count;
+            GameObject t = this.gameObject;
+            if (n > 0)
+            {
+                t = keys[n - 1];
+            }
+            s.collect(t);
+            keys.Add(o);
         }
     }
 
@@ -124,6 +187,10 @@ public class LilyBehavior : MonoBehaviour
             //stop possible (non grab) pushing animation, because we are no longer colliding
             spriteAnim.SetBool("isPushing", false);
             isWalkPushing = false;
+        }
+        if(o.tag == "MonsterTrigger")
+        {
+            monster.SetActive(true);
         }
     }
 
@@ -167,6 +234,16 @@ public class LilyBehavior : MonoBehaviour
         }
     }
 
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        //src.PlayOneShot(clip, vol);
+
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircle(pos, vol);
+    }
+
     void Update()
     {
         if (!isTransitioning)
@@ -175,16 +252,16 @@ public class LilyBehavior : MonoBehaviour
             //Horizontal Movement
             float x = Input.GetAxis("Horizontal");
 
-            //Prevent Undermoving by Lower Bounding Axis Values
-            if (Mathf.Abs(x) < 0.2)
-            {
-                x = 0;
-                isTryMove = false;
-            }
-            else
-            {
-                isTryMove = true;
-            }
+                //Prevent Undermoving by Lower Bounding Axis Values
+                if (Mathf.Abs(x) < 0.2)
+                {
+                    x = 0;
+                    isTryMove = false;
+                }
+                else
+                {
+                    isTryMove = true;
+                }
 
             //if we are pulling something, cut speed
             float m_speed = max_speed;
@@ -192,13 +269,20 @@ public class LilyBehavior : MonoBehaviour
             {
                 m_speed *= grabSpeedMult;
             }
+            //lock movement if clapping
+            if (isChargingReveal)
+            {
+                m_speed = 0;
+            }
+
 
             //Update Velocity
-            Vector3 target = new Vector2(x * m_speed, body.velocity.y);
+            float finalSpeed = x * m_speed;
+            Vector3 target = new Vector2(finalSpeed, body.velocity.y);
             body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
 
             //update speed to induce movement animation
-            spriteAnim.SetFloat("Speed", Mathf.Abs(x));
+            spriteAnim.SetFloat("Speed", Mathf.Abs(finalSpeed));
 
             //TODO: switch animations if we are pushing and pulling (WHILE GRABBED)
 
@@ -219,14 +303,12 @@ public class LilyBehavior : MonoBehaviour
             //Footstep EchoCircles & sounds
             if (isOnGround && isStepping && !hasStepped)
             {
-                //Spawn an echo circle
-                CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
                 //set circle position at foot and slightly in front of character to account for movement speeed
                 Vector2 stepLocation = new Vector2(this.gameObject.transform.position.x + body.velocity.x / 20,
                                                     this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
-                s.SpawnEchoCircle(stepLocation, stepVol);
 
                 //TODO : Play a footstep sound here!
+                PlaySound(stepVol, stepLocation, footstepClip);
 
                 //reset vars
                 isStepping = false; // in case this is the last tick of the frame
@@ -238,12 +320,16 @@ public class LilyBehavior : MonoBehaviour
                 hasStepped = false;
             }
 
-
-            //prevent jumping if we are grabbing, if we press the jump button down, and are on ground
+            //prevent jumping if we are clapping / charging
+            //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                && !isAttachedGrab && isOnGround)
+                && !isAttachedGrab && isOnGround && !isJumping && !isChargingReveal)
             {
-                isOnGround = false; //gaurentee we are off the ground once we start jumping
+                isOnGround = false; //gaurentee we are off the ground once we start jumping.
+                isJumping = true;
+
+                body.velocity = new Vector2(body.velocity.x, 0);//NEW set velocity to zero before jump in y dir to avoid high jumps
+
                 body.AddForce(new Vector2(0f, jumpForce)); // jump
             }
             //Holding space increases float (we do this by adding a negative force while jumping and not holding space)
@@ -254,8 +340,8 @@ public class LilyBehavior : MonoBehaviour
             }
 
             //Begin Grabbing Code
-            //if we are holding the grab key, and we are not currently grabbing, and we are on the ground...
-            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround)
+            //if we are holding the grab key, and we are not currently grabbing, and we are on the ground, not clapping...
+            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isChargingReveal)
             {
                 //cast a ray to check if there is a grabbable object
                 Physics2D.queriesStartInColliders = false;
@@ -315,6 +401,51 @@ public class LilyBehavior : MonoBehaviour
                 {
                     s.UpdateVisual();
                 }
+            }
+
+            //Charge if on ground, not grabbing, not charging clap, pressing E
+            if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E))
+            {
+                if (!isChargingReveal)
+                {
+                    //play particles
+                    revealParticles.Play();
+                }
+                //we are charging
+                isChargingReveal = true;
+                //increment timer only if we are under max
+                if (revealTimer >= maxReveal)
+                {
+                    revealTimer = maxReveal;
+                    //stop particles
+                    revealParticles.Stop();
+                }
+                else
+                {
+                    revealTimer += Time.deltaTime;
+                }
+            }
+            //otherwise if we have charged a sound and released E, do it.
+            else if (isChargingReveal && !Input.GetKey(KeyCode.E))
+            {
+                //stop particles
+                revealParticles.Stop();
+
+                //no longer charging
+                isChargingReveal = false;
+                
+                //discard small sounds
+                if (revealTimer >= minReveal)
+                { 
+                    float revealDist = 0.6f; //how far away from the player
+                    //calculate sound location
+                    Vector2 revealPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * revealDist, this.transform.position.y);
+
+                    //clap with the timer charge * vol multiplier
+                    PlaySound(revealTimer * revealVolMult, revealPos, revealClip);
+                }
+                //reset timer
+                revealTimer = 0f;
             }
         }
         //fade out character alpha to animate door transition
