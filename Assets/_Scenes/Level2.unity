@@ -12657,10 +12657,12 @@ MonoBehaviour:
   ropes:
   - {fileID: 2070380728}
   - {fileID: 525996306}
+  initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
   alphaMin: 0.6
   alphaDecayRate: 0.15
+  thudClip: {fileID: 0}
 --- !u!50 &582895314
 Rigidbody2D:
   serializedVersion: 4
@@ -29670,10 +29672,12 @@ MonoBehaviour:
   ropes:
   - {fileID: 1830577333}
   - {fileID: 923234407}
+  initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
   alphaMin: 0.6
   alphaDecayRate: 0.15
+  thudClip: {fileID: 0}
 --- !u!4 &1478119831
 Transform:
   m_ObjectHideFlags: 0
@@ -32388,7 +32392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.32
+      value: 71.04
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -33813,10 +33817,12 @@ MonoBehaviour:
   sprite: {fileID: 311575788}
   ropes:
   - {fileID: 1659055777}
+  initialized: 0
   isGrabbable: 1
   grabLocksRotation: 1
   alphaMin: 0.6
   alphaDecayRate: 0.15
+  thudClip: {fileID: 0}
 --- !u!50 &1634643291
 Rigidbody2D:
   serializedVersion: 4
