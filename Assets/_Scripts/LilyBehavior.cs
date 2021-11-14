@@ -20,6 +20,8 @@ public class LilyBehavior : MonoBehaviour
     bool flipX = false; // is the player's x flipped, used for ray direction
     bool isOnGround = false; // is the player on the ground currently
     bool isJumping = false;
+    PolygonCollider2D hitBox;
+    BoxCollider2D feetBox;
 
     //grab/push/pull vars
     public float grabStartDist = 0.75f; // the distance from which the player can grab objects
@@ -50,6 +52,9 @@ public class LilyBehavior : MonoBehaviour
     bool isChargingReveal = false;
     ParticleSystem revealParticles = null;
 
+    //death vars
+    bool dead = false;
+
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
@@ -67,6 +72,9 @@ public class LilyBehavior : MonoBehaviour
         //get components to initialize them
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        hitBox = GetComponent<PolygonCollider2D>();
+        feetBox = GetComponent<BoxCollider2D>();
+
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
@@ -91,6 +99,7 @@ public class LilyBehavior : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D col)
     {
+        if (dead) return;
         //if it is the ground
         GameObject o = col.gameObject;
         if (o.layer == groundLayer || o.layer == physLayer)
@@ -122,6 +131,8 @@ public class LilyBehavior : MonoBehaviour
                 {
                     //set the player to not be able to move/interact
                     body.simulated = false;
+                    hitBox.enabled = false;
+                    feetBox.enabled = false;
                     isTransitioning = true;
                     //delete all keys
                     foreach (GameObject key in keys)
@@ -154,10 +165,16 @@ public class LilyBehavior : MonoBehaviour
             }
         }
 
+        if (o.tag == "Death")
+        {
+            Die();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (dead) return;
         GameObject o = col.gameObject;
         //if we come into contact with a key
         if (o.tag == "Key" && !keys.Contains(o))
@@ -234,6 +251,24 @@ public class LilyBehavior : MonoBehaviour
         }
     }
 
+    //kill lily
+    public void Die()
+    {
+        if (dead) return;
+        //set player to be dead
+        dead = true;
+        // play animation -> load scene
+        spriteAnim.SetBool("isDead", true);
+
+        //delete all keys
+        foreach (GameObject key in keys)
+        {
+            KeyBehavior k = key.GetComponent<KeyBehavior>();
+            k.delete();
+        }
+        keys.Clear();
+    }
+
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
@@ -246,6 +281,13 @@ public class LilyBehavior : MonoBehaviour
 
     void Update()
     {
+        if (dead)
+        {           
+            //just slow down character motion
+            Vector2 target = new Vector2(0, -5);
+            body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
+            return;
+        }
         if (!isTransitioning)
         {
 
@@ -269,7 +311,7 @@ public class LilyBehavior : MonoBehaviour
             {
                 m_speed *= grabSpeedMult;
             }
-            //lock movement if clapping
+            //lock movement if charging
             if (isChargingReveal)
             {
                 m_speed = 0;
@@ -278,7 +320,7 @@ public class LilyBehavior : MonoBehaviour
 
             //Update Velocity
             float finalSpeed = x * m_speed;
-            Vector3 target = new Vector2(finalSpeed, body.velocity.y);
+            Vector2 target = new Vector2(finalSpeed, body.velocity.y);
             body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
 
             //update speed to induce movement animation
@@ -410,6 +452,9 @@ public class LilyBehavior : MonoBehaviour
                 {
                     //play particles
                     revealParticles.Play();
+
+                    //ANIMATION: UNCOMMENT FOR CHARGE
+                    spriteAnim.SetBool("isCharging", true);
                 }
                 //we are charging
                 isChargingReveal = true;
@@ -428,6 +473,10 @@ public class LilyBehavior : MonoBehaviour
             //otherwise if we have charged a sound and released E, do it.
             else if (isChargingReveal && !Input.GetKey(KeyCode.E))
             {
+
+                //ANIMATION: UNCOMMENT FOR CHARGE
+                spriteAnim.SetBool("isCharging", false);
+
                 //stop particles
                 revealParticles.Stop();
 
