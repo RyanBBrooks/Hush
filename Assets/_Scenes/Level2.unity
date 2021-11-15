@@ -31681,11 +31681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6107
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5704325
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalScale.z
@@ -31693,11 +31693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 71.04001
+      value: -21.88
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.889
+      value: 17.47
       objectReference: {fileID: 0}
     - target: {fileID: 596767759463098124, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -31763,13 +31763,21 @@ PrefabInstance:
       propertyPath: ropes.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 596767760177576694, guid: 419b868157990d44db5b238373e74ab6, type: 3}
+      propertyPath: m_Size.x
+      value: 2.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 596767760177576694, guid: 419b868157990d44db5b238373e74ab6, type: 3}
+      propertyPath: m_Size.y
+      value: 2.95
+      objectReference: {fileID: 0}
     - target: {fileID: 596767760177576695, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767760177576695, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.71
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082624, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_Sprite
@@ -31789,19 +31797,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082625, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.66
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082625, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.66
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082625, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -57.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082625, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767761074082626, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: m_Layer
