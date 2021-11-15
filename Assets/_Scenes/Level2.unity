@@ -684,6 +684,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4014964719686111795, guid: 187ffde2f2e4dd740af731101f3fce7e, type: 3}
+      propertyPath: sceneName
+      value: Tutorial
+      objectReference: {fileID: 0}
     - target: {fileID: 4311339201318967377, guid: 187ffde2f2e4dd740af731101f3fce7e, type: 3}
       propertyPath: m_Name
       value: Exit Door

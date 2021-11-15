@@ -34,7 +34,11 @@ public class CameraBehavior : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Alpha1))
         {
-            SceneManager.LoadScene("Hush");
+            SceneManager.LoadScene("Tutorial");
+        }
+        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("Level2");
         }
     }
 

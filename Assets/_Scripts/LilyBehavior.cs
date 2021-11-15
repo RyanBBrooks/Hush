@@ -267,6 +267,9 @@ public class LilyBehavior : MonoBehaviour
             k.delete();
         }
         keys.Clear();
+
+        //stop any particles
+        revealParticles.Stop();
     }
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
