@@ -75,6 +75,11 @@ public class CameraBehavior : MonoBehaviour
         Application.Quit();
     }
 
+    public void Continue()
+    {
+        EnableUI(false);
+    }
+
 
     public Vector4 getExtents()
     {
