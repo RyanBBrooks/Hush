@@ -66,6 +66,7 @@ public class LilyBehavior : MonoBehaviour
     public AudioClip fallClip; //hitting the ground
 
     public GameObject monster;
+    public Animator monsterAnimate;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +98,8 @@ public class LilyBehavior : MonoBehaviour
                 isJumping = body.velocity.y <= 0.05; //update jumping to be false if are hitting the ground
             }
         }
+
+        
     }
     private void OnTriggerStay2D(Collider2D col)
     {
@@ -191,6 +194,14 @@ public class LilyBehavior : MonoBehaviour
             s.collect(t);
             keys.Add(o);
         }
+        else if (o.tag == "MonsterTrigger")
+        {
+            monster.SetActive(true);
+        }
+        else if(o.tag == "MonsterAnim")
+        {
+            monsterAnimate.SetFloat("Speed", 2);
+        }
     }
 
     //play hit ground sound when we land on something from over a certain distance
@@ -235,10 +246,7 @@ public class LilyBehavior : MonoBehaviour
             spriteAnim.SetBool("isPushing", false);
             isWalkPushing = false;
         }
-        if(o.tag == "MonsterTrigger")
-        {
-            monster.SetActive(true);
-        }
+        
     }
 
     //When lily touches a physics object
