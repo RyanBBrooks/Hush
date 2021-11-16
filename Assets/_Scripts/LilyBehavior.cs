@@ -63,6 +63,7 @@ public class LilyBehavior : MonoBehaviour
     //SOUND: Create sound for footstep
     public AudioClip footstepClip;
     public AudioClip revealClip; //used to be clap is now "flute??"
+    public AudioClip fallClip; //hitting the ground
 
     public GameObject monster;
 
@@ -189,6 +190,35 @@ public class LilyBehavior : MonoBehaviour
             }
             s.collect(t);
             keys.Add(o);
+        }
+    }
+
+    //play hit ground sound when we land on something from over a certain distance
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == groundLayer)
+        {
+            //TODO: perfect impact based volume calculation
+            Vector2 pos = Vector2.zero; //position for the sound to be played
+            Vector2 avgNormal = Vector2.zero; //average Normal vector for the contacts
+
+            //calculate avgNormal and pos
+            foreach (ContactPoint2D contact in col.contacts)
+            {
+                pos += contact.point;
+                avgNormal += contact.normal;
+            }
+            avgNormal /= col.contactCount; //divide by num of contacts
+
+            //calculate the volume based on the "intensity" of the impact
+            Rigidbody2D other = col.gameObject.GetComponent<Rigidbody2D>();
+            float vol = Vector2.Dot(avgNormal, col.relativeVelocity) / 15;
+
+            //only play a sound if the volume is above a certain threshold 
+            if (vol > 0.2f)
+            {
+                PlaySound(vol, pos / col.contactCount, fallClip);
+            }
         }
     }
 
