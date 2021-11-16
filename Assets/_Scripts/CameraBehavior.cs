@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //Ryan Brooks u1115093
 public class CameraBehavior : MonoBehaviour
 {
     //vars
     public GameObject echoCirclePrefab; //instance of the echo circle
+    Canvas canvas; //ui canvas
     public float outerScreenBuffer = 1.5f; //how far sounds "count" outside of the screen
+    public Button[] buttons;
 
     //movement vars
     public Transform player; // usually the player
@@ -18,6 +21,10 @@ public class CameraBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //disable all visuals
+        canvas = transform.GetChild(0).gameObject.GetComponent<Canvas>();
+        EnableUI(false);
+        //get buttons
 
     }
 
@@ -40,7 +47,34 @@ public class CameraBehavior : MonoBehaviour
         {
             SceneManager.LoadScene("Level2");
         }
+
+        //menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //make menu visible
+            EnableUI(!canvas.enabled);
+        }
     }
+
+    public void EnableUI(bool e)
+    {
+        //show / hide UI
+        canvas.enabled = e;
+
+        //pause / unpause
+        Time.timeScale = e ? 0 : 1;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
 
     public Vector4 getExtents()
     {
