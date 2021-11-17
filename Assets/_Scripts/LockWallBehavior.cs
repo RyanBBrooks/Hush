@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LockWallBehavior : MonoBehaviour
 {
@@ -72,11 +73,12 @@ public class LockWallBehavior : MonoBehaviour
     void OnParticleCollision(GameObject o)
     {
         //get all collisions
-        int n = part.GetCollisionEvents(o, collEvents);
+        int n; 
         int i = 0;
 
-        if (collEvents != null)
+        try
         {
+            n = part.GetCollisionEvents(o, collEvents);
             //iterate through, spawn echo circle
             for (i = 0; i < n; i++)
             {
@@ -88,12 +90,16 @@ public class LockWallBehavior : MonoBehaviour
                 }
             }
         }
+        catch (ArgumentNullException)
+        {
+            return;
+        }
     }
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
-        src.PlayOneShot(clip, vol);
+        src.PlayOneShot(clip, vol * 3);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();

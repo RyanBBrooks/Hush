@@ -93,15 +93,7 @@ public class LilyBehavior : MonoBehaviour
         if (o.layer == groundLayer || o.layer == physLayer)
         {
             isOnGround = false;
-            if (isJumping)
-            {
-                isJumping = body.velocity.y <= 0.05; //update jumping to be false if are hitting the ground
-                spriteAnim.SetBool("isJumping", isJumping);
-            }
-            else
-            {
-                spriteAnim.SetBool("isFalling", true);
-            }
+            spriteAnim.SetBool("isFalling", true);
         }
 
         
@@ -118,7 +110,6 @@ public class LilyBehavior : MonoBehaviour
             if (isJumping)
             {
                 isJumping = body.velocity.y > 0.05; //update jumping to be false if are hitting the ground
-                spriteAnim.SetBool("isJumping", isJumping);
             }
         }
         //if we are in front of a door trigger
@@ -326,7 +317,7 @@ public class LilyBehavior : MonoBehaviour
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
-        src.PlayOneShot(clip, vol);
+        src.PlayOneShot(clip, vol*3);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
@@ -425,8 +416,8 @@ public class LilyBehavior : MonoBehaviour
                 && !isAttachedGrab && isOnGround && !isJumping && !isChargingReveal)
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
-                isJumping = true;
-                spriteAnim.SetBool("isJumping", true);
+                //isJumping = true;
+                spriteAnim.SetTrigger("jump");
 
                 body.velocity = new Vector2(body.velocity.x, 0);//NEW set velocity to zero before jump in y dir to avoid high jumps
 

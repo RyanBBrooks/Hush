@@ -48,7 +48,7 @@ public class DoorBehavior : MonoBehaviour
         //Play unlock + open sound NO VISUALILZATION
         float openUnlockVol = 1f; //SOUND: you can mess with this to change volume
         //UNCOMMENT TO PLAY SOUND
-        //src.PlayOneShot(openUnlockClip, openUnlockVol); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
+        src.PlayOneShot(openUnlockClip, openUnlockVol * 3); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
 
     }
 

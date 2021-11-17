@@ -62,7 +62,7 @@ public class KeyBehavior : MonoBehaviour
         //TODO: play key sound (NO VISUALIZATION!)
         float collectVol = 1f; //SOUND: you can mess with this to change volume
         //UNCOMMENT TO PLAY SOUND
-        //src.PlayOneShot(collectClip, collectVol); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
+        //src.PlayOneShot(collectClip, collectVol * 3); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
 
         rend.sortingLayerName = "Character";
         coll.enabled = false;
