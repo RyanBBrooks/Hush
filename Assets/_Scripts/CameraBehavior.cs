@@ -24,7 +24,8 @@ public class CameraBehavior : MonoBehaviour
         //disable all visuals
         canvas = transform.GetChild(0).gameObject.GetComponent<Canvas>();
         EnableUI(false);
-        //get buttons
+        //set to default player position
+        transform.position = player.transform.position;
 
     }
 

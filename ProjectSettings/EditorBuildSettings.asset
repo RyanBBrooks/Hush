@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/TestScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/_Scenes/Tutorial.unity
+    guid: d5274aa4e14be594ba23efbec5cc42c7
+  - enabled: 1
+    path: Assets/_Scenes/Level2.unity
+    guid: cabc3ab99f1c1ca4eb2c372cfcedbcaf
+  - enabled: 1
     path: Assets/_Scenes/PhysicsTest.unity
     guid: f22abab6696b7c74f9074a33d82548ae
   m_configObjects: {}

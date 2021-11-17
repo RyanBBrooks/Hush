@@ -12350,11 +12350,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997306774864244877, guid: 6499a949964159f4fbf1bd2f90b390c6, type: 3}
       propertyPath: targetPos.x
-      value: 17.92
+      value: 19.92
       objectReference: {fileID: 0}
     - target: {fileID: 6997306774864244877, guid: 6499a949964159f4fbf1bd2f90b390c6, type: 3}
       propertyPath: targetPos.y
-      value: 22.94
+      value: 19.94
       objectReference: {fileID: 0}
     - target: {fileID: 6997306774864244877, guid: 6499a949964159f4fbf1bd2f90b390c6, type: 3}
       propertyPath: useTriggerPosition
