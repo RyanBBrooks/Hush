@@ -4585,3 +4585,23 @@ Received Import Request.
   path: Assets/_Animations/Lily/Lily.controller
   artifactKey: Guid(084b6be207a319b418f323e6a9bdf504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/_Animations/Lily/Lily.controller using Guid(084b6be207a319b418f323e6a9bdf504) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df8fb7daa2d3fe091b648d4eb536e41f') in 0.033254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 481.624582 seconds.
+  path: Assets/_Prefabs/Lily.prefab
+  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Asset 'Lily': Transition 'Release -> idle' in state 'Release' doesn't have an Exit Time or any condition, transition will be ignored
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.EditorUtility:Internal_InstantiateRemoveAllNonAnimationComponentsSingle (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateRemoveAllNonAnimationComponents (UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion)
+UnityEditor.EditorUtility:InstantiateForAnimatorPreview (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:UpdateGameObject (UnityEngine.Object)
+UnityEditor.GameObjectInspector/PreviewData:.ctor (UnityEngine.Object)
+UnityEditor.GameObjectInspector:GetPreviewData ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Editor/Src/Animation/StateMachine.cpp line 1847]
+
+ -> (artifact id: '93bb09bad9f8ed042e1c5a44240b8ace') in 0.081560 seconds 
