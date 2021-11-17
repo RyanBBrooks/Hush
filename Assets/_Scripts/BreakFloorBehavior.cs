@@ -57,8 +57,7 @@ public class BreakFloorBehavior : MonoBehaviour
         rend.enabled = false;
 
         //TODO : play breaking sound
-        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircle(this.transform.position, breakVol);
+        PlaySound(breakVol, this.transform.position, stoneObjectBreakClip);
 
         //play particle animation
         part.Play();
@@ -85,7 +84,9 @@ public class BreakFloorBehavior : MonoBehaviour
                 float vol = collEvents[i].velocity.magnitude / 70;
                 if (vol > 0.1)
                 {
-                    PlaySound(vol, pos, stoneObjectBreakClip);
+                    //spawn a "EchoCircle"
+                    CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+                    s.SpawnEchoCircle(pos, vol);
                 }
             }
         }
@@ -94,7 +95,7 @@ public class BreakFloorBehavior : MonoBehaviour
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
-        src.PlayOneShot(clip, vol * 3);
+        src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();

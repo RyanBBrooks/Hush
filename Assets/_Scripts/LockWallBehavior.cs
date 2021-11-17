@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random = UnityEngine.Random;
 
 public class LockWallBehavior : MonoBehaviour
 {
@@ -56,9 +57,9 @@ public class LockWallBehavior : MonoBehaviour
         rend.enabled = false;
         //destroy detector
         Destroy(this.gameObject.transform.GetChild(0).gameObject);
+
         //TODO : play breaking sound
-        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircle(this.transform.position, breakVol);
+        PlaySound(breakVol, this.transform.position, stoneObjectBreakClip);
 
         //play particle animation
         part.Play();
@@ -86,7 +87,9 @@ public class LockWallBehavior : MonoBehaviour
                 float vol = collEvents[i].velocity.magnitude / 70;
                 if (vol > 0.1)
                 {
-                    PlaySound(vol, pos, stoneObjectBreakClip);
+                    //spawn a "EchoCircle"
+                    CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+                    s.SpawnEchoCircle(pos, vol);
                 }
             }
         }
@@ -99,7 +102,7 @@ public class LockWallBehavior : MonoBehaviour
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
-        src.PlayOneShot(clip, vol * 3);
+        src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
