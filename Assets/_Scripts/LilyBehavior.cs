@@ -243,7 +243,7 @@ public class LilyBehavior : MonoBehaviour
             s.SetVisible(false);
 
             //stop possible (non grab) pushing animation, because we are no longer colliding
-            spriteAnim.SetBool("isPushing", false);
+            spriteAnim.SetBool("isGrabbing", false);
             isWalkPushing = false;
         }
         
@@ -276,14 +276,14 @@ public class LilyBehavior : MonoBehaviour
                 if (inHorizContact && isOnGround && isTryMove)
                 {
                     //update the pushing animation to be on
-                    spriteAnim.SetBool("isPushing", true);
+                    spriteAnim.SetBool("isGrabbing", true);
                     isWalkPushing = true;
                 }
                 else
                 {
                     //stop any possible pushing animations, we have broke horizontal, grounded contact
                     isWalkPushing = false;
-                    spriteAnim.SetBool("isPushing", false);
+                    spriteAnim.SetBool("isGrabbing", false);
                 }
             }
         }
@@ -381,6 +381,12 @@ public class LilyBehavior : MonoBehaviour
                     sprite.flipX = flipX = false;
                 }
 
+            }
+            //calculate pushing animation
+            else
+            {
+                //TODO MAYBE FLIP THIS
+                spriteAnim.SetFloat("PushDir", Mathf.Abs(finalSpeed)*(flipX? 1 : -1));
             }
 
             //Footstep EchoCircles & sounds
