@@ -128,6 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   locked: 0
   sceneName: PhysicsTest
+  openUnlockClip: {fileID: 8300000, guid: 576ee79b6ac649c47a4b9cbd92a11b76, type: 3}
 --- !u!95 &3343470856755061548
 Animator:
   serializedVersion: 3

@@ -3452,6 +3452,10 @@ PrefabInstance:
       propertyPath: waitTime
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6107719259463386103, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
+      propertyPath: screechClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c953bf64ffa1e94eb260d4aa4c7bc33, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7300ea768427bc540b2b3d6294d38312, type: 3}
 --- !u!1 &401639704
@@ -7380,6 +7384,14 @@ PrefabInstance:
       propertyPath: stepVol
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4461823241168515673, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: fallClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7934c113c7223854cb04e61663e102ce, type: 3}
+    - target: {fileID: 4461823241168515673, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: footstepClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eb5d45694604aa14e9aa4e58ed61754b, type: 3}
     - target: {fileID: 4461823241168515676, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -4996,7 +4996,7 @@ MonoBehaviour:
   breakVol: 1.5
   detectPlayer: 1
   detectPhys: 1
-  stoneObjectBreakClip: {fileID: 0}
+  stoneObjectBreakClip: {fileID: 8300000, guid: 9ac03aa22ccd14f4d9f26272780aa4e5, type: 3}
 --- !u!82 &8131290975345786873
 AudioSource:
   m_ObjectHideFlags: 0

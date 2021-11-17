@@ -4913,6 +4913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a44a50873142345b965387fe8e066f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collectClip: {fileID: 8300000, guid: 1842f591c984b244eb7aa2fa7977172f, type: 3}
 --- !u!82 &4633421376330373672
 AudioSource:
   m_ObjectHideFlags: 0
