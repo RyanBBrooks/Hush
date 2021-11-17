@@ -11456,7 +11456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 596767760177576693, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: ropes.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 596767760177576693, guid: 419b868157990d44db5b238373e74ab6, type: 3}
       propertyPath: ropes.Array.data[0]

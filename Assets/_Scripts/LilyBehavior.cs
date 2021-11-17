@@ -65,7 +65,8 @@ public class LilyBehavior : MonoBehaviour
     public AudioClip revealClip; //used to be clap is now "flute??"
     public AudioClip fallClip; //hitting the ground
 
-    public GameObject monster;
+    public GameObject monster; //NOTE: not really sure why these are here?
+                               //shouldnt they be in the monster's script?
     public Animator monsterAnimate;
 
     // Start is called before the first frame update
@@ -317,7 +318,7 @@ public class LilyBehavior : MonoBehaviour
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
-        src.PlayOneShot(clip, vol*3);
+        src.PlayOneShot(clip, vol*6);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
