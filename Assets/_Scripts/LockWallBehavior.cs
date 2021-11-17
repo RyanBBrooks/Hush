@@ -75,14 +75,17 @@ public class LockWallBehavior : MonoBehaviour
         int n = part.GetCollisionEvents(o, collEvents);
         int i = 0;
 
-        //iterate through, spawn echo circle
-        for (i=0;i<n;i++)
+        if (collEvents != null)
         {
-            Vector3 pos = collEvents[i].intersection;
-            float vol = collEvents[i].velocity.magnitude / 70;
-            if (vol > 0.1)
+            //iterate through, spawn echo circle
+            for (i = 0; i < n; i++)
             {
-                PlaySound( vol, pos, stoneObjectBreakClip);
+                Vector3 pos = collEvents[i].intersection;
+                float vol = collEvents[i].velocity.magnitude / 70;
+                if (vol > 0.1)
+                {
+                    PlaySound(vol, pos, stoneObjectBreakClip);
+                }
             }
         }
     }

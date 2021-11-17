@@ -250,7 +250,10 @@ public class LilyBehavior : MonoBehaviour
             s.SetVisible(false);
 
             //stop possible (non grab) pushing animation, because we are no longer colliding
-            spriteAnim.SetBool("isGrabbing", false);
+            if (!isAttachedGrab)
+            {
+                spriteAnim.SetBool("isGrabbing", false);
+            }
             isWalkPushing = false;
         }
         
@@ -290,7 +293,10 @@ public class LilyBehavior : MonoBehaviour
                 {
                     //stop any possible pushing animations, we have broke horizontal, grounded contact
                     isWalkPushing = false;
-                    spriteAnim.SetBool("isGrabbing", false);
+                    if (!isAttachedGrab)
+                    {
+                        spriteAnim.SetBool("isGrabbing", false);
+                    }
                 }
             }
         }
@@ -329,6 +335,7 @@ public class LilyBehavior : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(spriteAnim.GetBool("isGrabbing"));
         if (dead)
         {           
             //just slow down character motion
@@ -390,11 +397,7 @@ public class LilyBehavior : MonoBehaviour
 
             }
             //calculate pushing animation
-            else
-            {
-                //TODO MAYBE FLIP THIS
-                spriteAnim.SetFloat("PushDir", Mathf.Abs(finalSpeed)*(flipX? 1 : -1));
-            }
+            spriteAnim.SetFloat("PushDir", finalSpeed*(flipX? -1 : 1));
 
             //Footstep EchoCircles & sounds
             if (isOnGround && isStepping && !hasStepped)
@@ -455,6 +458,7 @@ public class LilyBehavior : MonoBehaviour
                     {
                         j.enabled = isAttachedGrab = true; //enable the joint, we are not attached
                         j.connectedBody = body; //it is connected to lily's body
+                        spriteAnim.SetBool("isGrabbing", true);
 
                         //if object's rotation should be locked, do it
                         grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = s.GetGrabLocksRotation();
@@ -487,6 +491,7 @@ public class LilyBehavior : MonoBehaviour
                     {
                         j.enabled = isAttachedGrab = false;
                         s.SetVisible(false); //begin fade
+                        spriteAnim.SetBool("isGrabbing", false);
                     }
 
                     //unfreeze object rotation
