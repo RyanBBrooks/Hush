@@ -96,6 +96,11 @@ public class LilyBehavior : MonoBehaviour
             if (isJumping)
             {
                 isJumping = body.velocity.y <= 0.05; //update jumping to be false if are hitting the ground
+                spriteAnim.SetBool("isJumping", isJumping);
+            }
+            else
+            {
+                spriteAnim.SetBool("isFalling", true);
             }
         }
 
@@ -108,10 +113,12 @@ public class LilyBehavior : MonoBehaviour
         GameObject o = col.gameObject;
         if (o.layer == groundLayer || o.layer == physLayer)
         {
+            spriteAnim.SetBool("isFalling", false);
             isOnGround = true;
             if (isJumping)
             {
                 isJumping = body.velocity.y > 0.05; //update jumping to be false if are hitting the ground
+                spriteAnim.SetBool("isJumping", isJumping);
             }
         }
         //if we are in front of a door trigger
@@ -416,6 +423,7 @@ public class LilyBehavior : MonoBehaviour
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
                 isJumping = true;
+                spriteAnim.SetBool("isJumping", true);
 
                 body.velocity = new Vector2(body.velocity.x, 0);//NEW set velocity to zero before jump in y dir to avoid high jumps
 
