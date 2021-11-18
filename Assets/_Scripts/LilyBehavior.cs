@@ -64,6 +64,7 @@ public class LilyBehavior : MonoBehaviour
     public AudioClip footstepClip;
     public AudioClip revealClip; //used to be clap is now "flute??"
     public AudioClip fallClip; //hitting the ground
+    public AudioClip deathClip;
 
     public GameObject monster; //NOTE: not really sure why these are here?
                                //shouldnt they be in the monster's script?
@@ -313,6 +314,8 @@ public class LilyBehavior : MonoBehaviour
 
         //stop any particles
         revealParticles.Stop();
+
+        PlaySound(0.5f, transform.position, deathClip);
     }
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
