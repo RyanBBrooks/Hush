@@ -11,6 +11,7 @@ TagManager:
   - KeyWall
   - MonsterTrigger
   - Death
+  - MonsterAnim
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Brick
+    uniqueID: 4125126003
+    locked: 0
+  - name: Monster
+    uniqueID: 1966809613
+    locked: 0
+  - name: Window
+    uniqueID: 1071239221
+    locked: 0
+  - name: Ground
+    uniqueID: 417061169
+    locked: 0
+  - name: Fog2
+    uniqueID: 3699457505
     locked: 0
   - name: Fog
     uniqueID: 1633484847
