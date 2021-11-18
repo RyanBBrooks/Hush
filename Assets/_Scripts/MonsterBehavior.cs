@@ -21,28 +21,27 @@ public class MonsterBehavior : MonoBehaviour
     Animator animate;
     void Start()
     {
-       // body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animate = GetComponent<Animator>();
-
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        animate.SetBool("playWalk", true);
+        animate.SetFloat("Speed", speed);
         float step = speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
             float x = this.transform.position.x;
-        //    if (x < 0 && body.velocity.x < 0)
-        //    {
-        //        sprite.flipX = flipX = true;
-        //    }
-        //    if (x > 0 && body.velocity.x > 0)
-        //    {
-        //    sprite.flipX = flipX = false;
-        //}
+            if (x < 0 && body.velocity.x < 0)
+            {
+                sprite.flipX = flipX = true;
+            }
+            if (x > 0 && body.velocity.x > 0)
+            {
+            sprite.flipX = flipX = false;
+        }
 
     }
 
