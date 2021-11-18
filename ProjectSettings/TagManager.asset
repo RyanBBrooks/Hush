@@ -11,6 +11,7 @@ TagManager:
   - KeyWall
   - MonsterTrigger
   - Death
+  - MonsterAnim
   layers:
   - Default
   - TransparentFX
