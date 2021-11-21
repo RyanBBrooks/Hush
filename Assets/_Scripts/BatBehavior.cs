@@ -138,6 +138,7 @@ public class BatBehavior : MonoBehaviour
     }
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
+        if (!clip) return;
         //UNCOMMENT ME ONCE CLIP EXISTS
         src.PlayOneShot(clip, vol);
 

@@ -148,10 +148,11 @@ public class PhysicsObjectBehavior : MonoBehaviour
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         //UNCOMMENT ME ONCE CLIP EXISTS
+        if (!src) return;
         src.PlayOneShot(clip, vol * 6);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircle(pos, vol);
+        s.SpawnEchoCircleInExtents(pos, vol);
     }
 }

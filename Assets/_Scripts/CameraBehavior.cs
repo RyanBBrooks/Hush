@@ -97,7 +97,7 @@ public class CameraBehavior : MonoBehaviour
     }
 
     //spawn an echo circle with a given volume and position
-    public void SpawnEchoCircle(Vector2 pos, float volume)
+    public void SpawnEchoCircleInExtents(Vector2 pos, float volume)
     {
         Vector4 extents = getExtents();
 
@@ -107,8 +107,14 @@ public class CameraBehavior : MonoBehaviour
             extents.z - outerScreenBuffer <= pos.y &&
             extents.w + outerScreenBuffer >= pos.y)
         {
-            GameObject c = Instantiate(echoCirclePrefab, pos, Quaternion.identity) as GameObject;
-            c.GetComponent<EchoCircleBehavior>().volume = volume;
+            SpawnEchoCircle(pos, volume);
         }
+    }
+
+    //spawn an echo circle with a given volume and position
+    public void SpawnEchoCircle(Vector2 pos, float volume)
+    {
+        GameObject c = Instantiate(echoCirclePrefab, pos, Quaternion.identity) as GameObject;
+        c.GetComponent<EchoCircleBehavior>().volume = volume;
     }
 }

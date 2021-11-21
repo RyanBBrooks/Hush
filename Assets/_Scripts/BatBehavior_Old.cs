@@ -87,6 +87,6 @@ public class BatBehavior_Old : MonoBehaviour
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircle(pos, vol);
+        s.SpawnEchoCircleInExtents(pos, vol);
     }
 }

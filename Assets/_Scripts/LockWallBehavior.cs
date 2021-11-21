@@ -89,7 +89,7 @@ public class LockWallBehavior : MonoBehaviour
                 {
                     //spawn a "EchoCircle"
                     CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-                    s.SpawnEchoCircle(pos, vol);
+                    s.SpawnEchoCircleInExtents(pos, vol);
                 }
             }
         }
@@ -101,11 +101,12 @@ public class LockWallBehavior : MonoBehaviour
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
+        if (!clip) return;
         //UNCOMMENT ME ONCE CLIP EXISTS
         src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircle(pos, vol);
+        s.SpawnEchoCircleInExtents(pos, vol);
     }
 }
