@@ -17,6 +17,6 @@ public class OneWayPlatformBehavior : MonoBehaviour
     void Update()
     {
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        box.enabled = (s.player.position.y-1 >= this.transform.position.y);
+        box.enabled = (s.player.position.y-0.9 >= this.transform.position.y);
     }
 }
