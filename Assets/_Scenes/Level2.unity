@@ -52713,6 +52713,10 @@ PrefabInstance:
       propertyPath: m_NormalizedViewPortRect.height
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 6381256240501708801, guid: 505d338866b40d944a949fd7d482975e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505d338866b40d944a949fd7d482975e, type: 3}
 --- !u!1001 &6107719257825455830

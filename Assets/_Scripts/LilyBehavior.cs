@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 //Ryan Brooks u1115093
@@ -45,12 +46,10 @@ public class LilyBehavior : MonoBehaviour
     List<GameObject> keys = null; //current number of keys held by lily
 
     //Audio Reveal vars
-    public float minReveal = 0.3f;
-    public float maxReveal = 2f;
-    float revealTimer = 0f;
-    public float revealVolMult = 1.2f;
-    bool isChargingReveal = false;
-    ParticleSystem revealParticles = null;
+    public float maxClapTimer = 3f;
+    float clapTimer = 0f;
+    Slider clapBar = null;
+    bool isClapping = false;
 
     //death vars
     bool dead = false;
@@ -62,7 +61,7 @@ public class LilyBehavior : MonoBehaviour
     AudioSource src;
     //SOUND: Create sound for footstep
     public AudioClip footstepClip;
-    public AudioClip revealClip; //used to be clap is now "flute??"
+    public AudioClip clapClip; //used to be clap is now "flute??"
     public AudioClip fallClip; //hitting the ground
     public AudioClip deathClip;
 
@@ -82,10 +81,15 @@ public class LilyBehavior : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
-        revealParticles = GetComponent<ParticleSystem>();
+        clapBar = this.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Slider>();
 
         //SOUND: get audio sorce
         src = GetComponent<AudioSource>();
+    }
+
+    public void SetIsClapping(bool b)
+    {
+        isClapping = b;
     }
 
     //Determine if lily is on the ground by checking the collision box
@@ -115,7 +119,7 @@ public class LilyBehavior : MonoBehaviour
             }
         }
         //if we are in front of a door trigger
-        if (o.tag == "Door" && !isChargingReveal)
+        if (o.tag == "Door" && !isClapping)
         {
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
@@ -153,7 +157,7 @@ public class LilyBehavior : MonoBehaviour
             }
         }
         //if we are in front of a key wall trigger
-        if (o.tag == "KeyWall" && !isChargingReveal)
+        if (o.tag == "KeyWall" && !isClapping)
         {
             //get the key wall (checks too see if it is broken)
             GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
@@ -312,9 +316,6 @@ public class LilyBehavior : MonoBehaviour
         }
         keys.Clear();
 
-        //stop any particles
-        revealParticles.Stop();
-
         PlaySound(0.5f, transform.position, deathClip);
     }
 
@@ -363,7 +364,7 @@ public class LilyBehavior : MonoBehaviour
                 m_speed *= grabSpeedMult;
             }
             //lock movement if charging
-            if (isChargingReveal)
+            if (isClapping)
             {
                 m_speed = 0;
             }
@@ -418,7 +419,7 @@ public class LilyBehavior : MonoBehaviour
             //prevent jumping if we are clapping / charging
             //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
-                && !isAttachedGrab && isOnGround && !isJumping && !isChargingReveal)
+                && !isAttachedGrab && isOnGround && !isJumping && !isClapping)
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
                 //isJumping = true;
@@ -437,7 +438,7 @@ public class LilyBehavior : MonoBehaviour
 
             //Begin Grabbing Code
             //if we are holding the grab key, and we are not currently grabbing, and we are on the ground, not clapping...
-            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isChargingReveal)
+            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isClapping)
             {
                 //cast a ray to check if there is a grabbable object
                 Physics2D.queriesStartInColliders = false;
@@ -501,56 +502,36 @@ public class LilyBehavior : MonoBehaviour
                 }
             }
 
-            //Charge if on ground, not grabbing, not charging clap, pressing E
-            if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E))
+            //decrement clap timer over time
+            if (clapTimer > 0)
             {
-                if (!isChargingReveal)
-                {
-                    //play particles
-                    revealParticles.Play();
-
-                    //ANIMATION: UNCOMMENT FOR CHARGE
-                    spriteAnim.SetBool("isCharging", true);
-                }
-                //we are charging
-                isChargingReveal = true;
-                //increment timer only if we are under max
-                if (revealTimer >= maxReveal)
-                {
-                    revealTimer = maxReveal;
-                    //stop particles
-                    revealParticles.Stop();
-                }
-                else
-                {
-                    revealTimer += Time.deltaTime;
-                }
+                clapTimer -= Time.deltaTime;
             }
-            //otherwise if we have charged a sound and released E, do it.
-            else if (isChargingReveal && !Input.GetKey(KeyCode.E))
+            else
             {
+                clapTimer = 0;
+            }
 
-                //ANIMATION: UNCOMMENT FOR CHARGE
-                spriteAnim.SetBool("isCharging", false);
+            //update bar value
+            clapBar.value = clapTimer / maxClapTimer;
 
-                //stop particles
-                revealParticles.Stop();
+            //clap if on ground, not grabbing, not charging clap, pressing E
+            if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E) && !isClapping)
+            {
+                //if timer is empty
+                if (clapTimer <= 0) {
+                    isClapping = true;
+                    spriteAnim.SetTrigger("clap");
+                    clapTimer = maxClapTimer;
 
-                //no longer charging
-                isChargingReveal = false;
-                
-                //discard small sounds
-                if (revealTimer >= minReveal)
-                { 
-                    float revealDist = 0.6f; //how far away from the player
+                    //clap
+                    float clapDist = 0.6f; //how far away from the player
                     //calculate sound location
-                    Vector2 revealPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * revealDist, this.transform.position.y);
+                    Vector2 clapPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * clapDist, this.transform.position.y);
 
                     //clap with the timer charge * vol multiplier
-                    PlaySound(revealTimer * revealVolMult, revealPos, revealClip);
+                    PlaySound(2.6f, clapPos, clapClip);
                 }
-                //reset timer
-                revealTimer = 0f;
             }
         }
         //fade out character alpha to animate door transition
