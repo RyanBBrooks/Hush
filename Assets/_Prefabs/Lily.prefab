@@ -322,12 +322,10 @@ MonoBehaviour:
   grabSpeedMult: 0.75
   jointDistMod: 0.1
   isStepping: 0
-  minReveal: 0.3
-  maxReveal: 2
-  revealVolMult: 1.2
+  maxClapTimer: 3
   stepVol: 0.25
   footstepClip: {fileID: 8300000, guid: eb5d45694604aa14e9aa4e58ed61754b, type: 3}
-  revealClip: {fileID: 8300000, guid: 54cc961cd64fbe24884266caad7814f9, type: 3}
+  clapClip: {fileID: 8300000, guid: 54cc961cd64fbe24884266caad7814f9, type: 3}
   fallClip: {fileID: 8300000, guid: 7934c113c7223854cb04e61663e102ce, type: 3}
   deathClip: {fileID: 8300000, guid: 23b09d9c740f92f49b613f7d16462c24, type: 3}
   monster: {fileID: 0}

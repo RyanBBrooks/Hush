@@ -18,6 +18,7 @@ public class CameraBehavior : MonoBehaviour
     public float smoothing = 0.12f;
 
     public bool enableUI = true;
+    public bool saveProgress = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,9 @@ public class CameraBehavior : MonoBehaviour
         EnableUI(false);
         //set to default player position
         transform.position = player.transform.position;
+        if (saveProgress) {
+            PlayerPrefs.SetString("Progress", SceneManager.GetActiveScene().name);
+        }
 
     }
 
