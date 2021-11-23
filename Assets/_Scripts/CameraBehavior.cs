@@ -16,7 +16,8 @@ public class CameraBehavior : MonoBehaviour
     //movement vars
     public Transform player; // usually the player
     public float smoothing = 0.12f;
-    
+
+    public bool enableUI = true;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +51,7 @@ public class CameraBehavior : MonoBehaviour
         }
 
         //menu
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && enableUI)
         {
             //make menu visible
             EnableUI(!canvas.enabled);
@@ -73,7 +74,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("TitleScene", LoadSceneMode.Single);
     }
 
     public void Continue()
