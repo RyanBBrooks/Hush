@@ -16,6 +16,7 @@ public class BreakFloorBehavior : MonoBehaviour
 
     //ground vars
     BoxCollider2D box;
+    Rigidbody2D rb;
     SpriteRenderer rend;
     private bool broken = false;
 
@@ -27,6 +28,7 @@ public class BreakFloorBehavior : MonoBehaviour
     void Start()
     {
         //get references
+        rb = GetComponent<Rigidbody2D>();
         part = GetComponent<ParticleSystem>();
         collEvents = new List<ParticleCollisionEvent>();
         box = GetComponent<BoxCollider2D>();
@@ -53,6 +55,7 @@ public class BreakFloorBehavior : MonoBehaviour
     //break the floor
     public void Break()
     {
+        Destroy(rb);
         box.enabled = false;
         rend.enabled = false;
 
