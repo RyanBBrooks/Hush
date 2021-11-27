@@ -458,7 +458,10 @@ public class LilyBehavior : MonoBehaviour
                         spriteAnim.SetBool("isGrabbing", true);
 
                         //if object's rotation should be locked, do it
-                        grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = s.GetGrabLocksRotation();
+                        if (s.GetGrabLocksRotation())
+                        {
+                            grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = true;
+                        }
 
                         //set the anchor to the position where our ray hit the object relative to the origin of that object
                         j.anchor = Quaternion.Inverse(grabbedObject.transform.rotation) * ((Vector3)hit.point - grabbedObject.transform.position);
@@ -492,7 +495,10 @@ public class LilyBehavior : MonoBehaviour
                     }
 
                     //unfreeze object rotation
-                    grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+                    if (s.GetGrabLocksRotation())
+                    {
+                        grabbedObject.gameObject.GetComponent<Rigidbody2D>().freezeRotation = false;
+                    }
 
                 }
                 //otherwise update the visuals of the grabbed object

@@ -37,7 +37,8 @@ public class EchoCircleBehavior : MonoBehaviour
         }
 
         //also fade the alpha of the rings
-        ringRenderer.color = new Color(1, 1, 1, ringRenderer.color.a - (decayRate * Time.deltaTime));
+        if(ringRenderer)
+            ringRenderer.color = new Color(1, 1, 1, ringRenderer.color.a - (decayRate * Time.deltaTime));
     }
 
     //if it encounters a physics object, it updates the visual
