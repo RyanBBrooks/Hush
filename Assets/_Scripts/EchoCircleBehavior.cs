@@ -28,7 +28,7 @@ public class EchoCircleBehavior : MonoBehaviour
     void Update()
     {
         //fade out the alpha of the blue circle until it has an alpha of 0
-        blueCircleRenderer.color = new Color(0, 0, 1, blueCircleRenderer.color.a - (decayRate * Time.deltaTime));
+        blueCircleRenderer.color = new Color(blueCircleRenderer.color.r, blueCircleRenderer.color.g, blueCircleRenderer.color.b, blueCircleRenderer.color.a - (decayRate * Time.deltaTime));
         
         //then delete it
         if (blueCircleRenderer.color.a <= 0)
