@@ -60,7 +60,7 @@ public class LilyBehavior : MonoBehaviour
     //SOUND: Create one AudioSource variable for audio source
     AudioSource src;
     //SOUND: Create sound for footstep
-    public AudioClip footstepClip;
+    public List<AudioClip> footstepList;
     public AudioClip clapClip; //used to be clap is now "flute??"
     public AudioClip fallClip; //hitting the ground
     public AudioClip deathClip;
@@ -319,6 +319,12 @@ public class LilyBehavior : MonoBehaviour
         PlaySound(0.5f, transform.position, deathClip);
     }
 
+    public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
+    {
+        int r = Random.Range(0, clips.Count);
+        PlaySound(vol, pos, clips[r]);
+    }
+
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
         if (!clip) return;
@@ -404,7 +410,7 @@ public class LilyBehavior : MonoBehaviour
                                                     this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
 
                 //TODO : Play a footstep sound here!
-                PlaySound(stepVol, stepLocation, footstepClip);
+                PlayRandomSound(stepVol, stepLocation, footstepList);
 
                 //reset vars
                 isStepping = false; // in case this is the last tick of the frame

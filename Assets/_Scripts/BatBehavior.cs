@@ -23,7 +23,7 @@ public class BatBehavior : MonoBehaviour
 
     //sound vars=    
     AudioSource src;//SOUND: Create one AudioSource variable for audio source
-    public AudioClip screechClip;// screeching clip
+    public List<AudioClip> screechList;// screeching clip
 
     // Start is called before the first frame update
     void Start()
@@ -125,7 +125,7 @@ public class BatBehavior : MonoBehaviour
                     volume = volumes[0];
                 }
                 //TODO: play the actual bat audio file here
-                PlaySound(volume, targets[0], screechClip);
+                PlayRandomSound(volume, targets[0], screechList);
 
                 //start wait timer
                 waitTimer = waitTime;
@@ -135,6 +135,11 @@ public class BatBehavior : MonoBehaviour
                 volumes.RemoveAt(0);
             }
         }
+    }
+    public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
+    {
+        int r = Random.Range(0, clips.Count);
+        PlaySound(vol, pos, clips[r]);
     }
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
