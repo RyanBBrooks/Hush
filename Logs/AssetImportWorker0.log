@@ -1646,3 +1646,216 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2554.111919 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d58ea548cccaf673d0d960f718ae05a') in 0.127193 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 48.734974 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7c286405a7f3bfeb4f0c8831f634475') in 0.017522 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.547740 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1f0f294695ea42110cedbb29e3fa867') in 0.016764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 105.671631 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '326306d80206bb56fd9216f51e620399') in 0.025305 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 120.844791 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e7d6ca8919234eced4d5a041607b690') in 0.045654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.379810 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '391d45b5f387f88c2644e3ae17e6135b') in 0.020699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.946031 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5bc23156ab239fca6246649746629257') in 0.020683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 22.506591 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '641a86c1320255de9e5eee8e03877081') in 0.015007 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 71.340019 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdb846a6c3b11b343920bd513a5f6a7e') in 0.011615 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.865149 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '735547144fceb808d31be4a49d14baeb') in 0.013986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.063771 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b4b31d160afa55f4ec83fd367739c41') in 0.018056 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.366797 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a33d746f716ffce7bc34204648812cd6') in 0.015830 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.660024 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90d3fc683869a57bc6d2ab17cf26a3f1') in 0.016019 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.576006 seconds.
+  path: Assets/_Sprites/OneWay.png
+  artifactKey: Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sprites/OneWay.png using Guid(47ac3fbda28542044b5a9c799b979f45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc00c15f0396061b5760091edda39da9') in 0.032401 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 99.886624 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Cannot generate 9 slice most likely because the size is too big. Requires 92427776 vertices and 138641664 indices
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Runtime/2D/SpriteTiling/SpriteTiling.cpp line 78]
+
+ -> (artifact id: '0e36fa79502455192503aff444e64314') in 0.017552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.582807 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Cannot generate 9 slice most likely because the size is too big. Requires 9242968 vertices and 13864452 indices
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Runtime/2D/SpriteTiling/SpriteTiling.cpp line 78]
+
+ -> (artifact id: '98059841cdc2d177ecb5218dc13105d1') in 0.019600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.668709 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Cannot generate 9 slice most likely because the size is too big. Requires 7394184 vertices and 11091276 indices
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Runtime/2D/SpriteTiling/SpriteTiling.cpp line 78]
+
+ -> (artifact id: '411d3f0baa07874b7bf1329b5e08515d') in 0.018453 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.386575 seconds.
+  path: Assets/_Scenes/Level2.unity
+  artifactKey: Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level2.unity using Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8b6daea82d631565cd1fa6fbe7b945d') in 0.008685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 59.526510 seconds.
+  path: Assets/_Scenes/LoopLevel.unity
+  artifactKey: Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/LoopLevel.unity using Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd745ed2ffdee05d13dc24e89d85aface') in 0.008637 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.353687 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Cannot generate 9 slice most likely because the size is too big. Requires 7394184 vertices and 11091276 indices
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Runtime/2D/SpriteTiling/SpriteTiling.cpp line 78]
+
+ -> (artifact id: '3f9723f20c567852cfa3f210bd51e064') in 0.024394 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 58.132068 seconds.
+  path: Assets/_Scenes/SwingLevel.unity
+  artifactKey: Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/SwingLevel.unity using Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fa39d177a3c7da15196687c1c2622a0') in 0.010849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 98.229364 seconds.
+  path: Assets/_Prefabs/OneWayPlatform.prefab
+  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Cannot generate 9 slice most likely because the size is too big. Requires 7394184 vertices and 11091276 indices
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEditor.PreviewRenderUtility:Render (bool,bool)
+UnityEditor.GameObjectInspector:DoRenderPreview ()
+UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
+UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
+
+[C:\buildslave\unity\build\Runtime/2D/SpriteTiling/SpriteTiling.cpp line 78]
+
+ -> (artifact id: '20035b04eba698e4d583c7e38fdcfe72') in 0.012916 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.938259 seconds.
+  path: Assets/_Scenes/Level2.unity
+  artifactKey: Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level2.unity using Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbbedaf1a85a8fcbaff75182ae74d52c') in 0.006423 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 67.699934 seconds.
+  path: Assets/_Scenes/SwingLevel.unity
+  artifactKey: Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/SwingLevel.unity using Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a19f850b3b22069dec2548e3125c8af0') in 0.011493 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.901385 seconds.
+  path: Assets/_Scenes/LoopLevel.unity
+  artifactKey: Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/LoopLevel.unity using Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29a22b819283df7fe884ee2cd396d729') in 0.009182 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.502236 seconds.
+  path: Assets/_Scenes/Tutorial.unity
+  artifactKey: Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Tutorial.unity using Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e95385238039378203d45f42d3aef3c2') in 0.008722 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.303145 seconds.
+  path: Assets/_Scenes/TitleScene.unity
+  artifactKey: Guid(c4aee1a85b923814daa8b826bee111be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/TitleScene.unity using Guid(c4aee1a85b923814daa8b826bee111be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3edfeb37575d3311d6a1ec6c70c5705') in 0.010431 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
