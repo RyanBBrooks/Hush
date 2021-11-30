@@ -48,7 +48,9 @@ public class LilyBehavior : MonoBehaviour
     //Audio Reveal vars
     public float maxClapTimer = 3f;
     float clapTimer = 0f;
-    Slider clapBar = null;
+    Slider clapBarSlider = null;
+    Image clapBarImg = null;
+    Canvas clapBarCanvas = null;
     bool isClapping = false;
 
     //death vars
@@ -81,7 +83,9 @@ public class LilyBehavior : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
-        clapBar = this.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Slider>();
+        clapBarCanvas = this.transform.GetChild(0).gameObject.GetComponent<Canvas>();
+        clapBarSlider = clapBarCanvas.transform.GetChild(0).gameObject.GetComponent<Slider>();
+        clapBarImg = clapBarSlider.transform.GetChild(0).gameObject.GetComponent<Image>();
 
         //SOUND: get audio sorce
         src = GetComponent<AudioSource>();
@@ -525,13 +529,25 @@ public class LilyBehavior : MonoBehaviour
             }
 
             //update bar value
-            clapBar.value = clapTimer / maxClapTimer;
+            clapBarSlider.value = clapTimer / maxClapTimer;
+            //update bar color
+            Color c = clapBarImg.color;
+            if (c.g <= 1)
+            {
+                
+                clapBarImg.color = new Color(1, c.g + 0.002f, c.b + 0.002f, 1);
+                //shake bar
+                clapBarCanvas.transform.localPosition = new Vector2(Mathf.Sin(Time.time * 5 * c.g/1) * 0.04f, 1.5f + Mathf.Sin(Time.time/1.3f * 5 * c.g/1) * 0.04f);
+                Debug.Log(clapBarCanvas.transform.localPosition);
+            }
 
             //clap if on ground, not grabbing, not charging clap, pressing E
-            if (isOnGround && !isAttachedGrab && Input.GetKey(KeyCode.E) && !isClapping)
+            if (isOnGround && !isAttachedGrab && Input.GetKeyDown(KeyCode.E) && !isClapping)
             {
                 //if timer is empty
                 if (clapTimer <= 0) {
+                    clapBarCanvas.transform.localPosition.Set(0, 1.5f, 0);
+                    clapBarImg.color = new Color(1, 1, 1, 1);
                     isClapping = true;
                     spriteAnim.SetTrigger("clap");
                     clapTimer = maxClapTimer;
@@ -543,6 +559,12 @@ public class LilyBehavior : MonoBehaviour
 
                     //clap with the timer charge * vol multiplier
                     PlaySound(2.6f, clapPos, clapClip);
+                }
+                //otherwise play animation to show you cant use it yet
+                else if (clapBarImg.color.g >= 1)
+                {
+                    clapBarImg.color = new Color(1, 0.45f, 0.45f, 1);
+                    
                 }
             }
         }
