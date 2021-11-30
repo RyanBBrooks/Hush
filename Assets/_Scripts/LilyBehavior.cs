@@ -128,7 +128,7 @@ public class LilyBehavior : MonoBehaviour
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
             //if we press up and are on the ground
-            if (Input.GetKey(KeyCode.W) && isOnGround)
+            if ((Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 0.5) && isOnGround)
             {
                 //if the door is locked check if we have a key, use the key
                 if (s.locked && keys.Count>0 && !s.getTargeted())
@@ -448,7 +448,7 @@ public class LilyBehavior : MonoBehaviour
 
             //Begin Grabbing Code
             //if we are holding the grab key, and we are not currently grabbing, and we are on the ground, not clapping...
-            if (Input.GetKey(KeyCode.LeftShift) && !isAttachedGrab && isOnGround && !isClapping)
+            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.Joystick1Button5)) && !isAttachedGrab && isOnGround && !isClapping)
             {
                 //cast a ray to check if there is a grabbable object
                 Physics2D.queriesStartInColliders = false;
@@ -493,7 +493,7 @@ public class LilyBehavior : MonoBehaviour
                 PhysicsObjectBehavior s = grabbedObject.gameObject.GetComponent<PhysicsObjectBehavior>();
 
                 //if we should stop grabbing
-                if (!isOnGround || !Input.GetKey(KeyCode.LeftShift))
+                if (!isOnGround || (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.Joystick1Button5)))
                 {
                     //find the joint, disable it.
                     DistanceJoint2D j;
@@ -542,7 +542,7 @@ public class LilyBehavior : MonoBehaviour
             }
 
             //clap if on ground, not grabbing, not charging clap, pressing E
-            if (isOnGround && !isAttachedGrab && Input.GetKeyDown(KeyCode.E) && !isClapping)
+            if (isOnGround && !isAttachedGrab && (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Joystick1Button2)) && !isClapping)
             {
                 //if timer is empty
                 if (clapTimer <= 0) {

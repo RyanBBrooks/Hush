@@ -55,7 +55,7 @@ public class CameraBehavior : MonoBehaviour
         }
 
         //menu
-        if (Input.GetKeyDown(KeyCode.Escape) && enableUI)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && enableUI)
         {
             //make menu visible
             EnableUI(!canvas.enabled);
