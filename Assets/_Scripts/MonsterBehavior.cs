@@ -24,6 +24,7 @@ public class MonsterBehavior : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animate = GetComponent<Animator>();
+        animate.SetBool("walk", true);
     }
 
     
@@ -32,7 +33,8 @@ public class MonsterBehavior : MonoBehaviour
     {
         animate.SetFloat("Speed", speed);
         float step = speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+            Vector3 newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+        transform.position = new Vector3(newPos.x, -1.6442f, newPos.z);
             float x = this.transform.position.x;
             if (x < 0 && body.velocity.x < 0)
             {
@@ -40,8 +42,8 @@ public class MonsterBehavior : MonoBehaviour
             }
             if (x > 0 && body.velocity.x > 0)
             {
-            sprite.flipX = flipX = false;
-        }
+                sprite.flipX = flipX = false;
+            }
 
     }
 

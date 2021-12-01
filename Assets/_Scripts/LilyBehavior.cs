@@ -205,10 +205,12 @@ public class LilyBehavior : MonoBehaviour
         else if (o.tag == "MonsterTrigger")
         {
             monster.SetActive(true);
+            
         }
         else if(o.tag == "MonsterAnim")
         {
-            monsterAnimate.SetFloat("Speed", 2);
+            monsterAnimate.gameObject.SetActive(true);
+            monsterAnimate.SetBool("walk", true);
         }
     }
 
@@ -342,6 +344,16 @@ public class LilyBehavior : MonoBehaviour
 
     void Update()
     {
+
+        if (monsterAnimate.isActiveAndEnabled)
+        {
+            Vector3 currPos = monsterAnimate.gameObject.transform.position;
+            monsterAnimate.gameObject.transform.position = new Vector3(currPos.x - .1f, currPos.y, currPos.z); 
+            if(currPos.x - .1 < 25)
+            {
+                monsterAnimate.gameObject.SetActive(false);
+            }
+        }
         //Debug.Log(spriteAnim.GetBool("isGrabbing"));
         if (dead)
         {           
