@@ -31,14 +31,19 @@ public class MonsterBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animate.SetFloat("Speed", speed);
         float step = speed * Time.deltaTime; // calculate distance to move
-        Vector3 newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
         float y = -1.644f;
-        if(transform.position.x > 25)
+        Vector3 newPos = new Vector3(transform.position.x - speed/100, transform.position.y, transform.position.z);
+        if (transform.position.x > 25)
         {
             y = -3.8f;
         }
+        else
+        {
+           newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+        }
+        
+        
         transform.position = new Vector3(newPos.x, y, newPos.z);
             float x = this.transform.position.x;
 
