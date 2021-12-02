@@ -17,7 +17,7 @@ public class MonsterBehavior : MonoBehaviour
     public float smoothing = 0.01f; //movement smoothing
 
     SpriteRenderer sprite;
-    bool flipX = false;
+    
     Animator animate;
     void Start()
     {
@@ -34,6 +34,7 @@ public class MonsterBehavior : MonoBehaviour
         float step = speed * Time.deltaTime; // calculate distance to move
         float y = -1.644f;
         Vector3 newPos = new Vector3(transform.position.x - speed/100, transform.position.y, transform.position.z);
+
         if (transform.position.x > 25)
         {
             y = -3.8f;
@@ -42,10 +43,10 @@ public class MonsterBehavior : MonoBehaviour
         {
            newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
         }
-        
-        
+        float velocity = transform.position.x - newPos.x;
+
         transform.position = new Vector3(newPos.x, y, newPos.z);
-            float x = this.transform.position.x;
+        //float x = this.transform.position.x;
 
 
         if(transform.position.x < 25 && transform.position.x > 0)
@@ -53,14 +54,16 @@ public class MonsterBehavior : MonoBehaviour
             this.gameObject.SetActive(false);
             transform.position = new Vector3(-7, -1.644f, 0);
         }
+
+        Debug.Log(velocity);
        
-            if (x < 0 && body.velocity.x < 0)
+            if (velocity < 0)
             {
-                sprite.flipX = flipX = true;
+                sprite.flipX = false;
             }
-            if (x > 0 && body.velocity.x > 0)
+            if (velocity > 0)
             {
-                sprite.flipX = flipX = false;
+                sprite.flipX = true;
             }
 
     }
