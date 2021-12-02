@@ -33,9 +33,22 @@ public class MonsterBehavior : MonoBehaviour
     {
         animate.SetFloat("Speed", speed);
         float step = speed * Time.deltaTime; // calculate distance to move
-            Vector3 newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
-        transform.position = new Vector3(newPos.x, -1.6442f, newPos.z);
+        Vector3 newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+        float y = -1.644f;
+        if(transform.position.x > 25)
+        {
+            y = -3.8f;
+        }
+        transform.position = new Vector3(newPos.x, y, newPos.z);
             float x = this.transform.position.x;
+
+
+        if(transform.position.x < 25 && transform.position.x > 0)
+        {
+            this.gameObject.SetActive(false);
+            transform.position = new Vector3(-7, -1.644f, 0);
+        }
+       
             if (x < 0 && body.velocity.x < 0)
             {
                 sprite.flipX = flipX = true;
