@@ -13,7 +13,6 @@ public class MonsterBehavior : MonoBehaviour
     public float vol;
     public float height = 20;
     Rigidbody2D body;
-    private Vector3 vel = Vector3.zero;
     public float smoothing = 0.01f; //movement smoothing
 
     SpriteRenderer sprite;
@@ -46,7 +45,6 @@ public class MonsterBehavior : MonoBehaviour
         float velocity = transform.position.x - newPos.x;
 
         transform.position = new Vector3(newPos.x, y, newPos.z);
-        //float x = this.transform.position.x;
 
 
         if(transform.position.x < 25 && transform.position.x > 0)
@@ -55,7 +53,6 @@ public class MonsterBehavior : MonoBehaviour
             transform.position = new Vector3(-7, -1.644f, 0);
         }
 
-        Debug.Log(velocity);
        
             if (velocity < 0)
             {
@@ -73,10 +70,18 @@ public class MonsterBehavior : MonoBehaviour
         GameObject o = collision.gameObject;
         if (o.tag == "Player")
         {
-            speed = 0;
+            body.velocity = Vector3.zero;
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        GameObject o = collision.gameObject;
+        if(o.tag == "Player")
+        {
+            body.velocity = Vector3.zero;
+        }
+    }
     private void OnCollisionExit(Collision collision)
     {
         speed = 3;
