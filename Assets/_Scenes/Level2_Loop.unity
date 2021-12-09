@@ -10131,11 +10131,11 @@ Transform:
   - {fileID: 1563046058}
   - {fileID: 976329931}
   - {fileID: 728349227}
+  - {fileID: 1798042017}
   - {fileID: 85696972}
-  - {fileID: 534683881}
   - {fileID: 149968235}
   - {fileID: 743761718}
-  - {fileID: 1798042017}
+  - {fileID: 534683881}
   - {fileID: 2076908052}
   - {fileID: 953539176}
   - {fileID: 598391860}
@@ -30134,7 +30134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4014964719686111795, guid: 187ffde2f2e4dd740af731101f3fce7e, type: 3}
       propertyPath: sceneName
-      value: Level2
+      value: Level3_Swing
       objectReference: {fileID: 0}
     - target: {fileID: 4311339201318967376, guid: 187ffde2f2e4dd740af731101f3fce7e, type: 3}
       propertyPath: m_SortingOrder
@@ -35371,7 +35371,7 @@ Transform:
   m_LocalScale: {x: 26.732262, y: 17.216024, z: 1}
   m_Children: []
   m_Father: {fileID: 579319949}
-  m_RootOrder: 21
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1798042018
 Rigidbody2D:

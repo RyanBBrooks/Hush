@@ -25,8 +25,8 @@ public class MainMenuBehavior : MonoBehaviour
 
     public void Restart()
     {
-        PlayerPrefs.SetString("Progress", "Tutorial");
-        SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
+        PlayerPrefs.SetString("Progress", "Level1_Tutorial");
+        SceneManager.LoadScene("Level1_Tutorial", LoadSceneMode.Single);
     }
 
     public void Exit()
@@ -39,7 +39,7 @@ public class MainMenuBehavior : MonoBehaviour
         //save HighScore
         if (!PlayerPrefs.HasKey("Progress"))
         {
-            PlayerPrefs.SetString("Progress", "Tutorial");
+            PlayerPrefs.SetString("Progress", "Level1_Tutorial");
         }
         SceneManager.LoadScene(PlayerPrefs.GetString("Progress"), LoadSceneMode.Single);
     }

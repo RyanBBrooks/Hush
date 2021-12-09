@@ -45,14 +45,6 @@ public class CameraBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene("Tutorial");
-        }
-        if (Input.GetKey(KeyCode.LeftAlt) && Input.GetKey(KeyCode.Alpha2))
-        {
-            SceneManager.LoadScene("Level2");
-        }
 
         //menu
         if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Joystick1Button7)) && enableUI)
@@ -78,7 +70,7 @@ public class CameraBehavior : MonoBehaviour
 
     public void Exit()
     {
-        SceneManager.LoadScene("TitleScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Level0_TitleScene", LoadSceneMode.Single);
     }
 
     public void Continue()
