@@ -20,6 +20,10 @@ public class CameraBehavior : MonoBehaviour
     public bool enableUI = true;
     public bool saveProgress = true;
 
+    //parallax vars
+    public GameObject background;
+    public float rate = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,9 @@ public class CameraBehavior : MonoBehaviour
             //make menu visible
             EnableUI(!canvas.enabled);
         }
+
+        //paralax
+        background.transform.position = -rate * this.transform.position;
     }
 
     public void EnableUI(bool e)

@@ -708,6 +708,8 @@ MonoBehaviour:
   smoothing: 0.12
   enableUI: 1
   saveProgress: 1
+  background: {fileID: 0}
+  rate: 0.2
 --- !u!82 &6603201613767641316
 AudioSource:
   m_ObjectHideFlags: 0
