@@ -892,3 +892,4 @@ Received Import Request.
   path: Assets/_Scripts/OneWayPlatformBehavior.cs
   artifactKey: Guid(21a49fddd04ca52468d8c182b38751b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/_Scripts/OneWayPlatformBehavior.cs using Guid(21a49fddd04ca52468d8c182b38751b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '916d2a1d159e49081da54cc32e58a709') in 0.010686 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
