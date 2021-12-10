@@ -5,14 +5,14 @@ using SpriteToParticlesAsset;
 
 public class KeyBehavior : MonoBehaviour
 {
-    //animator vars
-    SpriteRenderer rend = null;
-    CircleCollider2D coll = null;
-    ParticleSystem part = null;
-    GameObject target = null;
-    bool collected = false;
-    DoorBehavior door = null;
-    LockWallBehavior wall = null;
+    //vars
+    SpriteRenderer rend = null; //key sprite
+    CircleCollider2D coll = null; //key collider
+    ParticleSystem part = null; //particle system
+    GameObject target = null; //targeted object
+    bool collected = false; //has the key been collected
+    DoorBehavior door = null; //door
+    LockWallBehavior wall = null; //wall
 
     //soundvars
     AudioSource src; //source
@@ -21,6 +21,7 @@ public class KeyBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //get references
         coll = this.GetComponent<CircleCollider2D>();
         rend = this.GetComponent<SpriteRenderer>();
         part = this.GetComponent<ParticleSystem>();
@@ -29,13 +30,16 @@ public class KeyBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if the key has been collected
         if (collected)
         {
+            //initialize values
             float speed = 5f;
             float dst = 1.5f;
             Vector2 keyPos = this.gameObject.transform.position;
-            Vector2 targetPos = target.transform.position;
-            //if collected follow lily
+            Vector2 targetPos = target.transform.position; //target should be lily
+
+            //follow lily
             if ((((Vector3.Distance(keyPos, targetPos)) >= dst) || door || wall))
             {
                 this.gameObject.transform.position = Vector2.Lerp(keyPos, targetPos, Time.deltaTime * speed);
@@ -48,6 +52,7 @@ public class KeyBehavior : MonoBehaviour
                 door.Unlock();
                 door = null;
             }
+            //use key if near wall
             if (wall && (Vector3.Distance(keyPos, targetPos)) < 0.1)
             {
                 delete();
@@ -57,21 +62,25 @@ public class KeyBehavior : MonoBehaviour
         }
     }
 
+    //collect the key
     public void collect(GameObject t)
     {
-        //TODO: play key sound (NO VISUALIZATION!)
-        float collectVol = 1f; //SOUND: you can mess with this to change volume
-        //UNCOMMENT TO PLAY SOUND
-        //src.PlayOneShot(collectClip, collectVol * 3); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
+        //play collect sound sound
+        float collectVol = 1f;
+        //src.PlayOneShot(collectClip, collectVol); //CURRENTLY BUGGED
 
+        //change the layer it appears on to allow it to go over objects and appear above fog
         rend.sortingLayerName = "Character";
-        coll.enabled = false;
-        target = t;
+
+        
+        coll.enabled = false;//disable collider
+        target = t;//set target
         collected = true;
-        part.Play();
+        part.Play();//play the particle effect
 
     }
 
+    //use the key
     public void use(GameObject o)
     {
         //save door and target door
@@ -86,10 +95,11 @@ public class KeyBehavior : MonoBehaviour
         }
     }
 
+    //delete the key (visually and functionally)
     public void delete()
     {
-        part.Play();
-        rend.enabled = false;
+        part.Play(); //play particle effect
+        rend.enabled = false; //disable visuals
     }
 
 }

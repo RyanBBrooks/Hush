@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class LockWallDetectorBehavior : MonoBehaviour
 {
+    //this script serves to allow a second collision box (triger) for lock walls
+
     GameObject wall = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        //update refs
+        //update reference to wall
         wall = transform.parent.gameObject;
     }
 
@@ -19,10 +21,9 @@ public class LockWallDetectorBehavior : MonoBehaviour
         
     }
 
-    //returns the wall 
+    //returns the wall that is detected
     public GameObject getWall()
     {
         return wall;
-
     }
 }

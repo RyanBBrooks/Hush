@@ -42,11 +42,11 @@ public class BreakFloorBehavior : MonoBehaviour
         
     }
 
+    //get and set if the floor is broken
     public bool GetBroken()
     {
         return broken;
     }
-
     public void SetBroken(bool b)
     {
         broken = b;
@@ -83,8 +83,10 @@ public class BreakFloorBehavior : MonoBehaviour
             //iterate through, spawn echo circle
             for (i = 0; i < n; i++)
             {
-                Vector3 pos = collEvents[i].intersection;
-                float vol = collEvents[i].velocity.magnitude / 70;
+                Vector3 pos = collEvents[i].intersection; //collision position
+                float vol = collEvents[i].velocity.magnitude / 70; //collision volume
+
+                //if too quiet don't play sound, otherwise do
                 if (vol > 0.1)
                 {
                     //spawn a "EchoCircle"
@@ -97,8 +99,10 @@ public class BreakFloorBehavior : MonoBehaviour
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
+        //ignore broken clips
         if (!clip) return;
-        //UNCOMMENT ME ONCE CLIP EXISTS
+
+        //play sound
         src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"

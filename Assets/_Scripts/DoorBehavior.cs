@@ -8,7 +8,7 @@ public class DoorBehavior : MonoBehaviour
 {
     //vars
     public bool locked = false; // if the door is locked
-    public string sceneName = "PhysicsTest"; //scene to load on door open
+    public string sceneName = "Level0_TitleScene"; //default scene to load on door open
     Animator anim = null;
     bool targeted = false; //is the door targeted by a key
 
@@ -39,16 +39,19 @@ public class DoorBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //animate based on current value of locked
         anim.SetBool("IsLocked", locked);
     }
 
+    //unlock the door
     public void Unlock()
     {
+        //unlock door
         locked = false;
-        //Play unlock + open sound NO VISUALILZATION
-        float openUnlockVol = 1f; //SOUND: you can mess with this to change volume
-        //UNCOMMENT TO PLAY SOUND
-        src.PlayOneShot(openUnlockClip, openUnlockVol * 3); //WE JUST PLAY THE SOUND DIRECTLY, SINCE WE DONT SPAWN A CIRLCLE (its like a ui thing not actually a sound in the scene)
+
+        //Play unlock + open sound (NO VISUALILZATION)
+        float openUnlockVol = 3f;
+        src.PlayOneShot(openUnlockClip, openUnlockVol);
 
     }
 
@@ -62,6 +65,7 @@ public class DoorBehavior : MonoBehaviour
     //change scene called by door animator
     internal void ChangeScene()
     {
+        //load the new scene
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }  
 }

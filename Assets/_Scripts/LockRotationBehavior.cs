@@ -16,11 +16,14 @@ public class LockRotationBehavior : MonoBehaviour
         
     }
 
+    //lock rotation of a physics object that enters this.
     private void OnTriggerEnter2D(Collider2D col)
     {
+        //if the object is tagged as physics
         GameObject o = col.gameObject;
         if(o.tag == "Phys")
         {
+            //lock its rotation
             Rigidbody2D rb = o.GetComponent<Rigidbody2D>();
             rb.freezeRotation = true;
         }

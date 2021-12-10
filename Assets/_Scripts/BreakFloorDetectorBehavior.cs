@@ -22,7 +22,7 @@ public class BreakFloorDetectorBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        //if object is a physics object or player, break the floor
+        //if object is a (physics object) if allowed or player, break the floor
         string t = coll.gameObject.tag;
         if (((t == "Player" && s.detectPlayer) || (t == "Phys" && s.detectPhys)) && !s.GetBroken())
         {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OneWayPlatformBehavior : MonoBehaviour
-{
+{   //OUTDATED. DO NOT USE!
+
     //vars
     EdgeCollider2D box = null;
 

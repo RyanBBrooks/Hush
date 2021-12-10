@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Ryan Brooks
 public class PhysicsObjectBehavior : MonoBehaviour
 {
     //visual vars
@@ -75,15 +76,21 @@ public class PhysicsObjectBehavior : MonoBehaviour
             //update ropes
             foreach (GameObject rope in ropes)
             {
+                //make all ropes transparent to begin
                 Rope s = rope.GetComponent<Rope>();
                 s.ChangeVisualColorAlpha(0);
             }
         }
-        //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin
+        //if an object is visible, decrease it's alpha until it reaches the minimum set by alphaMin - also set this for the ropes
         if (!visible && spriteRend.color.a > alphaMin)
         {
+            //calcuate new alpha
             float newA = spriteRend.color.a - (alphaDecayRate * Time.deltaTime);
+
+            //update object alpha
             spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, newA);
+
+            //update alpha for each rope
             foreach (GameObject rope in ropes)
             {
                 Rope s = rope.GetComponent<Rope>();
@@ -96,9 +103,15 @@ public class PhysicsObjectBehavior : MonoBehaviour
     public void UpdateVisual()
     {
         visible = true;
+
+        //update color
         spriteRend.color = new Color(spriteRend.color.r, spriteRend.color.g, spriteRend.color.b, 1);
+
+        //update position and rotation
         sprite.transform.position = box.transform.position;
         sprite.transform.rotation = box.transform.rotation;
+
+        //update position and color of each attached rope
         foreach (GameObject rope in ropes)
         {
             Rope s = rope.GetComponent<Rope>();
@@ -116,13 +129,6 @@ public class PhysicsObjectBehavior : MonoBehaviour
     //if we collide with something
     private void OnCollisionEnter2D(Collision2D col)
     {
-        //TODO: update this - for now, don't make sounds if the player hits an object, should probbably be handled by player
-        //if (col.gameObject.tag == "Player")
-        //{
-            //return;
-        //}
-
-        //TODO: perfect impact based volume calculation
         Vector2 pos = Vector2.zero; //position for the sound to be played
         Vector2 avgNormal = Vector2.zero; //average Normal vector for the contacts
 
@@ -138,7 +144,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         Rigidbody2D other = col.gameObject.GetComponent<Rigidbody2D>();
         float vol = Vector2.Dot(avgNormal, col.relativeVelocity) / 10;
 
-        //only play a sound if the volume is above a certain threshold ----- POSSIBLY CHANGE THIS TO JUST EFFECT VISUALS LATER
+        //only play a sound if the volume is above a certain threshold
         if (vol > 0.2f)
         {
             PlaySound(vol, pos / col.contactCount, thudClip);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Ryan Brooks u1115093
+//Ryan Brooks u1115093 _OUTDATED DO NOT USE!!!!!!!!
 public class BatBehavior_Old : MonoBehaviour
 {
     //movement vars

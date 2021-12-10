@@ -20,9 +20,9 @@ public class LilyBehavior : MonoBehaviour
     int physLayer = 13; //layer mask referring to the physics layer (layer #13 should be)
     bool flipX = false; // is the player's x flipped, used for ray direction
     bool isOnGround = false; // is the player on the ground currently
-    bool isJumping = false;
-    PolygonCollider2D hitBox;
-    BoxCollider2D feetBox;
+    bool isJumping = false; //whether lily is jumping
+    PolygonCollider2D hitBox; //lily's hitbox
+    BoxCollider2D feetBox; //box for detecting the floor
 
     //grab/push/pull vars
     public float grabStartDist = 0.75f; // the distance from which the player can grab objects
@@ -39,19 +39,19 @@ public class LilyBehavior : MonoBehaviour
     SpriteRenderer sprite; // the player's sprite
     Animator spriteAnim; // the player's animator
     public bool isStepping = false; //from the animator, if the player is stepping
-    bool hasStepped = false;
+    bool hasStepped = false; // whether lily has just stepped on previous frame
 
     //door vars
     bool isTransitioning = false; //are we doing a scene transition
     List<GameObject> keys = null; //current number of keys held by lily
 
-    //Audio Reveal vars
-    public float maxClapTimer = 3f;
-    float clapTimer = 0f;
-    Slider clapBarSlider = null;
-    Image clapBarImg = null;
-    Canvas clapBarCanvas = null;
-    bool isClapping = false;
+    //Clap Reveal vars
+    public float maxClapTimer = 3f; //how long to reset clap
+    float clapTimer = 0f; //current value of timer
+    Slider clapBarSlider = null; //slider bar
+    Image clapBarImg = null; //image for slider bar
+    Canvas clapBarCanvas = null; //canvas for holding bar
+    bool isClapping = false; //whether lily is clapping
 
     //death vars
     bool dead = false;
@@ -59,16 +59,14 @@ public class LilyBehavior : MonoBehaviour
 
     //sound vars
     public float stepVol = 0.25f; // the volume of a step
-    //SOUND: Create one AudioSource variable for audio source
+    public float clapVol = 2.6f; // the volume of a step
     AudioSource src;
-    //SOUND: Create sound for footstep
-    public List<AudioClip> footstepList;
-    public AudioClip clapClip; //used to be clap is now "flute??"
+    public List<AudioClip> footstepList; //list of footstep sounds
+    public AudioClip clapClip; //clap
     public AudioClip fallClip; //hitting the ground
-    public AudioClip deathClip;
+    public AudioClip deathClip; //dying
 
-    public GameObject monster; //NOTE: not really sure why these are here?
-                               //shouldnt they be in the monster's script?
+    public GameObject monster; //?
 
     // Start is called before the first frame update
     void Start()
@@ -78,54 +76,60 @@ public class LilyBehavior : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         hitBox = GetComponent<PolygonCollider2D>();
         feetBox = GetComponent<BoxCollider2D>();
-
         gameObject.GetComponent<SpriteRenderer>().color = new Color(255,255,255);
         spriteAnim = GetComponent<Animator>();
         keys = new List<GameObject>();
         clapBarCanvas = this.transform.GetChild(0).gameObject.GetComponent<Canvas>();
         clapBarSlider = clapBarCanvas.transform.GetChild(0).gameObject.GetComponent<Slider>();
         clapBarImg = clapBarSlider.transform.GetChild(0).gameObject.GetComponent<Image>();
-
-        //SOUND: get audio sorce
         src = GetComponent<AudioSource>();
     }
 
+    //return whether lily is clapping
     public void SetIsClapping(bool b)
     {
         isClapping = b;
     }
 
-    //Determine if lily is on the ground by checking the collision box
+    //Determine if lily is on the ground by checking the collision box: FLOOR
     private void OnTriggerExit2D(Collider2D col)
     {
+        //if the player is leaving a physics object or floor 
         GameObject o = col.gameObject;
         if (o.layer == groundLayer || o.layer == physLayer)
         {
-            isOnGround = false;
-            spriteAnim.SetBool("isFalling", true);
+            isOnGround = false; //lily is no longer on the ground
+            spriteAnim.SetBool("isFalling", true); //update animation
         }
 
         
     }
+    //check collisions for entering triggers: FLOOR/DOOR/LOCK WALL/DEATH
     private void OnTriggerStay2D(Collider2D col)
     {
+        //if we are dead do not check
         if (dead) return;
-        //if it is the ground
+
+        //lily is touching the ground
         GameObject o = col.gameObject;
         if (o.layer == groundLayer || o.layer == physLayer)
         {
-            spriteAnim.SetBool("isFalling", false);
-            isOnGround = true;
+            isOnGround = true; //lily is on the ground
+            spriteAnim.SetBool("isFalling", false); //update animation
+
+            //if lily was jumping, then update the value of jumping
             if (isJumping)
             {
-                isJumping = body.velocity.y > 0.05; //update jumping to be false if are hitting the ground
+                isJumping = body.velocity.y > 0.05;
             }
         }
+
         //if we are in front of a door trigger
         if (o.tag == "Door" && !isClapping)
         {
             //get the door script
             DoorBehavior s = o.GetComponent<DoorBehavior>();
+
             //if we press up and are on the ground
             if ((Input.GetKey(KeyCode.W) || Input.GetAxis("Vertical") > 0.5) && isOnGround)
             {
@@ -133,10 +137,11 @@ public class LilyBehavior : MonoBehaviour
                 if (s.locked && keys.Count>0 && !s.getTargeted())
                 {
                     KeyBehavior k = keys[keys.Count-1].GetComponent<KeyBehavior>();
-                    s.setTargeted(true);
-                    k.use(o);
-                    keys.RemoveAt(keys.Count-1);                  
+                    s.setTargeted(true); //target the door
+                    k.use(o); //use the key
+                    keys.RemoveAt(keys.Count-1); //decrement key count           
                 }
+
                 //otherwise if the door is unlocked, go through the door
                 else if (!s.locked)
                 {
@@ -145,37 +150,42 @@ public class LilyBehavior : MonoBehaviour
                     hitBox.enabled = false;
                     feetBox.enabled = false;
                     isTransitioning = true;
-                    //delete all keys
+
+                    //delete all keys - can't carry them between levels
                     foreach (GameObject key in keys)
                     {
                         KeyBehavior k = key.GetComponent<KeyBehavior>();
                         k.delete();
                     }
                     keys.Clear();
+
                     //animate walking
                     spriteAnim.SetFloat("Speed", 1);
+
                     //load a new scene from door script
                     s.BeginSceneTransition();
                 }
             }
         }
-        //if we are in front of a key wall trigger
+
+        //if we are in front of a lock wall trigger
         if (o.tag == "KeyWall" && !isClapping)
         {
-            //get the key wall (checks too see if it is broken)
+            //get the lock wall (automatically checks to see if it is broken)
             GameObject wall = o.GetComponent<LockWallDetectorBehavior>().getWall();
-            LockWallBehavior s = wall.GetComponent<LockWallBehavior>();
-            //if we get a valid key wall              
-            //if we have a key, use the key (wall isnt being unlocked "targeted")
+            LockWallBehavior s = wall.GetComponent<LockWallBehavior>();        
+            
+            //if we have a key, and the wall is not targeted by another key, use the key
             if (keys.Count > 0 && !s.getTargeted())
             {
                 KeyBehavior k = keys[keys.Count - 1].GetComponent<KeyBehavior>();
-                s.setTargeted(true);
-                k.use(wall);
-                keys.RemoveAt(keys.Count - 1);
+                s.setTargeted(true); //target the wall
+                k.use(wall); //use the key
+                keys.RemoveAt(keys.Count - 1); //decrement key count
             }
         }
 
+        //if we touch something that causes death -> then die
         if (o.tag == "Death")
         {
             Die();
@@ -183,26 +193,33 @@ public class LilyBehavior : MonoBehaviour
 
     }
 
+    //detect entering a trigger: KEYS/MONSTER
     private void OnTriggerEnter2D(Collider2D col)
     {
+        //if we are dead do not check
         if (dead) return;
-        GameObject o = col.gameObject;
+
         //if we come into contact with a key
+        GameObject o = col.gameObject;       
         if (o.tag == "Key" && !keys.Contains(o))
         {
             KeyBehavior s = o.GetComponent<KeyBehavior>();
-            //calculate target
+
+            //calculate new key follow target
             int n = keys.Count;
             GameObject t = this.gameObject;
             if (n > 0)
             {
                 t = keys[n - 1];
             }
-            s.collect(t);
-            keys.Add(o);
+            s.collect(t); //collect the key
+            keys.Add(o); //add the key to the list
         }
+
+        //if we touch a monster trigger
         else if (o.tag == "MonsterTrigger")
         {
+            //activate the monster trigger
             monster.SetActive(true);
         }
     }
@@ -239,10 +256,13 @@ public class LilyBehavior : MonoBehaviour
     //When lily stops touching a physics object
     private void OnCollisionExit2D(Collision2D col)
     {
+        //if it is a physics object
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
             PhysicsObjectBehavior s = o.gameObject.GetComponent<PhysicsObjectBehavior>();
+
+            //the object is no longer being updated
             s.SetVisible(false);
 
             //stop possible (non grab) pushing animation, because we are no longer colliding
@@ -258,13 +278,16 @@ public class LilyBehavior : MonoBehaviour
     //When lily touches a physics object
     private void OnCollisionStay2D(Collision2D col)
     {
+        //if it is a physics object
         GameObject o = col.gameObject;
         if (o.tag == "Phys")
         {
             PhysicsObjectBehavior s = o.gameObject.GetComponent<PhysicsObjectBehavior>();
+
+            //the object is being updated
             s.UpdateVisual();    
 
-            //if we are not attaced to an object, check if we are pushing it
+            //if we are not attached to an object, check if we are pushing it
             if (!isAttachedGrab)
             {
                 //calculate the average normal vector to the collision
@@ -301,13 +324,16 @@ public class LilyBehavior : MonoBehaviour
     //kill lily
     public void Die()
     {
+        //do not kill the player if already dead
         if (dead) return;
+
         //set player to be dead
         dead = true;
-        // play animation -> load scene
+
+        // play animation -(results in)-> load scene
         spriteAnim.SetBool("isDead", true);
 
-        //delete all keys
+        //delete all keys (just to be safe)
         foreach (GameObject key in keys)
         {
             KeyBehavior k = key.GetComponent<KeyBehavior>();
@@ -315,19 +341,24 @@ public class LilyBehavior : MonoBehaviour
         }
         keys.Clear();
 
+        //play the death sound
         PlaySound(0.5f, transform.position, deathClip);
     }
 
+    //plays a random sound from al list
     public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
     {
-        int r = Random.Range(0, clips.Count);
-        PlaySound(vol, pos, clips[r]);
+        int r = Random.Range(0, clips.Count); //pick a random index of the list
+        PlaySound(vol, pos, clips[r]); //play a sound at index r
     }
 
+    //plays a sound
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
+        //ignore broken clips
         if (!clip) return;
-        //UNCOMMENT ME ONCE CLIP EXISTS
+
+        //play sound
         src.PlayOneShot(clip, vol*6);
 
         //spawn a "EchoCircle"
@@ -337,6 +368,7 @@ public class LilyBehavior : MonoBehaviour
 
     void Update()
     {
+        //??
 
         //if (monsterAnimate.isActiveAndEnabled)
         //{
@@ -347,7 +379,8 @@ public class LilyBehavior : MonoBehaviour
         //        monsterAnimate.gameObject.SetActive(false);
         //    }
         //}
-        //Debug.Log(spriteAnim.GetBool("isGrabbing"));
+
+        //if we are dead
         if (dead)
         {           
             //just slow down character motion
@@ -355,6 +388,8 @@ public class LilyBehavior : MonoBehaviour
             body.velocity = Vector3.SmoothDamp(body.velocity, target, ref vel, smoothing);
             return;
         }
+
+        //if we aren't transitioning levels
         if (!isTransitioning)
         {
 
@@ -378,12 +413,12 @@ public class LilyBehavior : MonoBehaviour
             {
                 m_speed *= grabSpeedMult;
             }
+
             //lock movement if charging
             if (isClapping)
             {
                 m_speed = 0;
             }
-
 
             //Update Velocity
             float finalSpeed = x * m_speed;
@@ -393,9 +428,7 @@ public class LilyBehavior : MonoBehaviour
             //update speed to induce movement animation
             spriteAnim.SetFloat("Speed", Mathf.Abs(finalSpeed));
 
-            //TODO: switch animations if we are pushing and pulling (WHILE GRABBED)
-
-            //flip sprite according to movement direction
+            //flip sprite according to movement direction if we aren't grabbing something
             if (!isAttachedGrab)
             {
                 if (x < 0 && body.velocity.x < 0)
@@ -408,7 +441,8 @@ public class LilyBehavior : MonoBehaviour
                 }
 
             }
-            //calculate pushing animation
+
+            //calculate pushing animation (direction) -> (push/pull)
             spriteAnim.SetFloat("PushDir", finalSpeed*(flipX? -1 : 1));
 
             //Footstep EchoCircles & sounds
@@ -425,30 +459,34 @@ public class LilyBehavior : MonoBehaviour
                 isStepping = false; // in case this is the last tick of the frame
                 hasStepped = true;
             }
+
             // a check since the step is updated every tick while animating
             else if (!isStepping)
             {
                 hasStepped = false;
             }
 
-            //prevent jumping if we are clapping / charging
+            //prevent jumping if we are clapping
             //prevent jumping if we are grabbing, if we press the jump button down, and are on ground and are not jumping
             if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
                 && !isAttachedGrab && isOnGround && !isJumping && !isClapping)
             {
                 isOnGround = false; //gaurentee we are off the ground once we start jumping.
-                //isJumping = true;
-                spriteAnim.SetTrigger("jump");
+
+                //isJumping = true; //leave this commented out
+
+                spriteAnim.SetTrigger("jump");//update animation
 
                 body.velocity = new Vector2(body.velocity.x, 0);//NEW set velocity to zero before jump in y dir to avoid high jumps
 
                 body.AddForce(new Vector2(0f, jumpForce)); // jump
             }
+
             //Holding space increases float (we do this by adding a negative force while jumping and not holding space)
             else if (!(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Joystick1Button0)) &&
                 !isOnGround)
             {
-                body.AddForce(new Vector2(0f, antiFloatForce)); //downward force applied
+                body.AddForce(new Vector2(0f, antiFloatForce)); //downward force applied if we arent holding space
             }
 
             //Begin Grabbing Code
@@ -484,7 +522,7 @@ public class LilyBehavior : MonoBehaviour
                         //set the distance to the difference between lily's position and the hit point + some modifier
                         j.distance = (hit.point - body.position).magnitude + jointDistMod;
 
-                        Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance
+                        //Debug.DrawLine(hit.point, body.position, Color.red, 2.5f, false); //<--- draws a line to test the drag distance leave commented out
 
                         isWalkPushing = false; //not push walking as we are grabbing
                     }
@@ -504,9 +542,9 @@ public class LilyBehavior : MonoBehaviour
                     DistanceJoint2D j;
                     if ((j = grabbedObject.GetComponent<DistanceJoint2D>()) != null)
                     {
-                        j.enabled = isAttachedGrab = false;
+                        j.enabled = isAttachedGrab = false; //disable joint reset attachedgrab
                         s.SetVisible(false); //begin fade
-                        spriteAnim.SetBool("isGrabbing", false);
+                        spriteAnim.SetBool("isGrabbing", false); //update animation
                     }
 
                     //unfreeze object rotation
@@ -523,27 +561,29 @@ public class LilyBehavior : MonoBehaviour
                 }
             }
 
-            //decrement clap timer over time
+            //decrement clap timer over time counting down until it reaches 0
             if (clapTimer > 0)
             {
                 clapTimer -= Time.deltaTime;
             }
+            //hard cap lower bound to 0
             else
             {
                 clapTimer = 0;
             }
 
-            //update bar value
+            //update bar value based on clap timer
             clapBarSlider.value = clapTimer / maxClapTimer;
-            //update bar color
+
+            //update color value until it reaches white, shake the bar if it is not white
             Color c = clapBarImg.color;
             if (c.g <= 1)
             {
-                
+                //update color value
                 clapBarImg.color = new Color(1, c.g + 0.002f, c.b + 0.002f, 1);
-                //shake bar
+
+                //shake bar -- intensity is relative to color
                 clapBarCanvas.transform.localPosition = new Vector2(Mathf.Sin(Time.time * 5 * c.g/1) * 0.04f, 1.5f + Mathf.Sin(Time.time/1.3f * 5 * c.g/1) * 0.04f);
-                Debug.Log(clapBarCanvas.transform.localPosition);
             }
 
             //clap if on ground, not grabbing, not charging clap, pressing E
@@ -551,32 +591,33 @@ public class LilyBehavior : MonoBehaviour
             {
                 //if timer is empty
                 if (clapTimer <= 0) {
-                    clapBarCanvas.transform.localPosition.Set(0, 1.5f, 0);
-                    clapBarImg.color = new Color(1, 1, 1, 1);
+                    //set clapping vars
+                    clapBarCanvas.transform.localPosition.Set(0, 1.5f, 0); //reset position of clap bar
+                    clapBarImg.color = new Color(1, 1, 1, 1); //reset color of clap bar
                     isClapping = true;
-                    spriteAnim.SetTrigger("clap");
-                    clapTimer = maxClapTimer;
+                    spriteAnim.SetTrigger("clap"); //start animation
+                    clapTimer = maxClapTimer; //reset timer
+                    float clapDist = 0.6f; //how far away from the player is the clap (accounts for hand distance)
 
-                    //clap
-                    float clapDist = 0.6f; //how far away from the player
-                    //calculate sound location
+                    //calculate clap location
                     Vector2 clapPos = new Vector2(this.transform.position.x + (flipX ? -1f : 1f) * clapDist, this.transform.position.y);
 
-                    //clap with the timer charge * vol multiplier
-                    PlaySound(2.6f, clapPos, clapClip);
+                    //clap
+                    PlaySound(clapVol, clapPos, clapClip);
                 }
-                //otherwise play animation to show you cant use it yet
+                //otherwise play animation to show you cant use it yet, automatically triggered by changing color
                 else if (clapBarImg.color.g >= 1)
                 {
-                    clapBarImg.color = new Color(1, 0.45f, 0.45f, 1);
-                    
+                    //update bar color
+                    clapBarImg.color = new Color(1, 0.45f, 0.45f, 1);                  
                 }
             }
         }
-        //fade out character alpha to animate door transition
+
+        //Otherwise, we are transitioning levels. fade out character alpha to animate door transition
         else
         {
-            //if an object is visible, decrease it's alpha until it reaches 0
+            //if visible, decrease lily's alpha until it reaches 0
             if (sprite.color.a > 0)
             {
                 float newA = sprite.color.a - (1.5f * Time.deltaTime);

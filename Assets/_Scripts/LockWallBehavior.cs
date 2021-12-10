@@ -35,10 +35,12 @@ public class LockWallBehavior : MonoBehaviour
         src = GetComponent<AudioSource>();
     }
 
+    //set that the wall is currently being targeted by a key
     public void setTargeted(bool t)
     {
         targeted = t;
     }
+    //return if the wall is currently targeted by a key
     public bool getTargeted()
     {
         return targeted;
@@ -53,12 +55,14 @@ public class LockWallBehavior : MonoBehaviour
     //break the wall
     public void Break()
     {
+        //disable the renderer and the collision box
         box.enabled = false;
         rend.enabled = false;
-        //destroy detector
+
+        //destroy the detector
         Destroy(this.gameObject.transform.GetChild(0).gameObject);
 
-        //TODO : play breaking sound
+        //play breaking sound
         PlaySound(breakVol, this.transform.position, stoneObjectBreakClip);
 
         //play particle animation
@@ -70,21 +74,27 @@ public class LockWallBehavior : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
-
+    
+    //spawn echo circles when particle collide
     void OnParticleCollision(GameObject o)
     {
         //get all collisions
         int n; 
         int i = 0;
 
+        //ensure collision events is not null.
         try
         {
+            //get the collision events
             n = part.GetCollisionEvents(o, collEvents);
-            //iterate through, spawn echo circle
+
+            //iterate through, spawn echo circles for each colliding particle
             for (i = 0; i < n; i++)
             {
-                Vector3 pos = collEvents[i].intersection;
-                float vol = collEvents[i].velocity.magnitude / 70;
+                Vector3 pos = collEvents[i].intersection; //collision position
+                float vol = collEvents[i].velocity.magnitude / 70; //volume of the collision
+
+                //if we have a loud enough collision display the echo circle
                 if (vol > 0.1)
                 {
                     //spawn a "EchoCircle"
@@ -93,6 +103,7 @@ public class LockWallBehavior : MonoBehaviour
                 }
             }
         }
+        //otherwise ignore particles as a failsafe
         catch (ArgumentNullException)
         {
             return;
@@ -101,8 +112,10 @@ public class LockWallBehavior : MonoBehaviour
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
     {
+        //if the clip is missing return
         if (!clip) return;
-        //UNCOMMENT ME ONCE CLIP EXISTS
+
+        //otherwise play a sound
         src.PlayOneShot(clip, vol);
 
         //spawn a "EchoCircle"
