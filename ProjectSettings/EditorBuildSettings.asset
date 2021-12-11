@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_Scenes/TestScene.unity
+    path: 
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/_Scenes/Level1_Tutorial.unity
@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Level2_Loop.unity
     guid: ee4134e38c408934ba6938c32198cef2
+  - enabled: 1
+    path: Assets/_Scenes/Level3_Swing.unity
+    guid: 81029a76c4b07bd44ae95a14e0551028
   m_configObjects: {}

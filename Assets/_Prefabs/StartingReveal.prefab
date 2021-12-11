@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3374766bbe9b8f3499a15b806ba451e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decayRate: 3
+  decayRate: 0.5
   volume: 1
   blueCircle: {fileID: 1462484993803250059}
 --- !u!58 &5630744962252508720
