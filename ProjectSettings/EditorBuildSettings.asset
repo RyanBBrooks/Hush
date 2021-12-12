@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Level3_Swing.unity
     guid: 81029a76c4b07bd44ae95a14e0551028
+  - enabled: 1
+    path: Assets/_Scenes/Level6_Credits.unity
+    guid: 1385bbf0e02ef4243b628ec08f8c40ce
   m_configObjects: {}
