@@ -25,6 +25,7 @@ public class KeyBehavior : MonoBehaviour
         coll = this.GetComponent<CircleCollider2D>();
         rend = this.GetComponent<SpriteRenderer>();
         part = this.GetComponent<ParticleSystem>();
+        src = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,7 +68,7 @@ public class KeyBehavior : MonoBehaviour
     {
         //play collect sound sound
         float collectVol = 1f;
-        //src.PlayOneShot(collectClip, collectVol); //CURRENTLY BUGGED
+        src.PlayOneShot(collectClip, collectVol); //CURRENTLY BUGGED
 
         //change the layer it appears on to allow it to go over objects and appear above fog
         rend.sortingLayerName = "Character";
