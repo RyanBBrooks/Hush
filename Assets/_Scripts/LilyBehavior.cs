@@ -66,7 +66,6 @@ public class LilyBehavior : MonoBehaviour
     public AudioClip fallClip; //hitting the ground
     public AudioClip deathClip; //dying
 
-    public GameObject monster; //?
 
     // Start is called before the first frame update
     void Start()
@@ -220,7 +219,7 @@ public class LilyBehavior : MonoBehaviour
         else if (o.tag == "MonsterTrigger")
         {
             //activate the monster trigger
-            monster.SetActive(true);
+            o.GetComponent<MonsterTriggerBehavior>().activate();
         }
     }
 

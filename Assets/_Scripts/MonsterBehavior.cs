@@ -8,85 +8,72 @@ public class MonsterBehavior : MonoBehaviour
 {
     // Start is called before the first frame update
     public float speed;
+    public bool window;
     public GameObject lily;
     int groundLayer = 7; //layer mask referring to the ground layer (layer #7 should be)
     public bool roar = false;
     public AudioSource audioSource;
+    BoxCollider2D col;
     public float vol;
     public float height = 20;
     Rigidbody2D body;
     public float smoothing = 0.01f; //movement smoothing
+    bool walking = false;
+    float timer = 0;
 
     SpriteRenderer sprite;
     
     Animator animate;
     void Start()
     {
+        col = GetComponent<BoxCollider2D>();      
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animate = GetComponent<Animator>();
-        animate.SetBool("walk", true);
+        sprite.color = new Color(1, 1, 1, 0);
+        body.simulated = false;
+        if (col)
+        {
+            col.enabled = false;
+        }
     }
 
     
     // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime; // calculate distance to move
-        float y = -1.644f;
-        Vector3 newPos = new Vector3(transform.position.x - speed/100, transform.position.y, transform.position.z);
+        if (walking)
+        {
+            sprite.color = new Color(1, 1, 1, sprite.color.a + 0.02f);
+            float step = speed * Time.deltaTime; // calculate distance to move
+            Vector3 newPos = new Vector3(transform.position.x - speed / 100, transform.position.y, transform.position.z);
 
-        if ("Level1_Tutorial" == SceneManager.GetActiveScene().name)
-        {
-            Debug.Log("yolo");
-            if (transform.position.x > 26.5)
+            float velocity = transform.position.x - newPos.x;
+            transform.position = new Vector3(newPos.x, newPos.y, newPos.z);
+            Debug.Log(timer);
+            timer += Time.deltaTime;
+            if (window && timer>3)
             {
-                y = -3.8f;
+                Destroy(this.gameObject);
             }
-            else
-            {
-                newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
-            }
-            
-            if (transform.position.x < 26.5 && transform.position.x > 0)
-            {
-                this.gameObject.SetActive(false);
-                transform.position = new Vector3(-7, -1.644f, 0);
-                speed = 2;
-            }
-        }
-        else if("Level5_Final_Level" == SceneManager.GetActiveScene().name)
-        {
-            y = 40;
-            newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
-            
-        }
 
-        float velocity = transform.position.x - newPos.x;
-        transform.position = new Vector3(newPos.x, y, newPos.z);
-        if (transform.position.x < 26.5 && transform.position.x > 0 && "Level1_Tutorial" == SceneManager.GetActiveScene().name)
-        {
-            this.gameObject.SetActive(false);
-            transform.position = new Vector3(-7, -1.644f, 0);
-            speed = 2;
-        }
-    
-        if (velocity < 0)
+            if (velocity < 0)
             {
                 sprite.flipX = false;
             }
-        else if (velocity > 0)
+            else if (velocity > 0)
             {
                 sprite.flipX = true;
-                
+
             }
+        }
 
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         GameObject o = collision.gameObject;
-        if (o.tag == "Player")
+        if (o.tag == "Player" && walking)
         {
             body.velocity = Vector3.zero;
         }
@@ -95,14 +82,21 @@ public class MonsterBehavior : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         GameObject o = collision.gameObject;
-        if(o.tag == "Player")
+        if(o.tag == "Player" && walking)
         {
             body.velocity = Vector3.zero;
         }
     }
-    private void OnCollisionExit(Collision collision)
+
+    public void activate()
     {
-        speed = 3;
+        walking = true;
+        body.simulated = true;
+        if (col)
+        {
+            col.enabled = true;
+        }
+        animate.SetBool("walk", true);
     }
 
     //private void screech()
