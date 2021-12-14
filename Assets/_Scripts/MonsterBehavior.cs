@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MonsterBehavior : MonoBehaviour
 {
@@ -34,33 +36,49 @@ public class MonsterBehavior : MonoBehaviour
         float y = -1.644f;
         Vector3 newPos = new Vector3(transform.position.x - speed/100, transform.position.y, transform.position.z);
 
-        if (transform.position.x > 25)
+        if ("Level1_Tutorial" == SceneManager.GetActiveScene().name)
         {
-            y = -3.8f;
+            Debug.Log("yolo");
+            if (transform.position.x > 26.5)
+            {
+                y = -3.8f;
+            }
+            else
+            {
+                newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+            }
+            
+            if (transform.position.x < 26.5 && transform.position.x > 0)
+            {
+                this.gameObject.SetActive(false);
+                transform.position = new Vector3(-7, -1.644f, 0);
+                speed = 2;
+            }
         }
-        else
+        else if("Level5_Final_Level" == SceneManager.GetActiveScene().name)
         {
-           newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+            y = 40;
+            newPos = Vector3.MoveTowards(transform.position, lily.gameObject.transform.position, step);
+            
         }
+
         float velocity = transform.position.x - newPos.x;
-
         transform.position = new Vector3(newPos.x, y, newPos.z);
-
-
-        if(transform.position.x < 25 && transform.position.x > 0)
+        if (transform.position.x < 26.5 && transform.position.x > 0 && "Level1_Tutorial" == SceneManager.GetActiveScene().name)
         {
             this.gameObject.SetActive(false);
             transform.position = new Vector3(-7, -1.644f, 0);
+            speed = 2;
         }
-
-       
-            if (velocity < 0)
+    
+        if (velocity < 0)
             {
                 sprite.flipX = false;
             }
-            if (velocity > 0)
+        else if (velocity > 0)
             {
                 sprite.flipX = true;
+                
             }
 
     }

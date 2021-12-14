@@ -4588,7 +4588,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3000525016963336361, guid: 7222b7a8df8ea254f9097c6a07ccfdb4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3000525016963336361, guid: 7222b7a8df8ea254f9097c6a07ccfdb4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6145,13 +6145,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5025768731186887462, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5025768731186887482, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5025768731186887482, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 39.604057
+      value: 39.45
       objectReference: {fileID: 0}
     - target: {fileID: 5025768731186887482, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6201,6 +6205,10 @@ PrefabInstance:
       propertyPath: lily
       value: 
       objectReference: {fileID: 679560836}
+    - target: {fileID: 5025768731186887485, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
 --- !u!1 &919259048
