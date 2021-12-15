@@ -4994,7 +4994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakVol: 1.5
-  stoneObjectBreakClip: {fileID: 8300000, guid: 9ac03aa22ccd14f4d9f26272780aa4e5, type: 3}
+  stoneObjectBreakClip: {fileID: 8300000, guid: cc86e551f8335aa4b897743eab4975b1, type: 3}
 --- !u!82 &3806327705907722217
 AudioSource:
   m_ObjectHideFlags: 0

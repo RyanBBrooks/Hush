@@ -102,11 +102,11 @@ MonoBehaviour:
   waitTime: 1
   screechDist: 0.3
   defaultVolume: 0.65
-  maxTargets: 6
-  targetPrefab: {fileID: 4337172340908194956, guid: b049f7623d2db2342bc5f19364b509b1, type: 3}
   sprite: {fileID: 6107719259463386100}
   screechList:
-  - {fileID: 8300000, guid: 4c953bf64ffa1e94eb260d4aa4c7bc33, type: 3}
+  - {fileID: 8300000, guid: d95d20d776bf080488b976796de2ac78, type: 3}
+  - {fileID: 8300000, guid: 42d68dc67d90e9a43ab9cafc1fb6117f, type: 3}
+  - {fileID: 8300000, guid: 418de0f46fb938d45bc396a08324326a, type: 3}
 --- !u!95 &268614506
 Animator:
   serializedVersion: 3

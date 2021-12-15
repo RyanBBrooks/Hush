@@ -324,13 +324,16 @@ MonoBehaviour:
   isStepping: 0
   maxClapTimer: 3
   stepVol: 0.25
+  clapVol: 2.6
   footstepList:
-  - {fileID: 8300000, guid: eb5d45694604aa14e9aa4e58ed61754b, type: 3}
+  - {fileID: 8300000, guid: d8009cfec5e94f14991b3f54bcb2aa85, type: 3}
+  - {fileID: 8300000, guid: 27062d32f67ace344a4c108d16183982, type: 3}
+  - {fileID: 8300000, guid: 6ba4c6d682b8bde419cf04d76aac2366, type: 3}
+  - {fileID: 8300000, guid: 644767c52df410a46938d3d15d5f3cbb, type: 3}
+  - {fileID: 8300000, guid: 643edc30b7bcae84aa079fcf241217d6, type: 3}
   clapClip: {fileID: 8300000, guid: 54cc961cd64fbe24884266caad7814f9, type: 3}
-  fallClip: {fileID: 8300000, guid: 7934c113c7223854cb04e61663e102ce, type: 3}
-  deathClip: {fileID: 8300000, guid: 23b09d9c740f92f49b613f7d16462c24, type: 3}
-  monster: {fileID: 0}
-  monsterAnimate: {fileID: 0}
+  fallClip: {fileID: 8300000, guid: 74e8e9415d9c21c4a9fc0f9148e5cfac, type: 3}
+  deathClip: {fileID: 8300000, guid: 1646520f10cde5d49948952a0d58dafe, type: 3}
 --- !u!61 &4461823241168515672
 BoxCollider2D:
   m_ObjectHideFlags: 0
