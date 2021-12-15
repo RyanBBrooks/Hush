@@ -331,7 +331,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6ba4c6d682b8bde419cf04d76aac2366, type: 3}
   - {fileID: 8300000, guid: 644767c52df410a46938d3d15d5f3cbb, type: 3}
   - {fileID: 8300000, guid: 643edc30b7bcae84aa079fcf241217d6, type: 3}
-  clapClip: {fileID: 8300000, guid: 54cc961cd64fbe24884266caad7814f9, type: 3}
+  clapClip: {fileID: 8300000, guid: e601249a3713bb241baf7f9888f65d33, type: 3}
   fallClip: {fileID: 8300000, guid: 74e8e9415d9c21c4a9fc0f9148e5cfac, type: 3}
   deathClip: {fileID: 8300000, guid: 1646520f10cde5d49948952a0d58dafe, type: 3}
 --- !u!61 &4461823241168515672
