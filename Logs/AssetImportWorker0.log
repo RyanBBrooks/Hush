@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.1/staging' branch; Version is '2021.1.15f1 (e767a7370072) revision 15165351'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Home; OS build 19042.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 32691 MB
+OS: 'Windows 10 Home; OS build 19043.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 16292 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -11,628 +11,115 @@ C:\Program Files\Unity\Hub\Editor\2021.1.15f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Users/jacco/Documents/GitHub/HushTest_0
+C:/Users/skull/HushTest_0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-50591
-Successfully changed project path to: C:/Users/jacco/Documents/GitHub/HushTest_0
-C:/Users/jacco/Documents/GitHub/HushTest_0
+50020
+Successfully changed project path to: C:/Users/skull/HushTest_0
+C:/Users/skull/HushTest_0
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 88.00 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 112.48 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.15f1 (e767a7370072)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/jacco/Documents/GitHub/HushTest_0/Assets
+[Subsystems] Discovering subsystems at path C:/Users/skull/HushTest_0/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 2060 SUPER (ID=0x1f06)
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
     Vendor:   NVIDIA
-    VRAM:     8031 MB
-    Driver:   30.0.14.9709
+    VRAM:     4043 MB
+    Driver:   27.21.14.5206
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56072
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56788
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.1.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001662 seconds.
+Registered in 0.002930 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 94.96 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 115.12 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.061 seconds
+- Completed reload, in  1.545 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1061ms)
-		BeginReloadAssembly (44ms)
+	ReloadAssembly (1545ms)
+		BeginReloadAssembly (71ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (416ms)
-			LoadAssemblies (42ms)
+		EndReloadAssembly (576ms)
+			LoadAssemblies (68ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (138ms)
+			SetupTypeCache (206ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (26ms)
-			SetupLoadedEditorAssemblies (211ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (276ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
+				InitializePlatformSupportModulesInManaged (7ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (95ms)
-				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (84ms)
-				ProcessInitializeOnLoadMethodAttributes (25ms)
+				RefreshPlugins (115ms)
+				BeforeProcessingInitializeOnLoad (2ms)
+				ProcessInitializeOnLoadAttributes (116ms)
+				ProcessInitializeOnLoadMethodAttributes (35ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004957 seconds.
+Registered in 0.009108 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\skull\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\skull\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 95.96 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 115.50 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.122 seconds
+- Completed reload, in  1.536 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1122ms)
-		BeginReloadAssembly (131ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (19ms)
-		EndReloadAssembly (936ms)
-			LoadAssemblies (82ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (312ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (52ms)
-			SetupLoadedEditorAssemblies (403ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (96ms)
-				BeforeProcessingInitializeOnLoad (76ms)
-				ProcessInitializeOnLoadAttributes (209ms)
-				ProcessInitializeOnLoadMethodAttributes (13ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.80 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3838 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 154.5 MB.
-System memory in use after: 154.7 MB.
-
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 4289.
-Total: 2.484600 ms (FindLiveObjects: 0.330100 ms CreateObjectMapping: 0.086400 ms MarkObjects: 2.007900 ms  DeleteObjects: 0.059200 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/_Prefabs/Door.prefab
-  artifactKey: Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Door.prefab using Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '820c3f3b95a79f36808900eb6353dc2e') in 0.124634 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/_Prefabs/OneWayPlatform.prefab
-  artifactKey: Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/OneWayPlatform.prefab using Guid(e67fb8f1545056c43b28650b64bb3c94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a99fa9c65953a450a9255b14b21afa3') in 0.011234 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000148 seconds.
-  path: Assets/_Prefabs/Bat.prefab
-  artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5de002190296b14909e88303b68366d0') in 0.029851 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/_Prefabs/PhysicsObject.prefab
-  artifactKey: Guid(419b868157990d44db5b238373e74ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/PhysicsObject.prefab using Guid(419b868157990d44db5b238373e74ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c88ab508b9f6cd7f35e105f573df04a') in 0.009834 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000183 seconds.
-  path: Assets/_Prefabs/MonsterTrigger.prefab
-  artifactKey: Guid(3f5743afb2d3d944784a5e2c4c78d19b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/MonsterTrigger.prefab using Guid(3f5743afb2d3d944784a5e2c4c78d19b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '69eccf77b6c1810ce88912f643c01bac') in 0.009430 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/_Prefabs/Monster.prefab
-  artifactKey: Guid(82e2c0342852a33468de59e8c5323448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Monster.prefab using Guid(82e2c0342852a33468de59e8c5323448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd76aee6b92c34d37a782950538918a67') in 0.021420 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000173 seconds.
-  path: Assets/_Prefabs/EchoCircle.prefab
-  artifactKey: Guid(0dbd4196bd2de344d910a5664021acf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/EchoCircle.prefab using Guid(0dbd4196bd2de344d910a5664021acf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52d7bfeb4139704b96c3c54844892878') in 0.012943 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000163 seconds.
-  path: Assets/_Prefabs/Spikes.prefab
-  artifactKey: Guid(88f9b78ba8b77c04d90216d2a3e7677e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Spikes.prefab using Guid(88f9b78ba8b77c04d90216d2a3e7677e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43e6c242f349e69cdf1dce004f2e1b0a') in 0.008945 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000163 seconds.
-  path: Assets/_Prefabs/Main Camera.prefab
-  artifactKey: Guid(1c6c58fab07a6fb4ea52f60cf01eab81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Main Camera.prefab using Guid(1c6c58fab07a6fb4ea52f60cf01eab81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '840c7cf04f15e0d2bc4119f7b895933b') in 0.023268 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000166 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c67fc570deec1a7223cd24da54ad1d3') in 0.022563 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/_Prefabs/BrickBackground.prefab
-  artifactKey: Guid(7222b7a8df8ea254f9097c6a07ccfdb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/BrickBackground.prefab using Guid(7222b7a8df8ea254f9097c6a07ccfdb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b2b15dc4e2d3967650624d40c8ab52d') in 0.010268 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000126 seconds.
-  path: Assets/_Prefabs/Credits warp.prefab
-  artifactKey: Guid(f3b7e75e9e7a6ce4ab5daf78d20aeb55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Credits warp.prefab using Guid(f3b7e75e9e7a6ce4ab5daf78d20aeb55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b18af1e7e0bb55d1a95ea88bc69acaa') in 0.010080 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/_Prefabs/DoorEntrance.prefab
-  artifactKey: Guid(a1172097065d6ae409482a47426d40bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/DoorEntrance.prefab using Guid(a1172097065d6ae409482a47426d40bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f7b7a43c085fff3ab8082cc8034da5a') in 0.012698 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000149 seconds.
-  path: Assets/_Prefabs/eyes.prefab
-  artifactKey: Guid(602c3c2228924a94485ef31c5b9ca13d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/eyes.prefab using Guid(602c3c2228924a94485ef31c5b9ca13d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '662ce3a2bbbbf048a7afe50829478777') in 0.010608 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000133 seconds.
-  path: Assets/_Prefabs/StartingReveal.prefab
-  artifactKey: Guid(505d350834da4644da2cfd66e697dfcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/StartingReveal.prefab using Guid(505d350834da4644da2cfd66e697dfcd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '785369c608f9a1f8c72179872c8f18a5') in 0.009844 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.150447 seconds.
-  path: Assets/_Scenes/Level0_TitleScene.unity
-  artifactKey: Guid(c4aee1a85b923814daa8b826bee111be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/Level0_TitleScene.unity using Guid(c4aee1a85b923814daa8b826bee111be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f51c40199a6289154c92775d0b10685') in 0.005385 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 70.439369 seconds.
-  path: Assets/_Scenes/Level1_Tutorial.unity
-  artifactKey: Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/Level1_Tutorial.unity using Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b2d91984bed594fe5509b2560c55dc84') in 0.005411 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.654638 seconds.
-  path: Assets/_Sound/ambient.wav
-  artifactKey: Guid(bd69d90d02b75674ab9a33de05f54496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/ambient.wav using Guid(bd69d90d02b75674ab9a33de05f54496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4224773b5d48936775d02a3ca32c673') in 0.046217 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000142 seconds.
-  path: Assets/_Sound/Clap_Test.wav
-  artifactKey: Guid(54cc961cd64fbe24884266caad7814f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Clap_Test.wav using Guid(54cc961cd64fbe24884266caad7814f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29293c643991d811ed61afb5d722d776') in 0.010490 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000158 seconds.
-  path: Assets/_Sound/lily_death.wav
-  artifactKey: Guid(23b09d9c740f92f49b613f7d16462c24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/lily_death.wav using Guid(23b09d9c740f92f49b613f7d16462c24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c86f1c82e2cbc9cd1d107f8ca45a23b') in 0.011462 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000161 seconds.
-  path: Assets/_Sound/ambient_V2.wav
-  artifactKey: Guid(5ab07db29de4d0d49bd53f37d3ba4112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/ambient_V2.wav using Guid(5ab07db29de4d0d49bd53f37d3ba4112) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08452f09c73bc5c74536aa3cad9ab206') in 0.009468 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 27.027897 seconds.
-  path: Assets/_Scenes/Level3_Swing.unity
-  artifactKey: Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Scenes/Level3_Swing.unity using Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '273c76082a1ec20e529160435ba4b9a8') in 0.005388 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005940 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.85 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.997 seconds
-Domain Reload Profiling:
-	ReloadAssembly (997ms)
-		BeginReloadAssembly (106ms)
+	ReloadAssembly (1536ms)
+		BeginReloadAssembly (182ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (38ms)
-		EndReloadAssembly (834ms)
-			LoadAssemblies (78ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (1279ms)
+			LoadAssemblies (115ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (322ms)
+			SetupTypeCache (436ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (44ms)
-			SetupLoadedEditorAssemblies (283ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (64ms)
-				ProcessInitializeOnLoadAttributes (199ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.81 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3749 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.8 MB.
-System memory in use after: 151.1 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4302.
-Total: 2.352500 ms (FindLiveObjects: 0.326200 ms CreateObjectMapping: 0.083900 ms MarkObjects: 1.925000 ms  DeleteObjects: 0.016100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005856 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.85 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.053 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1054ms)
-		BeginReloadAssembly (102ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (6ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (36ms)
-		EndReloadAssembly (892ms)
-			LoadAssemblies (78ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (344ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (45ms)
-			SetupLoadedEditorAssemblies (319ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (71ms)
-				ProcessInitializeOnLoadAttributes (225ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (7ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (11ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.87 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3749 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 150.9 MB.
-System memory in use after: 151.1 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4306.
-Total: 2.582500 ms (FindLiveObjects: 0.356700 ms CreateObjectMapping: 0.084700 ms MarkObjects: 2.123900 ms  DeleteObjects: 0.015900 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 74.731022 seconds.
-  path: Assets/_Sound/Main Lily Sounds
-  artifactKey: Guid(31af07ba898200848bdf5395eb855ad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds using Guid(31af07ba898200848bdf5395eb855ad7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe604faf1cc605c3f6c3f382be79b1f3') in 0.010259 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 61.093131 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 1_mixdown.wav
-  artifactKey: Guid(1646520f10cde5d49948952a0d58dafe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 1_mixdown.wav using Guid(1646520f10cde5d49948952a0d58dafe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80c005b93dd62357f58535f68d9de274') in 0.046991 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000166 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 3_mixdown.wav
-  artifactKey: Guid(35ce30954d1f81e449c4697d1772045d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 3_mixdown.wav using Guid(35ce30954d1f81e449c4697d1772045d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '749206557cbcd6ec9c258d5342ee058e') in 0.010899 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000188 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Scream 2_mixdown.wav
-  artifactKey: Guid(999b217277dfcd245a2c55038c771553) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Scream 2_mixdown.wav using Guid(999b217277dfcd245a2c55038c771553) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cda5827bfb36487f11c787b71d7a5f0') in 0.008641 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000169 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 3_mixdown.wav
-  artifactKey: Guid(6ba4c6d682b8bde419cf04d76aac2366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 3_mixdown.wav using Guid(6ba4c6d682b8bde419cf04d76aac2366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6c3d021c1d88be67e42d13e97d26e75') in 0.010401 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000135 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 5_mixdown.wav
-  artifactKey: Guid(643edc30b7bcae84aa079fcf241217d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 5_mixdown.wav using Guid(643edc30b7bcae84aa079fcf241217d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'def1125061fc17e8f2855c05d052e5b0') in 0.008050 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Scream 1_mixdown.wav
-  artifactKey: Guid(287b0c628fd8dcf40bb0d12c4ef1616a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Scream 1_mixdown.wav using Guid(287b0c628fd8dcf40bb0d12c4ef1616a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd466afcf6929d6b161ab777ebf2d5e52') in 0.008559 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 1_mixdown.wav
-  artifactKey: Guid(d8009cfec5e94f14991b3f54bcb2aa85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 1_mixdown.wav using Guid(d8009cfec5e94f14991b3f54bcb2aa85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b455847557877751f52fc5407be2cb4') in 0.008223 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 2_mixdown.wav
-  artifactKey: Guid(27062d32f67ace344a4c108d16183982) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 2_mixdown.wav using Guid(27062d32f67ace344a4c108d16183982) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd86b64c763ee5e0b1faf03a23e98a27b') in 0.008187 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 4_mixdown.wav
-  artifactKey: Guid(644767c52df410a46938d3d15d5f3cbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Walking 4_mixdown.wav using Guid(644767c52df410a46938d3d15d5f3cbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22da7bc1dc58ec483dfd0ca6e13614b0') in 0.008390 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000149 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 2_mixdown.wav
-  artifactKey: Guid(30ec55ce00ee2604ca0111e7877dbbef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Grunt 2_mixdown.wav using Guid(30ec55ce00ee2604ca0111e7877dbbef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '662b968c5b112344a5bb6861b2361efa') in 0.008529 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 87.987467 seconds.
-  path: Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Jump_mixdown.wav
-  artifactKey: Guid(74e8e9415d9c21c4a9fc0f9148e5cfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Lily Sounds/Hush Game Main Lily Jump_mixdown.wav using Guid(74e8e9415d9c21c4a9fc0f9148e5cfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8e9ae371b98d46e85efb18bc3b971fe') in 0.016180 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 47.754234 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '34081c21be6ae8bccad37d05bc24a10f') in 0.042928 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.576499 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb118ccd66b2fda05fba54d77379e3ce') in 0.013029 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.396673 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2a771cda118f85f434eb8d1231e2147') in 0.022639 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.573248 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f75d56c8bf3debc61c1377f37dce6ac0') in 0.021498 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.647871 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf0cce36da9996ecf512d099ec250cc') in 0.012819 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.878423 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '136a42e64c38291f2561ccc31aa614c6') in 0.012649 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.574678 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc62d17a20841c0b3d6d702da4f0ccc5') in 0.012649 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.244885 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c734b14ca138f321953a80b97c2043c9') in 0.014145 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.852509 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2da8222d1c90c7b5fab440d72340509') in 0.022039 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.384486 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f30596725c99b74076f46c1f7e394a44') in 0.013047 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.264312 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb9a4d1cd2847efbc7b15166beeb2ade') in 0.022548 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 11.924771 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '186558b539099313bc654e8ff785317a') in 0.026071 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005397 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.89 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.999 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1000ms)
-		BeginReloadAssembly (108ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (39ms)
-		EndReloadAssembly (833ms)
-			LoadAssemblies (80ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (324ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (286ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (62ms)
-				ProcessInitializeOnLoadAttributes (205ms)
-				ProcessInitializeOnLoadMethodAttributes (8ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.06 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3749 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 151.0 MB.
-System memory in use after: 151.2 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4311.
-Total: 2.465800 ms (FindLiveObjects: 0.320700 ms CreateObjectMapping: 0.084400 ms MarkObjects: 2.044600 ms  DeleteObjects: 0.015300 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 78.527697 seconds.
-  path: Assets/_Prefabs/Lily.prefab
-  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad4d485851e80a8d0a6395f75d8db393') in 0.073626 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005297 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1.03 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.951 seconds
-Domain Reload Profiling:
-	ReloadAssembly (951ms)
-		BeginReloadAssembly (94ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (800ms)
-			LoadAssemblies (75ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (301ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (42ms)
-			SetupLoadedEditorAssemblies (285ms)
+			RebuildScriptCaches (67ms)
+			SetupLoadedEditorAssemblies (539ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (67ms)
-				ProcessInitializeOnLoadAttributes (199ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				RefreshPlugins (116ms)
+				BeforeProcessingInitializeOnLoad (101ms)
+				ProcessInitializeOnLoadAttributes (284ms)
+				ProcessInitializeOnLoadMethodAttributes (23ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.81 ms, found 4 plugins.
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.88 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3749 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 151.0 MB.
-System memory in use after: 151.3 MB.
+Unloading 3838 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 227.4 MB.
+System memory in use after: 227.7 MB.
 
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4316.
-Total: 2.373600 ms (FindLiveObjects: 0.302400 ms CreateObjectMapping: 0.082500 ms MarkObjects: 1.972200 ms  DeleteObjects: 0.015500 ms)
+Unloading 31 unused Assets to reduce memory usage. Loaded Objects now: 4298.
+Total: 4.294700 ms (FindLiveObjects: 0.439900 ms CreateObjectMapping: 0.373600 ms MarkObjects: 3.427900 ms  DeleteObjects: 0.051700 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -646,205 +133,182 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 119.858504 seconds.
+  path: Assets/_Prefabs/Door.prefab
+  artifactKey: Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/Door.prefab using Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2be69862c8a1b1b092c96dcebe163d89') in 0.327190 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000189 seconds.
   path: Assets/_Prefabs/Bat.prefab
   artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dff99df24a1c8a73584600959bf03adb') in 0.048872 seconds 
+Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38f6a44a019e614e10e1d73a23683299') in 0.024311 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 6.347240 seconds.
-  path: Assets/eyes.png
-  artifactKey: Guid(7c1d717056368c04cb7508c18b70fa04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/eyes.png using Guid(7c1d717056368c04cb7508c18b70fa04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30294edb3e75aab4faee14bec62ae013') in 0.034937 seconds 
+  Time since last request: 0.000246 seconds.
+  path: Assets/_Sound/Hush Game Main Rubble_mixdown.wav
+  artifactKey: Guid(cc86e551f8335aa4b897743eab4975b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Hush Game Main Rubble_mixdown.wav using Guid(cc86e551f8335aa4b897743eab4975b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d87ad30e90e6ca9733e09384f3330e0') in 0.051018 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 13.582422 seconds.
-  path: Assets/_Sound/Main Birdie Sounds
-  artifactKey: Guid(5062d74f55180a84b80ed6f02139b707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Birdie Sounds using Guid(5062d74f55180a84b80ed6f02139b707) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ebd5b71fe323c32463c2c84a7b08cbf') in 0.004980 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 13.953148 seconds.
-  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 1_mixdown.wav
-  artifactKey: Guid(d95d20d776bf080488b976796de2ac78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 1_mixdown.wav using Guid(d95d20d776bf080488b976796de2ac78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b63144d652136803e551051d9eaa0f7a') in 0.036536 seconds 
+  Time since last request: 0.000374 seconds.
+  path: Assets/_Sound/Hush Game Open Door_mixdown.wav
+  artifactKey: Guid(64a970bbd15e4be47b05deaae4e30a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Hush Game Open Door_mixdown.wav using Guid(64a970bbd15e4be47b05deaae4e30a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e273af1e51e87db0e8be560126a28c1') in 0.016161 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000219 seconds.
-  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 2_mixdown.wav
-  artifactKey: Guid(42d68dc67d90e9a43ab9cafc1fb6117f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 2_mixdown.wav using Guid(42d68dc67d90e9a43ab9cafc1fb6117f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dee2daa8906b819fb6d89a28c65da1cf') in 0.013423 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 3_mixdown.wav
-  artifactKey: Guid(418de0f46fb938d45bc396a08324326a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 3_mixdown.wav using Guid(418de0f46fb938d45bc396a08324326a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e370071e531085adb92e19f0bbde1778') in 0.014074 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 16.385210 seconds.
-  path: Assets/_Prefabs/Bat.prefab
-  artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc658c043314b825e8fd34a626696a2e') in 0.011356 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.087228 seconds.
-  path: Assets/_Prefabs/Bat.prefab
-  artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '954f486dac564207198419c865de1e82') in 0.009692 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.387597 seconds.
-  path: Assets/_Prefabs/Bat.prefab
-  artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bd9068a3fc8c0bcdb08040dcb5bd0d16') in 0.009890 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.088864 seconds.
-  path: Assets/_Prefabs/Bat.prefab
-  artifactKey: Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Bat.prefab using Guid(7300ea768427bc540b2b3d6294d38312) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '152cb4f2fc8b84e724bc8ae55102c736') in 0.012183 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.004946 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.79 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.909 seconds
-Domain Reload Profiling:
-	ReloadAssembly (909ms)
-		BeginReloadAssembly (97ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (34ms)
-		EndReloadAssembly (756ms)
-			LoadAssemblies (74ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (288ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (262ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (56ms)
-				ProcessInitializeOnLoadAttributes (187ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
-				AfterProcessingInitializeOnLoad (6ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (11ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.79 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3750 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 151.5 MB.
-System memory in use after: 151.8 MB.
-
-Unloading 20 unused Assets to reduce memory usage. Loaded Objects now: 4339.
-Total: 2.361900 ms (FindLiveObjects: 0.299900 ms CreateObjectMapping: 0.083300 ms MarkObjects: 1.962300 ms  DeleteObjects: 0.015100 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 358.110402 seconds.
-  path: Assets/_Sound/Hush Door CLosing_mixdown 1.wav
-  artifactKey: Guid(f87a87279c11dab45890fb34baa0750c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Hush Door CLosing_mixdown 1.wav using Guid(f87a87279c11dab45890fb34baa0750c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e99062a244cc42f83e0eca87dbd5fcb1') in 0.039280 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 17.200545 seconds.
-  path: Assets/_Sound/Hush Game Main Rubble_mixdown.wav
-  artifactKey: Guid(cc86e551f8335aa4b897743eab4975b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Hush Game Main Rubble_mixdown.wav using Guid(cc86e551f8335aa4b897743eab4975b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a32d12575157a4f0cae6138f5e1db8fa') in 0.030291 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000178 seconds.
-  path: Assets/_Sound/Hush Game Open Door_mixdown.wav
-  artifactKey: Guid(64a970bbd15e4be47b05deaae4e30a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Hush Game Open Door_mixdown.wav using Guid(64a970bbd15e4be47b05deaae4e30a55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85fce41a55c4305aa7c3b479a702e5d0') in 0.012222 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.308082 seconds.
   path: Assets/_Prefabs/BreakFloor.prefab
   artifactKey: Guid(37703bc746e9ab24e8a253cb06c66a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/BreakFloor.prefab using Guid(37703bc746e9ab24e8a253cb06c66a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eef010d8d3705beecdba036c0e2b4df2') in 0.024591 seconds 
+Start importing Assets/_Prefabs/BreakFloor.prefab using Guid(37703bc746e9ab24e8a253cb06c66a12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61ebb36709aefe8b2ce73a49625f42e0') in 0.028884 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 9.951776 seconds.
+  Time since last request: 0.000249 seconds.
   path: Assets/_Prefabs/LockWall.prefab
   artifactKey: Guid(d7911ec9ef75eb24b9b140f90a9aa559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/LockWall.prefab using Guid(d7911ec9ef75eb24b9b140f90a9aa559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '222fcd0333eb88b727562b3e5bd6309b') in 0.011132 seconds 
+Start importing Assets/_Prefabs/LockWall.prefab using Guid(d7911ec9ef75eb24b9b140f90a9aa559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe2201dbd9d281ce836e98aaeb444800') in 0.019010 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 24.267700 seconds.
-  path: Assets/_Prefabs/Door.prefab
-  artifactKey: Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Prefabs/Door.prefab using Guid(187ffde2f2e4dd740af731101f3fce7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c466a10a178a1fbb4f99b6c7fedd6b3') in 0.014577 seconds 
+  Time since last request: 0.000238 seconds.
+  path: Assets/_Prefabs/Lily.prefab
+  artifactKey: Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/Lily.prefab using Guid(505d338866b40d944a949fd7d482975e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed6488ef52840b44e878ab56ae0fd786') in 0.218867 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 24.071708 seconds.
+  path: Assets/_Scripts/MonsterBehavior.cs
+  artifactKey: Guid(e442684f0aed51c40901ef09b1aa6efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/MonsterBehavior.cs using Guid(e442684f0aed51c40901ef09b1aa6efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ad494326803c64981fe3f4878b6312c') in 0.147753 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 97.330846 seconds.
+  path: Assets/_Prefabs/Monster.prefab
+  artifactKey: Guid(82e2c0342852a33468de59e8c5323448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Prefabs/Monster.prefab using Guid(82e2c0342852a33468de59e8c5323448) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '399ec453c2d6dbeb464f2ce5aba3aa86') in 0.038481 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 35.743051 seconds.
+  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 1_mixdown.wav
+  artifactKey: Guid(d95d20d776bf080488b976796de2ac78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 1_mixdown.wav using Guid(d95d20d776bf080488b976796de2ac78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52d5a5b372c06ed476b37120790e109e') in 0.066353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 2_mixdown.wav
+  artifactKey: Guid(42d68dc67d90e9a43ab9cafc1fb6117f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 2_mixdown.wav using Guid(42d68dc67d90e9a43ab9cafc1fb6117f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4561ad9b6147080d6171bbfd743be32b') in 0.033068 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000217 seconds.
+  path: Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 3_mixdown.wav
+  artifactKey: Guid(418de0f46fb938d45bc396a08324326a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Birdie Sounds/Hush Game Main Birdie Sound 3_mixdown.wav using Guid(418de0f46fb938d45bc396a08324326a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae9d767615c87925eab3d914d230f9b9') in 0.020965 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.518320 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 1_mixdown.wav
+  artifactKey: Guid(549ca75d04f704645b1ad1e954ebce0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 1_mixdown.wav using Guid(549ca75d04f704645b1ad1e954ebce0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3460da67938a43d2fe217a830367dc0') in 0.019241 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000281 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 4_mixdown.wav
+  artifactKey: Guid(c87847818f39d834da6228fed11f3c78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 4_mixdown.wav using Guid(c87847818f39d834da6228fed11f3c78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2c43178f43dfd6da9ef14d998b646e2') in 0.023529 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 6_mixdown.wav
+  artifactKey: Guid(3e2f85c5904b5da49828149172ee99aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 6_mixdown.wav using Guid(3e2f85c5904b5da49828149172ee99aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b105d82b590f89d6ee0a304668f2c9f9') in 0.023322 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000077 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 3_mixdown.wav
+  artifactKey: Guid(178fb4227f734b54fb011f5b7de802a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 3_mixdown.wav using Guid(178fb4227f734b54fb011f5b7de802a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05b60321d06b52bb8d82a68787ad37df') in 0.020573 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 5_mixdown.wav
+  artifactKey: Guid(248f9853e2a5f194981e52e3462eae71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 5_mixdown.wav using Guid(248f9853e2a5f194981e52e3462eae71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e208613b7713c5f69077621a58987233') in 0.017285 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 2_mixdown.wav
+  artifactKey: Guid(065bd6e9987ffc24ab8cb16d351d6201) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 2_mixdown.wav using Guid(065bd6e9987ffc24ab8cb16d351d6201) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3dea3a01d41a8b9bf29306817bc41926') in 0.024757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.135603 seconds.
+  path: Assets/_Scripts/PhysicsObjectBehavior.cs
+  artifactKey: Guid(9f162fdba167d3d4fa4355141225f050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/PhysicsObjectBehavior.cs using Guid(9f162fdba167d3d4fa4355141225f050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e605d5c555f249207fec15b50cf537b2') in 0.011935 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 29.797810 seconds.
+  path: Assets/_Scripts/PhysicsObjectBehavior.cs
+  artifactKey: Guid(9f162fdba167d3d4fa4355141225f050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/PhysicsObjectBehavior.cs using Guid(9f162fdba167d3d4fa4355141225f050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9396d2cdb8593de4839fa9c1a6a86c57') in 0.004200 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 33.641407 seconds.
+  path: Assets/_Scripts/BlinkEyesBehavior.cs
+  artifactKey: Guid(69fba0cd4f8af144497d7d51e2e5dbc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/BlinkEyesBehavior.cs using Guid(69fba0cd4f8af144497d7d51e2e5dbc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e09042ccd379fec179cf160970d8fce') in 0.010613 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.459232 seconds.
+  path: Assets/_Scripts/BatBehavior.cs
+  artifactKey: Guid(c6d54a9b43cacd14e85932562413b958) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scripts/BatBehavior.cs using Guid(c6d54a9b43cacd14e85932562413b958) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77c9714e4ad247e29cfe6b5ef625b2ac') in 0.012291 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.004959 seconds.
+Registered in 0.010041 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\Users\jacco\Documents\GitHub\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\skull\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Users\skull\HushTest_0\Library\PackageCache\com.unity.visualscripting@1.6.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.77 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.93 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.906 seconds
+- Completed reload, in  1.352 seconds
 Domain Reload Profiling:
-	ReloadAssembly (906ms)
-		BeginReloadAssembly (96ms)
+	ReloadAssembly (1353ms)
+		BeginReloadAssembly (151ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (7ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (33ms)
-		EndReloadAssembly (757ms)
-			LoadAssemblies (73ms)
+			CreateAndSetChildDomain (46ms)
+		EndReloadAssembly (1124ms)
+			LoadAssemblies (118ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (297ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (256ms)
+			SetupTypeCache (436ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (52ms)
+			SetupLoadedEditorAssemblies (385ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (4ms)
-				SetLoadedEditorAssemblies (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (55ms)
-				ProcessInitializeOnLoadAttributes (183ms)
-				ProcessInitializeOnLoadMethodAttributes (7ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				BeforeProcessingInitializeOnLoad (84ms)
+				ProcessInitializeOnLoadAttributes (271ms)
+				ProcessInitializeOnLoadMethodAttributes (11ms)
+				AfterProcessingInitializeOnLoad (12ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (11ms)
+			AwakeInstancesAfterBackupRestoration (13ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.80 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 0.90 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3749 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 151.5 MB.
-System memory in use after: 151.8 MB.
+System memory in use before: 223.4 MB.
+System memory in use after: 223.6 MB.
 
-Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 4344.
-Total: 2.383700 ms (FindLiveObjects: 0.328100 ms CreateObjectMapping: 0.083300 ms MarkObjects: 1.950400 ms  DeleteObjects: 0.020900 ms)
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 4311.
+Total: 3.693300 ms (FindLiveObjects: 0.408900 ms CreateObjectMapping: 0.358500 ms MarkObjects: 2.890300 ms  DeleteObjects: 0.034300 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -858,44 +322,25 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 166.123406 seconds.
-  path: Assets/_Sound/Main Box object Sounds
-  artifactKey: Guid(95ebd6bdb629aa24a9fa37355bf4c91e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds using Guid(95ebd6bdb629aa24a9fa37355bf4c91e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3fa89ace0804217ceb240f33437f67e') in 0.008881 seconds 
+  Time since last request: 309.196270 seconds.
+  path: Assets/_Scenes/Level4_Keys.unity
+  artifactKey: Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level4_Keys.unity using Guid(cabc3ab99f1c1ca4eb2c372cfcedbcaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56dff71756c7b5c4c07dd47c12b52e08') in 0.029070 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 14.143425 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 1_mixdown.wav
-  artifactKey: Guid(549ca75d04f704645b1ad1e954ebce0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 1_mixdown.wav using Guid(549ca75d04f704645b1ad1e954ebce0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee327d61e07cc9897c1fffeeb6db03ad') in 0.033549 seconds 
+  Time since last request: 39.101840 seconds.
+  path: Assets/_Scenes/Level3_Swing.unity
+  artifactKey: Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level3_Swing.unity using Guid(81029a76c4b07bd44ae95a14e0551028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85232f9620639c4b168f87e56b9ae576') in 0.008712 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 4_mixdown.wav
-  artifactKey: Guid(c87847818f39d834da6228fed11f3c78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 4_mixdown.wav using Guid(c87847818f39d834da6228fed11f3c78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b40b40087c6868ffe2a7abb7dcd77f7c') in 0.009680 seconds 
+  Time since last request: 8.033239 seconds.
+  path: Assets/_Scenes/Level2_Loop.unity
+  artifactKey: Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level2_Loop.unity using Guid(ee4134e38c408934ba6938c32198cef2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2cc160bdaa98a677f2986a3843d85a74') in 0.008095 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000171 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 6_mixdown.wav
-  artifactKey: Guid(3e2f85c5904b5da49828149172ee99aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 6_mixdown.wav using Guid(3e2f85c5904b5da49828149172ee99aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d0f5b39c39aed5e7fd1cb2b28b906b0') in 0.008859 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 3_mixdown.wav
-  artifactKey: Guid(178fb4227f734b54fb011f5b7de802a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 3_mixdown.wav using Guid(178fb4227f734b54fb011f5b7de802a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6abd7d7145c98dd5ea98084e5ae7939d') in 0.010114 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 5_mixdown.wav
-  artifactKey: Guid(248f9853e2a5f194981e52e3462eae71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 5_mixdown.wav using Guid(248f9853e2a5f194981e52e3462eae71) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa31ce544f14ef045112fdd6559c6834') in 0.009346 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000157 seconds.
-  path: Assets/_Sound/Main Box object Sounds/Hush Game Main Box 2_mixdown.wav
-  artifactKey: Guid(065bd6e9987ffc24ab8cb16d351d6201) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/_Sound/Main Box object Sounds/Hush Game Main Box 2_mixdown.wav using Guid(065bd6e9987ffc24ab8cb16d351d6201) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4386109ce121cf0617472d21c1edc29') in 0.008369 seconds 
-AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+  Time since last request: 20.752960 seconds.
+  path: Assets/_Scenes/Level1_Tutorial.unity
+  artifactKey: Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/_Scenes/Level1_Tutorial.unity using Guid(d5274aa4e14be594ba23efbec5cc42c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68b8c82af2c27d8dc6812f9005f901b0') in 0.010470 seconds 

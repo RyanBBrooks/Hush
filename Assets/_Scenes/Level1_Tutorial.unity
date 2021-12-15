@@ -8324,7 +8324,13 @@ MonoBehaviour:
   grabLocksRotation: 1
   alphaMin: 0.6
   alphaDecayRate: 0.15
-  thudClip: {fileID: 8300000, guid: 7934c113c7223854cb04e61663e102ce, type: 3}
+  thudClips:
+  - {fileID: 8300000, guid: 549ca75d04f704645b1ad1e954ebce0d, type: 3}
+  - {fileID: 8300000, guid: 065bd6e9987ffc24ab8cb16d351d6201, type: 3}
+  - {fileID: 8300000, guid: 178fb4227f734b54fb011f5b7de802a9, type: 3}
+  - {fileID: 8300000, guid: c87847818f39d834da6228fed11f3c78, type: 3}
+  - {fileID: 8300000, guid: 248f9853e2a5f194981e52e3462eae71, type: 3}
+  - {fileID: 8300000, guid: 3e2f85c5904b5da49828149172ee99aa, type: 3}
 --- !u!50 &1255737952
 Rigidbody2D:
   serializedVersion: 4

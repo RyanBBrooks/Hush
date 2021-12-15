@@ -11,11 +11,9 @@ public class MonsterBehavior : MonoBehaviour
     public bool window;
     public GameObject lily;
     int groundLayer = 7; //layer mask referring to the ground layer (layer #7 should be)
-    public bool roar = false;
-    public AudioSource audioSource;
+    public AudioSource src;
     BoxCollider2D col;
-    public float vol;
-    public float height = 20;
+    public float vol = 1;
     Rigidbody2D body;
     public float smoothing = 0.01f; //movement smoothing
     bool walking = false;
@@ -29,6 +27,7 @@ public class MonsterBehavior : MonoBehaviour
         col = GetComponent<BoxCollider2D>();      
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        src = GetComponent<AudioSource>();
         animate = GetComponent<Animator>();
         sprite.color = new Color(1, 1, 1, 0);
         body.simulated = false;
@@ -99,18 +98,20 @@ public class MonsterBehavior : MonoBehaviour
         animate.SetBool("walk", true);
     }
 
-    //private void screech()
-    //{
-    //    Debug.Log("sceam");
-    //    Spawn an echo circle
-    //    CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-    //    set circle position at foot and slightly in front of character to account for movement speeed
-    //    Vector2 location = new Vector2(this.gameObject.transform.position.x + height,
-    //                                        this.gameObject.transform.position.y - this.gameObject.transform.localScale.y); ;
-    //    s.SpawnEchoCircle(location, vol);
-    //    audioSource.Play();
+    public void PlaySound(float vol, Vector2 pos, AudioClip clip)
+    {
+        //UNCOMMENT ME ONCE CLIP EXISTS
+        if (!src) return;
+        src.PlayOneShot(clip, vol * 6);
 
-    //}
+        //spawn a "EchoCircle"
+        CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+        s.SpawnEchoCircleInExtents(pos, vol);
+    }
 
-
+    public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
+    {
+        int r = Random.Range(0, clips.Count); //calculate random list index r
+        PlaySound(vol, pos, clips[r]); //play sound at r
+    }
 }

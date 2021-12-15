@@ -28,7 +28,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
 
     //audio vars
     //SOUND: Create AudioClip variable for each different sound category in a prefab    
-    public AudioClip thudClip;
+    public List<AudioClip> thudClips;
     //SOUND: Create one AudioSource variable for audio source
     AudioSource src;
 
@@ -147,7 +147,7 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //only play a sound if the volume is above a certain threshold
         if (vol > 0.2f)
         {
-            PlaySound(vol, pos / col.contactCount, thudClip);
+            PlayRandomSound(vol, pos / col.contactCount, thudClips);
         }
     }
 
@@ -160,5 +160,11 @@ public class PhysicsObjectBehavior : MonoBehaviour
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
         s.SpawnEchoCircleInExtents(pos, vol);
+    }
+
+    public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
+    {
+        int r = Random.Range(0, clips.Count); //calculate random list index r
+        PlaySound(vol, pos, clips[r]); //play sound at r
     }
 }
