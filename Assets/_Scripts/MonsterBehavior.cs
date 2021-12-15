@@ -17,7 +17,9 @@ public class MonsterBehavior : MonoBehaviour
     public float smoothing = 0.01f; //movement smoothing
     bool walking = false;
     float deleteTimer = 0;
+    float currentSpeed = 5;
     float echoTimer = 0;
+    Vector2 headPos = Vector2.zero;
 
     public List<AudioClip> screamClips;
 
@@ -37,23 +39,29 @@ public class MonsterBehavior : MonoBehaviour
         {
             col.enabled = false;
         }
+       
     }
 
     
     // Update is called once per frame
     void Update()
     {
+        headPos = new Vector2(this.transform.position.x - 3, this.transform.position.y + 3);
         if (walking)
         {
+            if (currentSpeed < speed)
+            {
+                currentSpeed += Time.deltaTime;
+            }
             sprite.color = new Color(1, 1, 1, sprite.color.a + 0.02f);
-            Vector3 newPos = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+            Vector3 newPos = new Vector3(transform.position.x - currentSpeed * Time.deltaTime, transform.position.y, transform.position.z);
 
             float velocity = transform.position.x - newPos.x;
             transform.position = new Vector3(newPos.x, newPos.y, newPos.z);
             deleteTimer += Time.deltaTime;
             echoTimer += Time.deltaTime;
             //delete window after time elapse
-            if (window && deleteTimer>3)
+            if (window && deleteTimer>3.2)
             {
                 Destroy(this.gameObject);
             }
@@ -68,16 +76,16 @@ public class MonsterBehavior : MonoBehaviour
 
             }
             //add more circles
-            if(!window && echoTimer > 0.5)
+            if(echoTimer > 0.5)
             {
                 CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-                s.SpawnEchoCircleInExtents(this.transform.position, screamVol*4);
+                s.SpawnEchoCircleInExtents(headPos, screamVol*4);
                 echoTimer = 0;
             }
             //play another sound
-            if (!src.isPlaying && !window)
+            if (!src.isPlaying)
             {
-                    PlayRandomSound(screamVol, this.transform.position, screamClips);
+                    PlayRandomSound(screamVol, headPos, screamClips);
             }
 
 

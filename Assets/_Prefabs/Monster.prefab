@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e442684f0aed51c40901ef09b1aa6efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8.1
   window: 0
-  screamVol: 1
+  screamVol: 0.75
   smoothing: 0.01
   screamClips:
   - {fileID: 8300000, guid: 5bf5744a07b11384ca10e9b9db2897c7, type: 3}
