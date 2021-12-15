@@ -579,7 +579,7 @@ public class LilyBehavior : MonoBehaviour
             if (c.g <= 1)
             {
                 //update color value
-                clapBarImg.color = new Color(1, c.g + 0.002f, c.b + 0.002f, 1);
+                clapBarImg.color = new Color(1, c.g + Time.deltaTime, c.b + Time.deltaTime, 1);
 
                 //shake bar -- intensity is relative to color
                 clapBarCanvas.transform.localPosition = new Vector2(Mathf.Sin(Time.time * 5 * c.g/1) * 0.04f, 1.5f + Mathf.Sin(Time.time/1.3f * 5 * c.g/1) * 0.04f);
