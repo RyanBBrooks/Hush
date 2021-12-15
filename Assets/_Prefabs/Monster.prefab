@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5025768731186887482
 Transform:
   m_ObjectHideFlags: 0
@@ -123,12 +123,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   window: 0
-  lily: {fileID: 0}
-  roar: 0
-  audioSource: {fileID: 0}
-  vol: 0
-  height: 20
+  screamVol: 1
   smoothing: 0.01
+  screamClips:
+  - {fileID: 8300000, guid: 5bf5744a07b11384ca10e9b9db2897c7, type: 3}
+  - {fileID: 8300000, guid: d9fefbfd3b07e8b46aba1d9dc52ef200, type: 3}
+  - {fileID: 8300000, guid: b84592aa968ec734a8413b6e68efc5ed, type: 3}
+  - {fileID: 8300000, guid: 53dbd3fe26676b74aa2f450e4b4a8d7f, type: 3}
+  - {fileID: 8300000, guid: 6a679f53e0211164fb75bee51e12fbd7, type: 3}
+  - {fileID: 8300000, guid: fd6d31548ef853b4bb625f8ac25f2372, type: 3}
+  - {fileID: 8300000, guid: 1f777da9d7921bb4fba1277589e18f85, type: 3}
+  - {fileID: 8300000, guid: 02144c76e12d7534d8a35a919c85d407, type: 3}
+  - {fileID: 8300000, guid: fd7cf9a86fe12c9498fb61954429096d, type: 3}
+  - {fileID: 8300000, guid: 81d923d080fcdb34f91fe01353348be7, type: 3}
 --- !u!95 &5025768731186887484
 Animator:
   serializedVersion: 3

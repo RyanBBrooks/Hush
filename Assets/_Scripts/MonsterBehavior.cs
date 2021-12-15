@@ -9,15 +9,17 @@ public class MonsterBehavior : MonoBehaviour
     // Start is called before the first frame update
     public float speed;
     public bool window;
-    public GameObject lily;
     int groundLayer = 7; //layer mask referring to the ground layer (layer #7 should be)
-    public AudioSource src;
+    AudioSource src;
     BoxCollider2D col;
-    public float vol = 1;
+    public float screamVol = 0.5f;
     Rigidbody2D body;
     public float smoothing = 0.01f; //movement smoothing
     bool walking = false;
-    float timer = 0;
+    float deleteTimer = 0;
+    float echoTimer = 0;
+
+    public List<AudioClip> screamClips;
 
     SpriteRenderer sprite;
     
@@ -44,18 +46,18 @@ public class MonsterBehavior : MonoBehaviour
         if (walking)
         {
             sprite.color = new Color(1, 1, 1, sprite.color.a + 0.02f);
-            float step = speed * Time.deltaTime; // calculate distance to move
-            Vector3 newPos = new Vector3(transform.position.x - speed / 100, transform.position.y, transform.position.z);
+            Vector3 newPos = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
 
             float velocity = transform.position.x - newPos.x;
             transform.position = new Vector3(newPos.x, newPos.y, newPos.z);
-            Debug.Log(timer);
-            timer += Time.deltaTime;
-            if (window && timer>3)
+            deleteTimer += Time.deltaTime;
+            echoTimer += Time.deltaTime;
+            //delete window after time elapse
+            if (window && deleteTimer>3)
             {
                 Destroy(this.gameObject);
             }
-
+            //flip sprite
             if (velocity < 0)
             {
                 sprite.flipX = false;
@@ -65,6 +67,20 @@ public class MonsterBehavior : MonoBehaviour
                 sprite.flipX = true;
 
             }
+            //add more circles
+            if(!window && echoTimer > 0.5)
+            {
+                CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
+                s.SpawnEchoCircleInExtents(this.transform.position, screamVol*4);
+                echoTimer = 0;
+            }
+            //play another sound
+            if (!src.isPlaying && !window)
+            {
+                    PlayRandomSound(screamVol, this.transform.position, screamClips);
+            }
+
+
         }
 
     }
@@ -96,6 +112,7 @@ public class MonsterBehavior : MonoBehaviour
             col.enabled = true;
         }
         animate.SetBool("walk", true);
+      
     }
 
     public void PlaySound(float vol, Vector2 pos, AudioClip clip)
@@ -106,12 +123,12 @@ public class MonsterBehavior : MonoBehaviour
 
         //spawn a "EchoCircle"
         CameraBehavior s = Camera.main.GetComponent<CameraBehavior>();
-        s.SpawnEchoCircleInExtents(pos, vol);
+        s.SpawnEchoCircleInExtents(pos, vol*4);
     }
 
     public void PlayRandomSound(float vol, Vector2 pos, List<AudioClip> clips)
     {
         int r = Random.Range(0, clips.Count); //calculate random list index r
-        PlaySound(vol, pos, clips[r]); //play sound at r
+        PlaySound(vol, pos, clips[r]); //play sound at rF
     }
 }

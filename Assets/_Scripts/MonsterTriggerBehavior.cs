@@ -21,5 +21,6 @@ public class MonsterTriggerBehavior : MonoBehaviour
     {
         monster.SetActive(true);
         monster.GetComponent<MonsterBehavior>().activate();
+        Destroy(this.gameObject);
     }
 }

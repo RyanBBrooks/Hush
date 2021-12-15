@@ -5801,10 +5801,6 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4461823241168515673, guid: 505d338866b40d944a949fd7d482975e, type: 3}
-      propertyPath: fallClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 7934c113c7223854cb04e61663e102ce, type: 3}
-    - target: {fileID: 4461823241168515673, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: footstepClip
       value: 
       objectReference: {fileID: 8300000, guid: eb5d45694604aa14e9aa4e58ed61754b, type: 3}
@@ -5818,11 +5814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4461823241168515676, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 40.47
+      value: 32.4
       objectReference: {fileID: 0}
     - target: {fileID: 4461823241168515676, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.9
+      value: -7.8
       objectReference: {fileID: 0}
     - target: {fileID: 4461823241168515676, guid: 505d338866b40d944a949fd7d482975e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6564,7 +6560,7 @@ PrefabInstance:
       objectReference: {fileID: 679560836}
     - target: {fileID: 5025768731186887485, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
       propertyPath: speed
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5025768731186887485, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
       propertyPath: window
@@ -6810,10 +6806,6 @@ PrefabInstance:
       propertyPath: lily
       value: 
       objectReference: {fileID: 679560836}
-    - target: {fileID: 5025768731186887485, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
-      propertyPath: speed
-      value: 4.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82e2c0342852a33468de59e8c5323448, type: 3}
 --- !u!1 &958187267
@@ -8051,7 +8043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1238412287
 Transform:
   m_ObjectHideFlags: 0
